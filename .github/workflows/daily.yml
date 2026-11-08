@@ -89,7 +89,7 @@ jobs:
     needs: collect
     if: always() && needs.collect.result != 'cancelled' && needs.collect.outputs.site_ready == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     permissions:
       pages: write
       id-token: write
@@ -102,6 +102,47 @@ jobs:
       - name: Deploy funding-only site
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify the public website and funding data
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import time
+          from urllib.error import HTTPError, URLError
+          from urllib.parse import urljoin
+          from urllib.request import urlopen
+
+          base = os.environ["SITE_URL"].rstrip("/") + "/"
+          for attempt in range(12):
+              try:
+                  with urlopen(base, timeout=20) as response:
+                      html = response.read().decode()
+                  if "<title>Funding Radar" not in html:
+                      raise ValueError("The live URL does not serve the Funding Radar homepage")
+                  for asset in ("app.js", "styles.css"):
+                      with urlopen(urljoin(base, asset), timeout=20) as response:
+                          if not response.read():
+                              raise ValueError(f"Empty public asset: {asset}")
+                  with urlopen(urljoin(base, "data.json"), timeout=20) as response:
+                      data = json.load(response)
+                  if data.get("schema_version") != 1 or not isinstance(data.get("records"), list):
+                      raise ValueError("The live site has an invalid funding dataset")
+                  if not data.get("last_attempt_at"):
+                      raise ValueError("The live site still has the uninitialized dataset")
+                  if "contacts" in data or any("email" in row or "contacts" in row for row in data["records"]):
+                      raise ValueError("Private contact fields must not appear in public data")
+                  healthy = sum(source["status"] == "ok" for source in data["sources"])
+                  print(f"Live URL verified: {base}")
+                  print(f"Funding signals: {len(data['records'])}; healthy sources: {healthy}/{len(data['sources'])}; coverage: {data['status']}")
+                  break
+              except (HTTPError, URLError, TimeoutError, ValueError) as error:
+                  if attempt == 11:
+                      raise
+                  print(f"Waiting for Pages/CDN propagation: {type(error).__name__}")
+                  time.sleep(5)
+          PY
       - name: Fail visibly if every feed failed
         if: needs.collect.outputs.collection_status == 'failure'
         run: |

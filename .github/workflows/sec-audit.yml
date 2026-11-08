@@ -13,6 +13,8 @@ jobs:
         run: |
           python - <<'PY'
           import json, re, time
+          from html.parser import HTMLParser
+          from urllib.parse import urljoin
           from datetime import datetime, timedelta, timezone
           from urllib.request import Request, urlopen
           from urllib.error import URLError, HTTPError
@@ -24,8 +26,8 @@ jobs:
                   return response.read(8 * 1024 * 1024).decode("utf-8", errors="replace")
           now = datetime.now(timezone.utc)
           candidates = []
-          denied = False
-          for offset in range(1, 8):
+          denied = True
+          for offset in ():
               day = (now - timedelta(days=offset)).date()
               if day.weekday() >= 5:
                   continue
@@ -72,4 +74,40 @@ jobs:
                           break
                   except (URLError, TimeoutError, ET.ParseError) as error:
                       print(json.dumps({"issuer": issuer, "error": str(error)}))
+          class Page(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+                  self.feeds = []
+                  self.rows = []
+                  self.row = None
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag == "a" and attrs.get("href"):
+                      self.links.append(attrs["href"])
+                  if tag == "link" and "rss" in attrs.get("type", ""):
+                      self.feeds.append(attrs.get("href"))
+                  if tag == "tr":
+                      self.row = []
+              def handle_endtag(self, tag):
+                  if tag == "tr" and self.row is not None:
+                      self.rows.append(" ".join(" ".join(self.row).split()))
+                      self.row = None
+              def handle_data(self, text):
+                  if self.row is not None:
+                      self.row.append(text)
+          base = "https://www.formds.com/"
+          try:
+              body = fetch(base)
+              page = Page()
+              page.feed(body)
+              print(json.dumps({"independent_tracker": base, "feeds": page.feeds, "links": list(dict.fromkeys(page.links))[:45], "table_facts": page.rows[:4]}))
+              for link in list(dict.fromkeys(u for u in page.links if "/issuers/" in u))[:2]:
+                  url = urljoin(base, link)
+                  body = fetch(url)
+                  detail = Page()
+                  detail.feed(body)
+                  print(json.dumps({"issuer_page": url, "links": list(dict.fromkeys(detail.links))[:40], "table_facts": detail.rows[:5]}))
+          except (URLError, TimeoutError, ValueError) as error:
+              print(json.dumps({"independent_tracker": base, "error": str(error)}))
           PY

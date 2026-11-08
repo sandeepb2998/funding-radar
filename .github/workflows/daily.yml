@@ -97,6 +97,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Confirm Pages configuration
+        uses: actions/configure-pages@v5
       - name: Deploy funding-only site
         id: deployment
         uses: actions/deploy-pages@v4

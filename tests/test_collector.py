@@ -4,9 +4,11 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from collect import canonical_url, collect, extract, iso, merge_records, parse_feed, timestamp
+from collect import canonical_url, collect, extract, fetch_feed, iso, merge_records, parse_feed, timestamp
 from build import build, public_data
 from enrich import enrich, founder_contacts, reviewed_domains, safe_csv
 
@@ -60,6 +62,22 @@ class FeedTests(unittest.TestCase):
         for value in ("javascript:alert(1)", "//example.com/a", "https://user:pass@example.com"):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 canonical_url(value)
+
+    def test_publisher_access_denial_is_not_retried(self):
+        error = HTTPError(SOURCE["url"], 403, "Forbidden", {}, None)
+        with patch("collect.urlopen", side_effect=error) as request, patch("collect.time.sleep") as sleep:
+            entries, failure = fetch_feed(SOURCE)
+        self.assertEqual(entries, [])
+        self.assertEqual(failure, "HTTP 403")
+        self.assertEqual(request.call_count, 1)
+        sleep.assert_not_called()
+
+    def test_transient_server_failure_is_retried_once(self):
+        error = HTTPError(SOURCE["url"], 503, "Unavailable", {}, None)
+        with patch("collect.urlopen", side_effect=error) as request, patch("collect.time.sleep"):
+            _, failure = fetch_feed(SOURCE)
+        self.assertEqual(failure, "HTTP 503")
+        self.assertEqual(request.call_count, 2)
 
 
 class ExtractionTests(unittest.TestCase):
@@ -134,6 +152,19 @@ class ExtractionTests(unittest.TestCase):
     def test_use_of_proceeds_and_punctuation_after_amount(self):
         for title in ("Example Raises $10M to Expand", "Example Raises $10M, Announces Expansion"):
             self.assertEqual(extract(entry(title), SOURCE, NOW)["amount"], 10_000_000)
+
+    def test_company_labels_remove_explicit_location_and_spinout_prefixes(self):
+        for subject in ("Helsinki's Example Labs", "Helsinki\u2019s Example Labs",
+                        "Oxford spin-out Example Labs", "University of Oxford spinout Example Labs"):
+            with self.subTest(subject=subject):
+                result = extract(entry(f"{subject} Raises EUR 10M"), SOURCE, NOW)
+                self.assertEqual(result["company"], "Example Labs")
+
+    def test_company_possessives_are_preserved(self):
+        result = extract(entry("Founder's Factory Raises EUR 10M"), SOURCE, NOW)
+        self.assertIsNone(result)
+        result = extract(entry("O'Reilly Labs Raises EUR 10M"), SOURCE, NOW)
+        self.assertEqual(result["company"], "O'Reilly Labs")
 
 
 class StateTests(unittest.TestCase):

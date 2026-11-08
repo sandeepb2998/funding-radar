@@ -141,6 +141,8 @@ def extract(entry, source, now):
         return None
     subject = re.sub(r"^(?:(?:AI|fintech|robotics|climate|healthtech)\s+)?(?:startup|company)\s+", "", subject, flags=re.I)
     subject = re.sub(r"^[\w-]+-based\s+", "", subject, flags=re.I)
+    subject = re.sub(r"^(?:[\w-]+\s+){1,3}spin[- ]?out\s+", "", subject, flags=re.I)
+    subject = re.sub(r"^(?:Helsinki|London|Paris|Berlin|Amsterdam|Stockholm|Copenhagen|Dublin|Oxford|Cambridge|India|Europe|Germany|France|Finland|Sweden|UK|US)['\u2019]s\s+", "", subject, flags=re.I)
     if not 2 <= len(subject) <= 80 or len(subject.split()) > 6:
         return None
     published = timestamp(entry["published"])
@@ -214,7 +216,8 @@ def fetch_feed(source):
                 body = response.read(MAX_BYTES + 1)
             return parse_feed(body), None
         except (URLError, TimeoutError, OSError, ValueError, ET.ParseError) as error:
-            if attempt == 0:
+            transient = not isinstance(error, HTTPError) or error.code in (429, 500, 502, 503, 504)
+            if attempt == 0 and transient:
                 time.sleep(2)
             else:
                 detail = f"HTTP {error.code}" if isinstance(error, HTTPError) else f"{type(error).__name__}: {error}"

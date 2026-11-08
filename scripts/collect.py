@@ -25,7 +25,8 @@ UTC = timezone.utc
 VERB = re.compile(
     r"^(?P<company>.+?)\s+(?:(?:has|just|today|reportedly)\s+)*"
     r"(?P<verb>raises?|raised|secures?|secured|closes?|closed|"
-    r"lands?|landed|bags?|receives?|received)\b(?P<rest>.+)$", re.I
+    r"lands?|landed|bags?|receives?|received|announces?|announced|"
+    r"completes?|completed)\b(?P<rest>.+)$", re.I
 )
 AMOUNT = re.compile(
     r"(?<![\w$])(?P<currency>US\$|CA\$|C\$|A\$|S\$|USD|EUR|GBP|INR|CAD|AUD|SGD|[$€£₹])"
@@ -40,7 +41,8 @@ EXCLUDED = re.compile(
     r"\b(venture\s+(?:capital|fund|firm)|fund\s+(?:i{1,3}|iv|v|\d+)|"
     r"fund|fundraising\s+target|plans?\s+to|seeks?|seeking|"
     r"in\s+talks|could|may|reportedly|rumou?r|valuation|"
-    r"acqui(?:res?|red|sition)|merger|ipo|revenue|contract|"
+    r"acqui(?:res?|red|sition)|merger|ipo|revenue|contracts?|orders?|"
+    r"federal|municipal|taxpayer|government\s+funding|state\s+funding|"
     r"lawsuit|donations?|grants?|crowdfunding|roundup|round-up)\b", re.I
 )
 
@@ -88,6 +90,16 @@ def canonical_url(value):
     return urlunsplit((parts.scheme, parts.netloc.lower(), parts.path, urlencode(query), ""))
 
 
+def feed_url(source):
+    if source.get("kind") == "news_search":
+        country = source.get("country", "US")
+        return "https://news.google.com/rss/search?" + urlencode({
+            "q": source["query"], "hl": f"en-{country}",
+            "gl": country, "ceid": f"{country}:en",
+        })
+    return source["url"]
+
+
 def parse_feed(content):
     if len(content) > MAX_BYTES or b"<!DOCTYPE" in content.upper() or b"<!ENTITY" in content.upper():
         raise ValueError("Oversized feed or unsupported XML declarations")
@@ -104,29 +116,45 @@ def parse_feed(content):
             if tag == "link":
                 if child.attrib.get("rel", "alternate") == "alternate":
                     fields["link"] = child.attrib.get("href") or child.text or ""
-            elif tag in ("title", "pubDate", "published", "date"):
+            elif tag in ("title", "pubDate", "published", "date", "source"):
                 fields[tag] = "".join(child.itertext())
+                if tag == "source":
+                    fields["publisher_url"] = child.attrib.get("url")
         entries.append({
             "title": plain(fields.get("title", "")),
             "url": fields.get("link", ""),
             "published": fields.get("pubDate") or fields.get("published") or fields.get("date"),
+            "publisher": plain(fields.get("source", "")),
+            "publisher_url": fields.get("publisher_url"),
         })
     return entries
 
 
 def extract(entry, source, now):
     title = entry["title"]
+    publisher = entry.get("publisher", "")
+    if source.get("kind") == "news_search" and publisher:
+        suffix = " - " + publisher
+        if title.endswith(suffix):
+            title = title[:-len(suffix)].strip()
+        publisher_host = urlsplit(entry.get("publisher_url") or "").hostname or ""
+        if publisher_host.endswith((".gov", ".gov.uk", ".gov.in", ".mil")):
+            return None
     if re.search(r"\b(reportedly|rumou?red|could|may)\b", title, re.I):
         return None
     match = VERB.match(title)
     if not match:
         return None
     subject = match["company"].strip(" ,:;")
-    if re.search(r"\b(fund|capital|ventures|investors?|founders?)\b", subject, re.I):
+    if re.search(r"\b(fund|capital|ventures|investors?|founders?|senator|congressman|county|council)\b", subject, re.I):
         return None
     # Valuation clauses are common after a real raise; never use their amounts.
     rest = re.split(r"\b(?:at a|at|with a)\s+.*?\bvaluation\b", match["rest"], flags=re.I)[0]
     if EXCLUDED.search(subject + " " + rest):
+        return None
+    if match["verb"].lower().startswith(("announc", "complet")) and not re.search(
+        r"\b(funding|financing|round|seed|series\s+[A-K]|investment)\b", rest, re.I
+    ):
         return None
     amount = AMOUNT.search(rest)
     if not amount or amount.start() > 50:
@@ -139,10 +167,11 @@ def extract(entry, source, now):
     prefix = rest[:amount.start()]
     if re.search(r"\b(to|target|up to|over|more than|nearly|about|approximately)\b", prefix, re.I):
         return None
-    subject = re.sub(r"^(?:(?:AI|fintech|robotics|climate|healthtech)\s+)?(?:startup|company)\s+", "", subject, flags=re.I)
-    subject = re.sub(r"^[\w-]+-based\s+", "", subject, flags=re.I)
-    subject = re.sub(r"^(?:[\w-]+\s+){1,3}spin[- ]?out\s+", "", subject, flags=re.I)
-    subject = re.sub(r"^(?:Helsinki|London|Paris|Berlin|Amsterdam|Stockholm|Copenhagen|Dublin|Oxford|Cambridge|India|Europe|Germany|France|Finland|Sweden|UK|US)['\u2019]s\s+", "", subject, flags=re.I)
+    for _ in range(2):
+        subject = re.sub(r"^(?:[\w-]+\s+){0,3}(?:startup|start-up|company)\s+", "", subject, flags=re.I)
+        subject = re.sub(r"^[\w-]+-based\s+", "", subject, flags=re.I)
+        subject = re.sub(r"^(?:[\w-]+\s+){1,3}spin[- ]?out\s+", "", subject, flags=re.I)
+        subject = re.sub(r"^(?:Helsinki|London|Paris|Berlin|Amsterdam|Stockholm|Copenhagen|Dublin|Oxford|Cambridge|India|Europe|Germany|France|Finland|Sweden|UK|US)['\u2019]s\s+", "", subject, flags=re.I)
     if not 2 <= len(subject) <= 80 or len(subject.split()) > 6:
         return None
     published = timestamp(entry["published"])
@@ -155,8 +184,8 @@ def extract(entry, source, now):
     value = Decimal(amount["number"].replace(",", "")) * factor
     if not 0 < value <= 10**12:
         return None
-    stage_match = re.search(r"\bseries\s+([A-K])(?:[- ]\d+)?\b", rest, re.I)
-    stage = "Series " + stage_match[1].upper() if stage_match else (
+    stage_match = re.search(r"\b(?P<pre>pre[- ])?series\s+(?P<letter>[A-K])(?P<extension>[- ]?\d+|\+)?(?!\w)", rest, re.I)
+    stage = ("Pre-Series " if stage_match["pre"] else "Series ") + stage_match["letter"].upper() + (stage_match["extension"] or "").strip() if stage_match else (
         "Pre-seed" if re.search(r"\bpre[- ]seed\b", rest, re.I) else
         "Seed" if re.search(r"\bseed\b", rest, re.I) else
         "Debt" if re.search(r"\b(debt|credit facility|loan)\b", rest, re.I) else
@@ -173,7 +202,7 @@ def extract(entry, source, now):
         "first_seen_at": iso(now),
         "last_seen_at": iso(now),
         "headline": title,
-        "sources": [{"name": source["name"], "url": url}],
+        "sources": [{"name": f"{publisher} via Google News" if publisher and source.get("kind") == "news_search" else source["name"], "url": url}],
         "quality": "Headline-extracted; verify source",
     }
 
@@ -185,25 +214,32 @@ def same_event(left, right):
         key(left["company"]) == key(right["company"])
         and left["amount"] == right["amount"]
         and left["currency"] == right["currency"]
-        and left["stage"] == right["stage"]
+        and (left["stage"] == right["stage"] or "Undisclosed" in (left["stage"], right["stage"]))
         and abs(timestamp(left["published_at"]) - timestamp(right["published_at"])) <= timedelta(days=3)
     )
 
 
 def merge_records(existing, incoming, now):
-    records = [dict(r, sources=list(r["sources"])) for r in existing
+    records = [dict(r, sources=[dict(s) for s in r["sources"]]) for r in existing
                if timestamp(r["published_at"]) >= now - timedelta(days=180)]
     for candidate in incoming:
         previous = next((r for r in records if same_event(r, candidate)), None)
         if previous is None:
-            records.append(candidate)
+            records.append(dict(candidate, sources=[dict(s) for s in candidate["sources"]]))
             continue
         if any(s["url"] == t["url"] for s in previous["sources"] for t in candidate["sources"]):
             for field in ("company", "amount", "currency", "stage", "headline", "published_at"):
+                if field == "stage" and candidate["stage"] == "Undisclosed" and previous["stage"] != "Undisclosed":
+                    continue
                 previous[field] = candidate[field]
+        elif previous["stage"] == "Undisclosed":
+            previous["stage"] = candidate["stage"]
         previous["last_seen_at"] = candidate["last_seen_at"]
         for source in candidate["sources"]:
-            if source not in previous["sources"]:
+            existing_source = next((s for s in previous["sources"] if s["url"] == source["url"]), None)
+            if existing_source:
+                existing_source.update(source)
+            else:
                 previous["sources"].append(source)
     return sorted(records, key=lambda r: (r["published_at"], r["id"]), reverse=True)
 
@@ -211,7 +247,7 @@ def merge_records(existing, incoming, now):
 def fetch_feed(source):
     for attempt in range(2):
         try:
-            request = Request(source["url"], headers={"User-Agent": "FundingRadar/1.0 (public RSS reader)", "Accept": "application/rss+xml, application/atom+xml, application/xml"})
+            request = Request(feed_url(source), headers={"User-Agent": "FundingRadar/1.1 (+https://sandeepb2998.github.io/funding-radar/; public RSS reader)", "Accept": "application/rss+xml, application/atom+xml, application/xml"})
             with urlopen(request, timeout=25) as response:
                 body = response.read(MAX_BYTES + 1)
             return parse_feed(body), None
@@ -231,7 +267,7 @@ def collect(previous, feeds, now, fetch=fetch_feed):
     with ThreadPoolExecutor(max_workers=5) as pool:
         results = list(pool.map(fetch, feeds))
     for source, (entries, error) in zip(feeds, results):
-        status = {"name": source["name"], "url": source["url"], "status": "error" if error else "ok",
+        status = {"name": source["name"], "url": feed_url(source), "status": "error" if error else "ok",
                   "error": error, "items_read": len(entries), "accepted": 0, "invalid": 0}
         for entry in entries[:200]:
             try:

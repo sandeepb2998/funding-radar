@@ -3,5 +3,38 @@
   {"name": "TechCrunch Startups", "url": "https://techcrunch.com/category/startups/feed/"},
   {"name": "EU-Startups", "url": "https://www.eu-startups.com/feed/"},
   {"name": "Crunchbase News", "url": "https://news.crunchbase.com/feed/"},
-  {"name": "Tech.eu", "url": "https://tech.eu/feed/"}
+  {"name": "Tech.eu", "url": "https://tech.eu/feed/"},
+  {"name": "Tech Funding News", "url": "https://techfundingnews.com/feed/"},
+  {"name": "Silicon Canals", "url": "https://siliconcanals.com/feed/"},
+  {
+    "name": "Google News - startup funding",
+    "kind": "news_search",
+    "query": "(startup OR \"start-up\") (raises OR secures OR closes) (funding OR investment) when:7d"
+  },
+  {
+    "name": "Google News - seed rounds",
+    "kind": "news_search",
+    "query": "(\"seed funding\" OR \"seed round\" OR \"pre-seed\") (raises OR secures OR closes OR announces) when:7d"
+  },
+  {
+    "name": "Google News - Series A and B",
+    "kind": "news_search",
+    "query": "(\"Series A\" OR \"Series B\") (raises OR secures OR closes OR announces) when:7d"
+  },
+  {
+    "name": "Google News - growth rounds",
+    "kind": "news_search",
+    "query": "(\"Series C\" OR \"Series D\" OR \"Series E\" OR \"Series F\" OR \"growth funding\") (raises OR secures OR closes OR announces) when:7d"
+  },
+  {
+    "name": "Google News - press releases",
+    "kind": "news_search",
+    "query": "(site:businesswire.com OR site:prnewswire.com OR site:globenewswire.com) (funding OR financing) (raises OR secures OR closes OR announces) when:7d"
+  },
+  {
+    "name": "Google News - India funding",
+    "kind": "news_search",
+    "country": "IN",
+    "query": "(startup OR \"start-up\") (raises OR secures OR closes) (funding OR \"Series A\" OR seed) when:7d"
+  }
 ]

@@ -7,10 +7,12 @@ This identification remains an assumption.
 
 ## Evidence and limits
 
-Direct access to the vendor site/docs was unavailable from this environment.
-The following findings use search-indexed official pages, not an authenticated
-account, observed backend traffic or a source-code audit. Verify current
-endpoint contracts, plans, limits and pricing with the vendor before purchase.
+The vendor homepage, data page, API index and OpenAPI specification were
+retrieved directly from a GitHub Actions runner on 2026-11-08. Direct local
+browser access is blocked in the coding environment. Earlier research used
+search-indexed pages; the API paths below are now also verified against the
+vendor's published specification. This is not an authenticated account,
+private-backend traffic inspection or a vendor source-code audit.
 
 | Question | Public evidence | What it does not prove |
 |---|---|---|
@@ -18,6 +20,39 @@ endpoint contracts, plans, limits and pricing with the vendor before purchase.
 | Where is evidence attached? | The [company search API](https://docs.tryfundable.ai/api-reference/companies/list) and [MCP guide](https://docs.tryfundable.ai/fundable-mcp) describe company/deal research and source material. | This is not a disclosed inventory of upstream licensing or every news source. |
 | How are founder emails accessed? | The [person-email endpoint](https://docs.tryfundable.ai/api-reference/people/email), [API introduction](https://docs.tryfundable.ai/api-reference/introduction) and [credits guide](https://docs.tryfundable.ai/usage) describe credit-based unlocking of a person's verified email, using identifiers such as UUID or social-profile identifiers. | A LinkedIn/Crunchbase/Twitter identifier is a lookup key, **not proof** that the email was scraped from that platform. |
 | Who supplies/verifies the emails? | No verifiable supplier disclosure was found in the accessible evidence. | Do not assert Fundable uses Hunter, Apollo, a specific verifier, or a particular scraping mechanism. |
+
+## What was directly verified during the source upgrade
+
+The official [OpenAPI specification](https://docs.tryfundable.ai/openapi.json)
+declares the production API base `https://www.tryfundable.ai/api/v1`.
+It exposes `POST /companies`, `POST /deals`, `GET /alerts`,
+`GET /alerts/configurations`, and company funding history. The documented
+models include `DealArticle`, `Financing`, `Alert` and `SimplifiedDeal`.
+The alerts documentation describes saved matches with deals, reasoning and
+source articles; it is not an anonymous public stream of every new deal.
+
+The homepage markets real-time data, verified contacts and tailored alerts.
+That is a vendor claim, not a measured zero-delay delivery guarantee.
+No authenticated API query was made, and no Fundable credentials were supplied.
+Using its licensed dataset, especially redistributing it on a public website,
+requires an authorized account and appropriate export/publication rights.
+
+## What was added without a paid data-provider key
+
+The initial five-feed implementation was too narrow: three feeds responded
+and only six qualifying signals were discovered. The upgrade adds Tech Funding
+News and Silicon Canals, plus six Google News RSS searches spanning startups,
+seed, Series A/B, growth, India and primary press releases from Business Wire,
+PR Newswire and GlobeNewswire. The source audit confirmed Google News returned
+100 articles from multiple named publishers, rather than a single site's
+latest 10-20 entries. This is independent public-news discovery, **not access
+to Fundable's private database or a claim that Fundable uses Google News**.
+
+Checks now run hourly. Every indexed article retains its publisher attribution
+and a clearly labeled Google News redirect link. Publication/indexing delays,
+100-result search windows, English-language queries, extraction rules and
+blocked publisher feeds still limit coverage. The app does not claim instant
+or exhaustive funding detection.
 
 ## Likely architecture, not a claim about Fundable's private implementation
 
@@ -50,7 +85,7 @@ Prices are deliberately omitted because plans change.
 
 ## What this implementation replicates
 
-The no-key version replicates the **public discovery layer**: daily checks,
+The no-key version replicates the **public discovery layer**: hourly checks,
 source-linked candidate records, limited deduplication, searchable UI and CSV.
 It is not a replacement for a comprehensive licensed startup database.
 

@@ -100,7 +100,7 @@ async function init() {
   const healthy = data.sources.filter(s => s.status === "ok").length;
   get("source-count").textContent = `${healthy}/${data.sources.length}`;
   if (data.last_success_at) get("last-check").textContent = dateLabel(data.last_success_at);
-  const stale = data.last_success_at && now.getTime() - Date.parse(data.last_success_at) > 36 * 3600000;
+  const stale = data.last_success_at && now.getTime() - Date.parse(data.last_success_at) > 3 * 3600000;
   if (data.status === "not_started") {
     banner.className = "notice warning";
     banner.textContent = "Awaiting the first collection. No sample companies or invented funding rounds are shown.";
@@ -109,9 +109,9 @@ async function init() {
     banner.textContent = "The latest collection failed for every source. Previous records are preserved; check the Actions run before relying on freshness.";
   } else if (data.status === "partial" || stale) {
     banner.className = "notice warning";
-    banner.textContent = `${healthy}/${data.sources.length} sources responded on the latest attempt.${stale ? " Data is over 36 hours old." : ""} Coverage is incomplete; see source health below.`;
+    banner.textContent = `${healthy}/${data.sources.length} feeds responded on the latest attempt.${stale ? " Data is over three hours old." : ""} Coverage is incomplete; see source health below.`;
   } else {
-    banner.textContent = "Daily collection is healthy. These are headline-extracted signals, not a comprehensive or independently verified funding database.";
+    banner.textContent = "Hourly collection is healthy. Publisher and index delays still apply. These are headline-extracted signals, not a comprehensive or independently verified funding database.";
   }
   if (data.last_attempt_at) get("freshness").textContent = `Last attempt: ${new Date(data.last_attempt_at).toLocaleTimeString("en", {timeZone: "UTC", hour: "2-digit", minute: "2-digit", hour12: false})} UTC`;
   for (const [id, values] of [
@@ -141,7 +141,7 @@ async function init() {
     get("empty").hidden = visible.length > 0;
     if (!records.length) {
       get("empty-title").textContent = data.status === "not_started" ? "Your radar is ready. Awaiting data." : "No qualifying funding headlines collected";
-      get("empty-text").textContent = data.status === "not_started" ? "Run the daily workflow after deploying this app to its own repository." : "This is not proof that no companies raised funding. Check source health and feed coverage.";
+      get("empty-text").textContent = data.status === "not_started" ? "Run the collection workflow after deploying this app to its own repository." : "This is not proof that no companies raised funding. Check source health and feed coverage.";
     }
     get("load-more").hidden = visible.length <= limit;
     get("export").disabled = visible.length === 0;

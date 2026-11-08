@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Daily startup funding signals, with original sources and honest coverage.">
+  <meta name="description" content="Hourly startup funding discovery across publisher feeds, news search and press releases.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Funding Radar | Follow the next wave</title>
   <link rel="stylesheet" href="./styles.css">
@@ -12,15 +12,15 @@
 <body>
   <header class="topbar">
     <a class="brand" href="./"><span class="logo" aria-hidden="true">fr<span>.</span></span> funding radar</a>
-    <span class="top-label">PUBLIC SIGNALS. ORIGINAL SOURCES.</span>
+    <span class="top-label">PUBLIC SIGNALS. HOURLY UPDATES.</span>
     <a href="#methodology" class="about-link">How it works <span aria-hidden="true">&nearr;</span></a>
   </header>
   <main>
     <section class="hero">
       <div>
-        <p class="eyebrow"><span class="live-dot"></span> THE DAILY FUNDING BRIEF</p>
+        <p class="eyebrow"><span class="live-dot"></span> THE HOURLY FUNDING BRIEF</p>
         <h1>Follow the<br><span>next wave.</span></h1>
-        <p class="intro">Discover companies announcing fresh capital.<br>Less noise. Clear sources. A new starting point, every day.</p>
+        <p class="intro">Discover companies announcing fresh capital.<br>News coverage and press releases, checked every hour.</p>
       </div>
       <div class="radar-art" aria-hidden="true">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
@@ -31,8 +31,8 @@
     <section class="stats" aria-label="Funding feed summary">
       <div><p>Funding signals</p><strong id="total-count">--</strong><small>in the 180-day archive</small></div>
       <div><p>Discovered today</p><strong id="new-count">--</strong><small>first seen, UTC</small></div>
-      <div><p>Healthy sources</p><strong id="source-count">--</strong><small>latest collection attempt</small></div>
-      <div><p>Last successful check</p><strong id="last-check" class="date-stat">Not yet</strong><small id="freshness">Daily schedule: 13:17 UTC</small></div>
+      <div><p>Healthy feeds</p><strong id="source-count">--</strong><small>publisher feeds + news searches</small></div>
+      <div><p>Last successful check</p><strong id="last-check" class="date-stat">Not yet</strong><small id="freshness">Hourly, at :17 UTC</small></div>
     </section>
     <div id="status-banner" class="notice" role="status">Loading the latest funding feed...</div>
     <section class="feed-section" aria-labelledby="feed-title">
@@ -54,8 +54,8 @@
     <section id="methodology" class="methodology">
       <div><p class="eyebrow">BUILT FOR CLARITY</p><h2>Signals, not<br>unverifiable promises.</h2><p>Funding announcements are a starting point for research, not a complete company database.</p></div>
       <div class="method-cards">
-        <article><span>01 / DISCOVER</span><h3>Public news, checked daily</h3><p>Public RSS feeds are checked by GitHub Actions. Feed windows are limited; announcements may be missed. Publication date is not necessarily the deal closing date.</p></article>
-        <article><span>02 / QUALIFY</span><h3>Facts stay attached to evidence</h3><p>Company, amount and stage are extracted conservatively from headlines, not independently verified. Bare dollar signs retain an unspecified currency. Duplicate reports are merged only when strong fields match.</p></article>
+        <article><span>01 / DISCOVER</span><h3>Broad coverage, checked hourly</h3><p>Publisher feeds and Google News searches discover startup funding, seed, Series A/B, growth rounds, India coverage and press releases. News-search links are labeled by publisher. Indexing and publication delays mean this is not an instant or complete feed.</p></article>
+        <article><span>02 / QUALIFY</span><h3>Facts stay attached to evidence</h3><p>Company, amount and stage are extracted conservatively from headlines, not independently verified. Publication is not necessarily the deal closing date. Bare dollar signs retain an unspecified currency. Duplicate reports are merged only when strong fields match.</p></article>
         <article><span>03 / CONNECT</span><h3>Contacts stay private</h3><p>This public site never displays founder email addresses. Optional Hunter enrichment requires a secret API key and reviewed company domains; results are private workflow artifacts, not automatic outreach.</p></article>
       </div>
     </section>

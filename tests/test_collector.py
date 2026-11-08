@@ -8,12 +8,13 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from collect import canonical_url, collect, extract, fetch_feed, iso, merge_records, parse_feed, timestamp
+from collect import canonical_url, collect, extract, feed_url, fetch_feed, iso, merge_records, parse_feed, timestamp
 from build import build, public_data
 from enrich import enrich, founder_contacts, reviewed_domains, safe_csv
 
 NOW = datetime(2026, 11, 8, 14, 0, tzinfo=timezone.utc)
 SOURCE = {"name": "Example News", "url": "https://news.example/feed"}
+SEARCH_SOURCE = {"name": "Google News - test", "kind": "news_search", "query": '"seed funding" when:7d'}
 
 
 def entry(title="Example Labs Raises $12M in Series A", **changes):
@@ -42,6 +43,24 @@ class FeedTests(unittest.TestCase):
         parsed = parse_feed(body)[0]
         self.assertEqual(parsed["url"], "https://news.example/a")
         self.assertEqual(parsed["published"], "2026-11-08T10:00:00Z")
+
+    def test_news_search_preserves_publisher_attribution(self):
+        body = b"""<rss><channel><item><title>Example Raises $12M - Publisher</title>
+        <link>https://news.google.com/rss/articles/example</link>
+        <pubDate>Sun, 08 Nov 2026 10:00:00 GMT</pubDate>
+        <source url="https://publisher.example">Publisher</source></item></channel></rss>"""
+        parsed = parse_feed(body)[0]
+        self.assertEqual(parsed["publisher"], "Publisher")
+        self.assertEqual(parsed["publisher_url"], "https://publisher.example")
+        self.assertEqual(parsed["url"], "https://news.google.com/rss/articles/example")
+
+    def test_news_search_url_encodes_query_and_region(self):
+        from urllib.parse import parse_qs, urlsplit
+        url = urlsplit(feed_url({**SEARCH_SOURCE, "country": "IN"}))
+        self.assertEqual(url.hostname, "news.google.com")
+        self.assertEqual(parse_qs(url.query)["q"], [SEARCH_SOURCE["query"]])
+        self.assertEqual(parse_qs(url.query)["ceid"], ["IN:en"])
+        self.assertEqual(feed_url(SOURCE), SOURCE["url"])
 
     def test_non_feed_and_entities_rejected(self):
         for body in (b"<html>blocked</html>", b'<!DOCTYPE x [<!ENTITY x "x">]><rss/>'):
@@ -104,6 +123,7 @@ class ExtractionTests(unittest.TestCase):
     def test_stages(self):
         for text, stage in [("pre-seed funding", "Pre-seed"), ("seed round", "Seed"),
                             ("Series G", "Series G"), ("debt financing", "Debt"),
+                            ("pre-Series A funding", "Pre-Series A"), ("Series A+ round", "Series A+"),
                             ("funding", "Undisclosed")]:
             with self.subTest(stage=stage):
                 self.assertEqual(extract(entry(f"Example Raises $10M in {text}"), SOURCE, NOW)["stage"], stage)
@@ -121,12 +141,36 @@ class ExtractionTests(unittest.TestCase):
             "Example Raises $10M in Donations",
             "Example Acquires Startup for $10M",
             "Example Raises $10M in Crowdfunding",
+            "Example Secures $10M in Federal Funding",
+            "Example County Secures $10M",
+            "Example Lands $10M Order",
             "Founder Raises $10M",
             "Example raises awareness of funding",
         ]
         for title in headlines:
             with self.subTest(title=title):
                 self.assertIsNone(extract(entry(title), SOURCE, NOW))
+
+    def test_press_release_verbs_require_funding_context(self):
+        for verb in ("Announces", "Announced", "Completes", "Completed"):
+            result = extract(entry(f"Example {verb} $10M Series A Funding"), SOURCE, NOW)
+            self.assertEqual(result["amount"], 10_000_000)
+            self.assertEqual(result["stage"], "Series A")
+            self.assertIsNone(extract(entry(f"Example {verb} $10M Expansion"), SOURCE, NOW))
+
+    def test_news_search_links_are_attributed_not_invented(self):
+        result = extract(entry("Example Raises $10M in Seed Funding - Example Wire",
+                               url="https://news.google.com/rss/articles/example",
+                               publisher="Example Wire", publisher_url="https://wire.example"), SEARCH_SOURCE, NOW)
+        self.assertEqual(result["company"], "Example")
+        self.assertEqual(result["headline"], "Example Raises $10M in Seed Funding")
+        self.assertEqual(result["sources"], [{"name": "Example Wire via Google News",
+                                             "url": "https://news.google.com/rss/articles/example"}])
+
+    def test_government_publisher_is_not_a_startup_source(self):
+        for host in ("house.gov", "agency.gov.uk", "agency.gov.in", "army.mil"):
+            with self.subTest(host=host):
+                self.assertIsNone(extract(entry(publisher="Office", publisher_url=f"https://{host}"), SEARCH_SOURCE, NOW))
 
     def test_raise_amount_not_valuation(self):
         result = extract(entry("Example Raises $10M at a $90M Valuation"), SOURCE, NOW)
@@ -155,7 +199,8 @@ class ExtractionTests(unittest.TestCase):
 
     def test_company_labels_remove_explicit_location_and_spinout_prefixes(self):
         for subject in ("Helsinki's Example Labs", "Helsinki\u2019s Example Labs",
-                        "Oxford spin-out Example Labs", "University of Oxford spinout Example Labs"):
+                        "Oxford spin-out Example Labs", "University of Oxford spinout Example Labs",
+                        "AI sales startup Example Labs", "London-based AI startup Example Labs"):
             with self.subTest(subject=subject):
                 result = extract(entry(f"{subject} Raises EUR 10M"), SOURCE, NOW)
                 self.assertEqual(result["company"], "Example Labs")
@@ -194,6 +239,26 @@ class StateTests(unittest.TestCase):
         other = record(id="other", stage="Series B", sources=[{"name": "Other", "url": "https://other.example/b"}])
         self.assertEqual(len(merge_records([original], [other], NOW)), 2)
 
+    def test_known_stage_enriches_duplicate_without_creating_another_round(self):
+        original = record(stage="Undisclosed")
+        other = record(id="other", sources=[{"name": "Wire via Google News", "url": "https://news.google.com/rss/articles/example"}])
+        merged = merge_records([original], [other], NOW)
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["stage"], "Series A")
+        self.assertEqual(len(merged[0]["sources"]), 2)
+
+    def test_generic_report_cannot_erase_known_stage(self):
+        merged = merge_records([record()], [record(stage="Undisclosed")], NOW)
+        self.assertEqual(merged[0]["stage"], "Series A")
+
+    def test_source_label_update_does_not_duplicate_url_or_mutate_input(self):
+        original = record()
+        newer = record(sources=[{"name": "Corrected publisher", "url": original["sources"][0]["url"]}])
+        merged = merge_records([original], [newer], NOW)
+        self.assertEqual(len(merged[0]["sources"]), 1)
+        self.assertEqual(merged[0]["sources"][0]["name"], "Corrected publisher")
+        self.assertEqual(original["sources"][0]["name"], "Example News")
+
     def test_no_fuzzy_company_merge(self):
         other = record(id="other", company="Example Systems", sources=[{"name": "Other", "url": "https://other.example/a"}])
         self.assertEqual(len(merge_records([record()], [other], NOW)), 2)
@@ -224,6 +289,11 @@ class StateTests(unittest.TestCase):
     def test_empty_configuration_fails(self):
         with self.assertRaises(ValueError):
             collect({}, [], NOW)
+
+    def test_news_search_health_retains_query_and_attribution(self):
+        result = collect({}, [SEARCH_SOURCE], NOW, lambda _: ([entry(publisher="Wire")], None))
+        self.assertEqual(result["sources"][0]["url"], feed_url(SEARCH_SOURCE))
+        self.assertEqual(result["records"][0]["sources"][0]["name"], "Wire via Google News")
 
 
 class PublicBoundaryTests(unittest.TestCase):

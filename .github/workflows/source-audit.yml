@@ -62,7 +62,8 @@ jobs:
                   if body.lstrip().startswith("{"):
                       spec = json.loads(body)
                       result["servers"] = spec.get("servers")
-                      result["paths"] = {p: {verb: {"parameters": definition.get("parameters"), "requestBody": definition.get("requestBody"), "responses": definition.get("responses")} for verb, definition in methods.items() if isinstance(definition, dict)} for p, methods in spec.get("paths", {}).items() if any(word in p for word in ("alerts", "deals", "companies"))}
+                      result["paths"] = {p: list(methods) for p, methods in spec.get("paths", {}).items() if any(word in p for word in ("alerts", "deals", "companies"))}
+                      result["authentication"] = spec.get("components", {}).get("securitySchemes")
                       result["schemas"] = list(spec.get("components", {}).get("schemas", {}))
                   elif "<rss" in body or "<feed" in body:
                       root = ET.fromstring(body)
@@ -74,7 +75,7 @@ jobs:
                       parser = Text()
                       parser.feed(body)
                       text = " ".join(" ".join(parser.parts).split()) if "<html" in body.lower() else body
-                      result["source_claims"] = re.findall(r".{0,55}(?:10,000|news sources|times daily|refreshed|refreshes|real-time).{0,70}", text, flags=re.I)[:3]
+                      result["source_claims"] = re.findall(r".{0,45}(?:10[,\.]000|news sources|times daily|multiple times|refreshed|refreshes|daily).{0,65}", text, flags=re.I)[:4]
                       result["api_urls"] = sorted(set(re.findall(r"https://[^\s<>\"')]+", text)))[:35]
                       if url.endswith(".md"):
                           result["api_fields"] = [line for line in text.splitlines() if re.search(r"GET |POST |base_url|baseURL|Authorization|date_start|date_end|page_size|cursor|limit|source|amount|announced|company|openapi", line, re.I)][:45]

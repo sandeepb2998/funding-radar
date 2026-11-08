@@ -96,7 +96,7 @@ jobs:
               def handle_data(self, text):
                   if self.row is not None:
                       self.row.append(text)
-          base = "https://www.formds.com/"
+          base = "https://www.formds.com/filings/newest"
           try:
               body = fetch(base)
               page = Page()

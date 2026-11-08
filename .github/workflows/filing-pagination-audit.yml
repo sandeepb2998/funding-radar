@@ -29,6 +29,7 @@ jobs:
                           desired = "Last Week" if "date_select" in select.attrs["name"] else "New Filings" if "new_amended_select" in select.attrs["name"] else options[0].text()
                           option = next(o for o in options if o.text() == desired)
                           values[select.attrs["name"]] = option.attrs.get("value", option.text())
+                      values["filters_params[list_or_map_select]"] = "Show as a list"
                       filtered_url = "https://www.formds.com/filings/advanced_filter?" + urlencode(values)
                       body = fetch_page(filtered_url)
                       Path("evidence").mkdir(exist_ok=True)

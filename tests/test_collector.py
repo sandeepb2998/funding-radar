@@ -8,7 +8,7 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from collect import canonical_url, collect, extract, feed_url, fetch_feed, iso, merge_records, parse_feed, timestamp
+from collect import canonical_url, collect, extract, feed_url, fetch_feed, iso, merge_records, parse_feed, reparse_records, timestamp
 from build import build, public_data
 from enrich import enrich, founder_contacts, reviewed_domains, safe_csv
 
@@ -115,6 +115,9 @@ class ExtractionTests(unittest.TestCase):
             ("\u00a3900k", 900_000, "GBP"), ("CA$5M", 5_000_000, "CAD"),
             ("A$2M", 2_000_000, "AUD"), ("S$3M", 3_000_000, "SGD"),
             ("INR 100 million", 100_000_000, "INR"), ("$250,000", 250_000, "$"),
+            ("$10.3 Mn", 10_300_000, "$"), ("$4.5 mln", 4_500_000, "$"),
+            ("EUR 6.9 mn", 6_900_000, "EUR"), ("$2 bln", 2_000_000_000, "$"),
+            ("INR 100 Cr", 1_000_000_000, "INR"), ("\u20b950 lakh", 5_000_000, "INR"),
         ]:
             with self.subTest(amount=amount):
                 result = extract(entry(f"Example Labs Raises {amount} in Funding"), SOURCE, NOW)
@@ -144,6 +147,14 @@ class ExtractionTests(unittest.TestCase):
             "Example Secures $10M in Federal Funding",
             "Example County Secures $10M",
             "Example Lands $10M Order",
+            "Example Announces $0.5 Quarterly Dividend on Series B Preferred Shares",
+            "Example Raises $1B Through Series E and F",
+            "Example Raises Combined $5M Pre-Seed and Seed Round",
+            "Finnish startup Raises EUR 9M Series A",
+            "A Local Woman's Start-up Raises EUR 1M Seed Funding",
+            "Tech Company Raises $15M Series C",
+            "AI startup promises control to clients, closes $43M",
+            "These Startups Raise $100M",
             "Founder Raises $10M",
             "Example raises awareness of funding",
         ]
@@ -189,7 +200,7 @@ class ExtractionTests(unittest.TestCase):
         self.assertIsNone(extract(entry("Example Raises NZ$10M"), SOURCE, NOW))
 
     def test_ambiguous_numbers_ranges_and_units_are_not_misreported(self):
-        for amount in ("$10-20M", "$10M+", "$10M to $20M", "$10 crore", "$10 trillion", "$12,5M"):
+        for amount in ("$10-20M", "$10M+", "$10M to $20M", "$10 crore", "$10 trillion", "$12,5M", "$10 mlln"):
             with self.subTest(amount=amount):
                 self.assertIsNone(extract(entry(f"Example Raises {amount} in Funding"), SOURCE, NOW))
 
@@ -200,7 +211,10 @@ class ExtractionTests(unittest.TestCase):
     def test_company_labels_remove_explicit_location_and_spinout_prefixes(self):
         for subject in ("Helsinki's Example Labs", "Helsinki\u2019s Example Labs",
                         "Oxford spin-out Example Labs", "University of Oxford spinout Example Labs",
-                        "AI sales startup Example Labs", "London-based AI startup Example Labs"):
+                        "AI sales startup Example Labs", "London-based AI startup Example Labs",
+                        "Former Company executives' startup Example Labs",
+                        "Generative Media Platform Example Labs", "Block management firm Example Labs",
+                        "Exclusive: Example Labs", "{Funding Alert} Chemicals Startup Example Labs"):
             with self.subTest(subject=subject):
                 result = extract(entry(f"{subject} Raises EUR 10M"), SOURCE, NOW)
                 self.assertEqual(result["company"], "Example Labs")
@@ -258,6 +272,35 @@ class StateTests(unittest.TestCase):
         self.assertEqual(len(merged[0]["sources"]), 1)
         self.assertEqual(merged[0]["sources"][0]["name"], "Corrected publisher")
         self.assertEqual(original["sources"][0]["name"], "Example News")
+
+    def test_syndication_window_and_first_discovery(self):
+        old = record(published_at=iso(NOW - timedelta(days=6)), first_seen_at=iso(NOW - timedelta(days=6)))
+        new = record(id="new", sources=[{"name": "Wire", "url": "https://wire.example/article"}])
+        merged = merge_records([old], [new], NOW)
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["first_seen_at"], old["first_seen_at"])
+        old["published_at"] = iso(NOW - timedelta(days=8))
+        self.assertEqual(len(merge_records([old], [new], NOW)), 2)
+
+    def test_archive_revalidation_repairs_units_and_preserves_audit_fields(self):
+        old = record(headline="Example Labs Raises $12 Mn in Series A", amount=12)
+        repaired = reparse_records([old], NOW)
+        self.assertEqual(repaired[0]["amount"], 12_000_000)
+        self.assertEqual(repaired[0]["id"], old["id"])
+        self.assertEqual(repaired[0]["first_seen_at"], old["first_seen_at"])
+        self.assertEqual(repaired[0]["last_seen_at"], old["last_seen_at"])
+
+    def test_archive_revalidation_removes_non_funding_and_unnamed_records(self):
+        old = [record(headline="Example Announces $0.5 Dividend on Series B Shares"),
+               record(headline="Finnish startup Raises EUR 9M")]
+        self.assertEqual(reparse_records(old, NOW), [])
+
+    def test_corrected_archive_duplicates_are_consolidated(self):
+        old = record(headline="Example Labs Raises $12 Mn in Series A", amount=12)
+        other = record(id="other", sources=[{"name": "Wire", "url": "https://wire.example/article"}])
+        result = collect({"records": [old, other]}, [SOURCE], NOW, lambda _: ([], None))
+        self.assertEqual(len(result["records"]), 1)
+        self.assertEqual(result["records"][0]["amount"], 12_000_000)
 
     def test_no_fuzzy_company_merge(self):
         other = record(id="other", company="Example Systems", sources=[{"name": "Other", "url": "https://other.example/a"}])

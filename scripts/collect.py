@@ -31,7 +31,7 @@ VERB = re.compile(
 AMOUNT = re.compile(
     r"(?<![\w$])(?P<currency>US\$|CA\$|C\$|A\$|S\$|USD|EUR|GBP|INR|CAD|AUD|SGD|[$€£₹])"
     r"\s*(?P<number>(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*"
-    r"(?P<unit>billion|million|thousand|bn|[bmk])?\b(?!\d|[.,]\d)", re.I
+    r"(?P<unit>billion|million|thousand|crores?|lakhs?|lacs?|bln|mln|mn|mm|bn|cr|[bmk])?\b(?!\d|[.,]\d)", re.I
 )
 CURRENCIES = {
     "$": "$", "US$": "USD", "€": "EUR", "£": "GBP", "₹": "INR",
@@ -43,6 +43,7 @@ EXCLUDED = re.compile(
     r"in\s+talks|could|may|reportedly|rumou?r|valuation|"
     r"acqui(?:res?|red|sition)|merger|ipo|revenue|contracts?|orders?|"
     r"federal|municipal|taxpayer|government\s+funding|state\s+funding|"
+    r"dividends?|preferred\s+shares|share\s+repurchase|combined|"
     r"lawsuit|donations?|grants?|crowdfunding|roundup|round-up)\b", re.I
 )
 
@@ -140,6 +141,7 @@ def extract(entry, source, now):
         publisher_host = urlsplit(entry.get("publisher_url") or "").hostname or ""
         if publisher_host.endswith((".gov", ".gov.uk", ".gov.in", ".mil")):
             return None
+    title = re.sub(r"^(?:exclusive\s*[:|]\s*|\{funding alert\}\s*|\[funding alert\]\s*)", "", title, flags=re.I)
     if re.search(r"\b(reportedly|rumou?red|could|may)\b", title, re.I):
         return None
     match = VERB.match(title)
@@ -148,9 +150,13 @@ def extract(entry, source, now):
     subject = match["company"].strip(" ,:;")
     if re.search(r"\b(fund|capital|ventures|investors?|founders?|senator|congressman|county|council)\b", subject, re.I):
         return None
+    if "," in subject or re.search(r"\b(promises?|says?|aims?|startups|companies|firms)\b", subject, re.I):
+        return None
     # Valuation clauses are common after a real raise; never use their amounts.
     rest = re.split(r"\b(?:at a|at|with a)\s+.*?\bvaluation\b", match["rest"], flags=re.I)[0]
     if EXCLUDED.search(subject + " " + rest):
+        return None
+    if re.search(r"\bseries\s+[A-K]\s+(?:and|&)\s+(?:series\s+)?[A-K]\b|\bpre[- ]seed\s+(?:and|&)\s+seed\b", rest, re.I):
         return None
     if match["verb"].lower().startswith(("announc", "complet")) and not re.search(
         r"\b(funding|financing|round|seed|series\s+[A-K]|investment)\b", rest, re.I
@@ -160,18 +166,21 @@ def extract(entry, source, now):
     if not amount or amount.start() > 50:
         return None
     suffix = rest[amount.end():]
-    if re.match(r"\s*(?:[-\u2013\u2014+/]|\b(?:or|crores?|lakhs?|trillion)\b|\bto\s+(?=[$€£₹\d]|USD|EUR|GBP))", suffix, re.I):
+    if re.match(r"\s*(?:[-\u2013\u2014+/]|\b(?:or|trillion|trn|tn)\b|\bto\s+(?=[$€£₹\d]|USD|EUR|GBP))", suffix, re.I):
         return None
     if len(list(AMOUNT.finditer(rest))) != 1:
         return None
     prefix = rest[:amount.start()]
     if re.search(r"\b(to|target|up to|over|more than|nearly|about|approximately)\b", prefix, re.I):
         return None
+    if re.search(r"\b(startup|start-up|company|firm|business|platform)\s*$", subject, re.I):
+        return None
     for _ in range(2):
-        subject = re.sub(r"^(?:[\w-]+\s+){0,3}(?:startup|start-up|company)\s+", "", subject, flags=re.I)
+        subject = re.sub(r"^(?:[\w'\u2019.-]+\s+){0,5}(?:startup|start-up|company)\s+", "", subject, flags=re.I)
+        subject = re.sub(r"^(?:[\w'\u2019.-]+\s+){1,5}(?:platform|firm|app)\s+", "", subject, flags=re.I)
         subject = re.sub(r"^[\w-]+-based\s+", "", subject, flags=re.I)
         subject = re.sub(r"^(?:[\w-]+\s+){1,3}spin[- ]?out\s+", "", subject, flags=re.I)
-        subject = re.sub(r"^(?:Helsinki|London|Paris|Berlin|Amsterdam|Stockholm|Copenhagen|Dublin|Oxford|Cambridge|India|Europe|Germany|France|Finland|Sweden|UK|US)['\u2019]s\s+", "", subject, flags=re.I)
+        subject = re.sub(r"^(?:Helsinki|London|Paris|Berlin|Amsterdam|Stockholm|Copenhagen|Dublin|Oxford|Cambridge|India|Europe|Germany|France|Finland|Sweden|China|Israel|Japan|Singapore|Australia|Canada|Norway|UK|US)['\u2019]s\s+", "", subject, flags=re.I)
     if not 2 <= len(subject) <= 80 or len(subject.split()) > 6:
         return None
     published = timestamp(entry["published"])
@@ -180,7 +189,24 @@ def extract(entry, source, now):
     raw_currency = amount["currency"].upper()
     currency = CURRENCIES.get(raw_currency, raw_currency)
     unit = (amount["unit"] or "").lower()
-    factor = 10**9 if unit in ("b", "bn", "billion") else 10**6 if unit in ("m", "million") else 1000 if unit in ("k", "thousand") else 1
+    if not unit:
+        following_word = re.match(r"\s*([a-z]+)", suffix, re.I)
+        if following_word and following_word[1].lower() not in {
+            "in", "for", "from", "to", "at", "with", "of", "and", "as", "led", "backed",
+            "seed", "pre", "series", "funding", "financing", "investment", "round",
+            "debt", "equity", "venture",
+        }:
+            return None
+    indian_unit = unit in ("cr", "crore", "crores", "lakh", "lakhs", "lac", "lacs")
+    if indian_unit and currency != "INR":
+        return None
+    factor = (
+        10**9 if unit in ("b", "bn", "bln", "billion") else
+        10**6 if unit in ("m", "mn", "mln", "mm", "million") else
+        10**7 if unit in ("cr", "crore", "crores") else
+        10**5 if unit in ("lakh", "lakhs", "lac", "lacs") else
+        1000 if unit in ("k", "thousand") else 1
+    )
     value = Decimal(amount["number"].replace(",", "")) * factor
     if not 0 < value <= 10**12:
         return None
@@ -215,7 +241,7 @@ def same_event(left, right):
         and left["amount"] == right["amount"]
         and left["currency"] == right["currency"]
         and (left["stage"] == right["stage"] or "Undisclosed" in (left["stage"], right["stage"]))
-        and abs(timestamp(left["published_at"]) - timestamp(right["published_at"])) <= timedelta(days=3)
+        and abs(timestamp(left["published_at"]) - timestamp(right["published_at"])) <= timedelta(days=7)
     )
 
 
@@ -234,7 +260,8 @@ def merge_records(existing, incoming, now):
                 previous[field] = candidate[field]
         elif previous["stage"] == "Undisclosed":
             previous["stage"] = candidate["stage"]
-        previous["last_seen_at"] = candidate["last_seen_at"]
+        previous["first_seen_at"] = min(previous["first_seen_at"], candidate["first_seen_at"])
+        previous["last_seen_at"] = max(previous["last_seen_at"], candidate["last_seen_at"])
         for source in candidate["sources"]:
             existing_source = next((s for s in previous["sources"] if s["url"] == source["url"]), None)
             if existing_source:
@@ -242,6 +269,28 @@ def merge_records(existing, incoming, now):
             else:
                 previous["sources"].append(source)
     return sorted(records, key=lambda r: (r["published_at"], r["id"]), reverse=True)
+
+
+def reparse_records(records, now):
+    reparsed = []
+    rejected = 0
+    for record in records:
+        primary = record["sources"][0]
+        updated = extract(
+            {"title": record["headline"], "url": primary["url"], "published": record["published_at"]},
+            primary, now,
+        )
+        if updated is None:
+            rejected += 1
+            continue
+        if updated["stage"] == "Undisclosed":
+            updated["stage"] = record["stage"]
+        for field in ("id", "first_seen_at", "last_seen_at", "sources"):
+            updated[field] = record[field]
+        reparsed.append(updated)
+    if rejected:
+        print(f"Archive revalidation: {rejected} expired or nonqualifying headlines removed.", file=sys.stderr)
+    return reparsed
 
 
 def fetch_feed(source):
@@ -287,7 +336,7 @@ def collect(previous, feeds, now, fetch=fetch_feed):
         "last_success_at": iso(now) if healthy else previous.get("last_success_at"),
         "status": "ok" if healthy == len(feeds) else "partial" if healthy else "error",
         "sources": statuses,
-        "records": merge_records(previous.get("records", []), candidates, now) if healthy else previous.get("records", []),
+        "records": merge_records([], reparse_records(previous.get("records", []), now) + candidates, now) if healthy else previous.get("records", []),
     }
     return state
 

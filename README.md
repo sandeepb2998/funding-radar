@@ -37,7 +37,9 @@ This is a research starting point, not a verified worldwide company database.
 - Only explicit completed-raise language and a numeric amount qualify. Common
   investment-fund announcements, plans, contracts, grants, uncertain amounts
   and non-funding stories are excluded. Some real raises will be missed.
-- Bare `$` remains **dollar currency unspecified**, not automatically USD.
+- `Mn`/`mln` are parsed as millions; INR crore/lakh amounts retain INR rather
+  than being mislabeled as dollars. Bare `$` remains **dollar currency
+  unspecified**, not automatically USD.
   Different currencies are never added together.
 - Publication date is not necessarily the deal closing date. First discovery
   date is separate; an older article can be newly discovered today.
@@ -46,8 +48,12 @@ This is a research starting point, not a verified worldwide company database.
   misrepresented as direct publisher URLs. Government-domain results, grants,
   government funding and unsupported non-funding announcements are excluded.
 - Identical source URLs are deduplicated. Cross-source reports merge only when
-  normalized company, amount and currency match within three days, and stages
+  normalized company, amount and currency match within seven days, and stages
   match or one is undisclosed. Explicit conflicting stages remain separate.
+- Dividends, combined multi-round totals and headlines that do not name a
+  company are rejected. Archived headlines are revalidated when a collection
+  succeeds, so parser corrections repair prior amounts and remove old false
+  positives without resetting discovery dates.
 - The archive retains previously discovered records for 180 days. RSS feeds
   normally expose a much shorter window; missing periods cannot always be
   backfilled.

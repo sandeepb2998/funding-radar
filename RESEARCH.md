@@ -1,9 +1,8 @@
 # Fundable: what can be traced publicly
 
-Research date: 2026-11-08. The user named "Fundable" without a URL. The closest
-match to daily funded-company discovery plus founder contacts is
-**tryfundable.ai**, not the similarly named Fundable crowdfunding platform.
-This identification remains an assumption.
+Research date: 2026-11-08. This investigation concerns the user-supplied
+**https://www.tryfundable.ai/home**, not the similarly named Fundable
+crowdfunding platform.
 
 ## Evidence and limits
 
@@ -31,8 +30,13 @@ models include `DealArticle`, `Financing`, `Alert` and `SimplifiedDeal`.
 The alerts documentation describes saved matches with deals, reasoning and
 source articles; it is not an anonymous public stream of every new deal.
 
-The homepage markets real-time data, verified contacts and tailored alerts.
-That is a vendor claim, not a measured zero-delay delivery guarantee.
+The [homepage](https://www.tryfundable.ai/home) and
+[data page](https://www.tryfundable.ai/data) explicitly say the automated pipeline processes
+**10,000+ news sources** and refreshes **multiple times per day**, with
+source-linked data. That explains the breadth gap versus five publisher feeds.
+The homepage also markets real-time data, verified contacts and tailored alerts.
+Those are vendor claims, not a measured zero-delay delivery guarantee or a
+disclosure of the full source inventory or private implementation.
 No authenticated API query was made, and no Fundable credentials were supplied.
 Using its licensed dataset, especially redistributing it on a public website,
 requires an authorized account and appropriate export/publication rights.

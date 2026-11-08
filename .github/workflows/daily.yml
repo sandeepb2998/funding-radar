@@ -30,6 +30,7 @@ jobs:
     outputs:
       collection_status: ${{ steps.collection.outcome }}
       site_ready: ${{ steps.site.outcome }}
+      data_sha256: ${{ steps.expected.outputs.sha256 }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -60,6 +61,17 @@ jobs:
           fi
       - name: Build only allowlisted public files
         run: python scripts/build.py
+      - name: Record the exact public dataset fingerprint
+        id: expected
+        run: |
+          python - <<'PY'
+          import hashlib
+          import os
+          from pathlib import Path
+          digest = hashlib.sha256(Path("site/data.json").read_bytes()).hexdigest()
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              print(f"sha256={digest}", file=output)
+          PY
       - name: Upload public site
         id: site
         uses: actions/upload-pages-artifact@v3
@@ -106,8 +118,10 @@ jobs:
       - name: Verify the public website and funding data
         env:
           SITE_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_DATA_SHA256: ${{ needs.collect.outputs.data_sha256 }}
         run: |
           python - <<'PY'
+          import hashlib
           import json
           import os
           import time
@@ -127,7 +141,10 @@ jobs:
                           if not response.read():
                               raise ValueError(f"Empty public asset: {asset}")
                   with urlopen(urljoin(base, "data.json"), timeout=20) as response:
-                      data = json.load(response)
+                      raw = response.read()
+                  if hashlib.sha256(raw).hexdigest() != os.environ["EXPECTED_DATA_SHA256"]:
+                      raise ValueError("The live dataset does not yet match this deployment")
+                  data = json.loads(raw)
                   if data.get("schema_version") != 1 or not isinstance(data.get("records"), list):
                       raise ValueError("The live site has an invalid funding dataset")
                   if not data.get("last_attempt_at"):

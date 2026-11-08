@@ -14,6 +14,7 @@ jobs:
           python - <<'PY'
           import json, re, time
           from html.parser import HTMLParser
+          from pathlib import Path
           from urllib.parse import urljoin
           from datetime import datetime, timedelta, timezone
           from urllib.request import Request, urlopen
@@ -99,15 +100,23 @@ jobs:
           base = "https://www.formds.com/filings/newest"
           try:
               body = fetch(base)
+              Path("audit").mkdir(exist_ok=True)
+              Path("audit/formds-newest.html").write_text(body)
               page = Page()
               page.feed(body)
               print(json.dumps({"independent_tracker": base, "feeds": page.feeds, "links": list(dict.fromkeys(page.links))[:45], "table_facts": page.rows[:4]}))
-              for link in list(dict.fromkeys(u for u in page.links if "/issuers/" in u))[:2]:
+              for link in ("/issuers/instant-hydration-inc", "/issuers/luminoah-inc", "/issuers/sixer-inc"):
                   url = urljoin(base, link)
                   body = fetch(url)
+                  Path("audit", link.rsplit("/", 1)[-1] + ".html").write_text(body)
                   detail = Page()
                   detail.feed(body)
                   print(json.dumps({"issuer_page": url, "links": list(dict.fromkeys(detail.links))[:40], "table_facts": detail.rows[:5]}))
           except (URLError, TimeoutError, ValueError) as error:
               print(json.dumps({"independent_tracker": base, "error": str(error)}))
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: public-formds-evidence
+          path: audit/
+          retention-days: 1

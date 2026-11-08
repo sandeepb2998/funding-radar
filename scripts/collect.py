@@ -18,6 +18,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
+from formds import collect_formds
+from sec import collect_sec
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 4 * 1024 * 1024
@@ -460,6 +462,8 @@ def resolve_history(records, now, fetch=fetch_feed, limit=12):
     """Find earlier matching reports without calling their dates verified funding dates."""
     pending = []
     for record in records:
+        if record.get("kind") == "sec_form_d":
+            continue
         info = record.get("announcement", {})
         if info.get("status") in ("reviewed", "disputed"):
             continue
@@ -513,10 +517,28 @@ def main():
     feeds = json.loads(args.feeds.read_text())
     reviews = json.loads(args.reviews.read_text())
     now = datetime.now(UTC)
-    result = collect(previous, feeds, now)
+    news_previous = {**previous, "records": [r for r in previous.get("records", []) if r.get("kind") != "sec_form_d"]}
+    result = collect(news_previous, feeds, now)
     apply_reviews(result["records"], reviews, now)
     if result["status"] != "error":
         resolve_history(result["records"], now)
+    offerings = [r for r in previous.get("records", []) if r.get("kind") == "sec_form_d"]
+    official, sec_state, sec_status = collect_sec(
+        [r for r in offerings if r["filing"].get("provider") == "SEC"],
+        previous.get("sec_state", {}), now, COUNTRIES)
+    tracked, tracker_state, tracker_status = collect_formds(
+        [r for r in offerings if r["filing"].get("provider") == "FormDs"],
+        previous.get("formds_state", {}), now)
+    combined = {r["id"]: r for r in tracked + official}
+    result["records"].extend(combined.values())
+    result["sources"].extend((sec_status, tracker_status))
+    result["sec_state"] = sec_state
+    result["formds_state"] = tracker_state
+    healthy = sum(s["status"] == "ok" for s in result["sources"])
+    useful = healthy or any(s["accepted"] > 0 for s in result["sources"])
+    result["status"] = "ok" if healthy == len(result["sources"]) else "partial" if useful else "error"
+    if useful:
+        result["last_success_at"] = iso(now)
     args.data.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.data.with_suffix(".tmp")
     temporary.write_text(json.dumps(result, indent=2, ensure_ascii=True) + "\n")

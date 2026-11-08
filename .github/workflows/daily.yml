@@ -45,9 +45,11 @@ jobs:
         run: |
           python -m unittest discover -s tests -v
           node --test tests/web.test.mjs
-      - name: Collect public funding headlines
+      - name: Collect news and private-offering disclosures
         id: collection
         continue-on-error: true
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: python scripts/collect.py
       - name: Save archive and source health
         run: |
@@ -138,6 +140,8 @@ jobs:
                       raise ValueError("The live URL does not serve the Funding Radar homepage")
                   if not all(f'id="{field}"' in html for field in ("region", "country", "date-basis")):
                       raise ValueError("The live page does not yet include geographic and date-basis filters")
+                  if '<select id="date-basis"><option value="coverage">' not in html:
+                      raise ValueError("The live page still defaults to the tiny manually reviewed subset")
                   for asset in ("app.js", "styles.css"):
                       with urlopen(urljoin(base, asset), timeout=20) as response:
                           content = response.read().decode()
@@ -145,6 +149,8 @@ jobs:
                               raise ValueError(f"Empty public asset: {asset}")
                           if asset == "app.js" and "export function recordDate(" not in content:
                               raise ValueError("The live script still uses publication-only date filtering")
+                          if asset == "app.js" and "cumulative amount sold" not in content:
+                              raise ValueError("The live script does not yet distinguish offering disclosures")
                   with urlopen(urljoin(base, "data.json"), timeout=20) as response:
                       raw = response.read()
                   if hashlib.sha256(raw).hexdigest() != os.environ["EXPECTED_DATA_SHA256"]:
@@ -159,9 +165,17 @@ jobs:
                   healthy = sum(source["status"] == "ok" for source in data["sources"])
                   dated = sum(row.get("announcement", {}).get("status") in ("reviewed", "first_reported") for row in data["records"])
                   located = sum(bool(row.get("location", {}).get("country")) for row in data["records"])
+                  offerings = [row for row in data["records"] if row.get("kind") == "sec_form_d"]
+                  for row in offerings:
+                      filing = row["filing"]
+                      if row["amount"] <= 0 or filing["amount_basis"] != "cumulative_amount_sold":
+                          raise ValueError("Offering disclosure does not contain a positive amount actually sold")
+                      if filing.get("first_sale_on") and filing["first_sale_on"] > filing["filed_on"]:
+                          raise ValueError("First sale incorrectly falls after filing")
                   print(f"Live URL verified: {base}")
                   print(f"Funding signals: {len(data['records'])}; healthy sources: {healthy}/{len(data['sources'])}; coverage: {data['status']}")
                   print(f"Dated signals: {dated}; signals with company-location evidence: {located}")
+                  print(f"Non-fund private-offering notices: {len(offerings)}; US-located: {sum(row['location'].get('country_code') == 'US' for row in offerings)}")
                   break
               except (HTTPError, URLError, TimeoutError, ValueError) as error:
                   if attempt == 11:

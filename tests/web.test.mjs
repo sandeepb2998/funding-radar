@@ -38,7 +38,7 @@ test("undated and disputed announcements never fall back to article dates", () =
   const rows = [...records, {...records[0], announcement: {date: "2026-11-08", status: "disputed"}}];
   assert.equal(filterRecords(rows, {...filters, dateBasis: "timeline"}, now).length, 0);
   assert.equal(filterRecords(rows, {...filters, dateBasis: "reviewed"}, now).length, 0);
-  assert.ok(Number.isNaN(recordDate(records[0])));
+  assert.ok(Number.isNaN(recordDate(records[0], "timeline")));
 });
 test("reviewed-only mode excludes automatic earliest-report estimates", () => {
   const rows = [
@@ -47,7 +47,7 @@ test("reviewed-only mode excludes automatic earliest-report estimates", () => {
   ];
   assert.deepEqual(filterRecords(rows, {...filters, dateBasis: "timeline"}, now), [rows[1], rows[0]]);
   assert.deepEqual(filterRecords(rows, {...filters, dateBasis: "reviewed"}, now), [rows[1]]);
-  assert.deepEqual(filterRecords(rows, {...filters, dateBasis: undefined}, now), [rows[1]]);
+  assert.deepEqual(filterRecords(rows, {...filters, dateBasis: undefined}, now), rows);
 });
 test("regions and countries compose without guessing from currency", () => {
   const rows = [{...records[0], location: {region: "North America", country: "United States"}}, records[1]];
@@ -61,6 +61,19 @@ test("future or malformed announcement dates are excluded", () => {
     const row = {...records[0], announcement: {date, status: "reviewed"}};
     assert.equal(filterRecords([row], {...filters, dateBasis: "timeline"}, now).length, 0);
   }
+});
+test("recent filing does not become a recent first sale", () => {
+  const row = {...records[0], kind: "sec_form_d",
+    published_at: "2026-11-06T00:00:00Z",
+    announcement: {date: "2026-10-22", status: "reported_first_sale"},
+    filing: {filed_on: "2026-11-06", first_sale_on: "2026-10-22", amount_basis: "cumulative_amount_sold"}};
+  assert.equal(filterRecords([row], {...filters, days: 7}, now).length, 1);
+  assert.equal(filterRecords([row], {...filters, days: 7, dateBasis: "timeline"}, now).length, 0);
+  assert.equal(filterRecords([row], {...filters, dateBasis: "reviewed"}, now).length, 0);
+  const csv = toCSV([row]);
+  assert.ok(csv.includes("cumulative_amount_sold"));
+  assert.ok(csv.includes("2026-11-06"));
+  assert.ok(!csv.includes("2026-11-06T00:00:00Z"));
 });
 test("CSV escaping prevents spreadsheet formulas", () => {
   for (const value of ["=HYPERLINK(\"bad\")", "+cmd", "-cmd", "@cmd", "  =cmd"]) assert.ok(csvCell(value).startsWith("\"'"));

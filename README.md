@@ -24,6 +24,8 @@ with six Google News discovery searches: startup funding, seed rounds,
 Series A/B, growth rounds, primary press releases and India funding.
 The press-release search covers Business Wire, PR Newswire and GlobeNewswire
 through Google's index, not by bypassing their websites.
+It also checks official SEC Form D daily indexes and the independent public
+FormDs tracker. These are separate sources with separate health reporting.
 
 This expands discovery across publishers instead of being limited to the last
 10-20 stories on a few homepages. Each news search looks back seven days and
@@ -61,15 +63,52 @@ This is a research starting point, not a verified worldwide company database.
 - Partial feed failures publish a warning. If all feeds fail, old records are
   preserved, the site shows an error and the workflow fails visibly.
 
+## SEC Form D and independent filing coverage
+
+Form D notices add a different source of leads from press coverage.
+The official adapter reads completed weekday daily indexes from the past
+seven days, queues initial `D` filings (not `D/A`), and processes up to 80
+documents per run. It identifies itself, spaces requests by at least 0.5
+seconds, and stops on access denial or throttling rather than bypassing it.
+Set the optional `SEC_USER_AGENT` Actions **secret** to a real organization
+and contact identity if configuring direct SEC access.
+
+**Direct SEC archive access returned HTTP 403 from the deployed runner on
+November 8, 2026.** This remains an explicit unavailable source, not claimed
+live SEC coverage. FormDs.com is independently accessible and publishes
+SEC-derived filing histories, exact reported sold amounts, first-sale dates,
+issuer locations and links to original SEC documents. Its crawl policy is
+checked each run. Collection reads at most eight list pages and 60 issuer
+profiles per run, with rate spacing, a four-minute budget, persistent pending
+work and cached completed profiles. Initial backfill is incomplete until
+later runs; the latest four pages are revisited while older pages advance.
+
+Both adapters exclude pooled investment funds, amendments, business
+combinations and zero-sale notices. Amount means **cumulative amount sold**,
+not the offering target, a sum of incremental changes, or money necessarily
+raised this week. First-sale date and filing date remain separate. A Form D
+is issuer-reported disclosure, not SEC approval, proof of a completed VC
+round, or proof that the issuer is a startup. Filing dates have day precision.
+FormDs records are explicitly labeled third-party SEC-derived data, not
+independently retrieved SEC documents.
+
+Offering records are deduplicated by accession across the two providers,
+preferring direct SEC data when available. They are **not** automatically
+merged into news rounds by company name: the round and offering can differ.
+Counts are therefore collected signals, not unique funded companies or market
+totals. The public builder never publishes filing people, street addresses,
+phone numbers, emails, work queues or raw source HTML.
+
 ## Dates and geographic filters
 
-The default **Reviewed dates only** filters and sorts by checked announcement
-dates and excludes automatic historical matches. **Funding timeline** also
-includes explicitly labeled **First reported** estimates, never silently
-substituting an undated record's current article timestamp. **Article coverage**
-includes unverified/disputed dates and uses article publication instead.
-Windows use UTC calendar days. All modes
-retain the original article and discovery timestamps in CSV exports.
+The default **Recent reports & filings**, past seven days, shows source
+activity, including unverified news dates. It does **not** claim all displayed
+companies raised during that window. **Dated funding timeline** uses reviewed
+announcements, explicitly labeled earliest-report estimates or reported first
+sales, never substituting publication for an unknown event date. **Reviewed
+news dates only** is a narrow optional research filter, not the default and
+not a measure of the US funding market. Windows use UTC calendar days. CSV
+keeps article publication, filing date, first sale and discovery separate.
 
 Each successful hourly collection checks up to 12 unreviewed signals against
 historical Google News searches, without the discovery feed's seven-day limit.
@@ -78,7 +117,7 @@ searches may find reports older than the 180-day archive. A first-report date
 is the earliest matching indexed result **found**, not proof of the original
 announcement or closing date. Search caps, missing sources, company aliases
 and repeated similar rounds limit this heuristic. Undated signals are excluded
-from both dated views, but remain accessible in Article coverage.
+from both dated views, but remain accessible in Recent reports & filings.
 Unchecked signals are prioritized, successful checks are cached for seven
 days, and failures are explicit and retryable after one hour. First-run
 historical backfill can therefore take several hourly runs.
@@ -92,7 +131,7 @@ Series A is dated **September 22, 2026**, not its November 7 syndicated article.
 
 Region and country refer to **company location**, not investor location,
 publisher origin, currency or search locale. Only explicit company-location
-headline prefixes or reviewed source evidence populate them. Reported
+headline prefixes, reviewed evidence or filing-source issuer addresses populate them. Reported
 locations are not necessarily verified headquarters. Geography is partial;
 unrecognized, absent or conflicting locations remain **Unknown**, which is
 itself filterable. Current region buckets are North America, Latin America &

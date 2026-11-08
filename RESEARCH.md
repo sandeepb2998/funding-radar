@@ -88,6 +88,31 @@ evidence; they never derive company geography from the news source or currency.
 This correction demonstrates why broader news coverage alone does not recreate
 a curated deal database.
 
+## SEC-derived funding disclosures
+
+On November 8, 2026, the official SEC November 6 daily master index returned
+HTTP 403 from the GitHub runner. This does not establish zero filings; it
+establishes an access gap. The collector does not retry around this block.
+The independently published [FormDs newest-filings page](https://www.formds.com/filings/newest)
+was accessible, including pagination and current November 6 disclosures.
+Its public crawl policy permits the list and issuer pages for this collector;
+the policy is checked again each run.
+
+A directly retrieved example is [Luminoah](https://www.formds.com/issuers/luminoah-inc):
+the tracker reports an initial filing on November 6, 2026, with exactly
+$25,413,863 cumulatively sold, an October 22 first sale, and Charlottesville,
+Virginia as issuer location. The filing links to SEC accession
+`0001982235-26-000003`. It is **not** evidence that this entire amount was
+newly raised during November 2-8. Another retrieved issuer, Instant Hydration,
+had a new November 6 filing with zero sold; it is correctly excluded.
+
+This source upgrade adds private-offering disclosures, not a verified list of
+venture-backed startups. Pooled funds, amendments and zero-sale offerings are
+filtered. Country uses issuer-location evidence, never the fact that a company
+files with the US regulator. The original one-result US view was a tiny manual
+review subset, not a market count; source activity is now the default, with
+explicit date semantics and coverage limitations.
+
 ## Likely architecture, not a claim about Fundable's private implementation
 
 1. Detect funding announcements from licensed databases, permitted news feeds,

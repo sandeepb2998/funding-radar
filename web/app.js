@@ -1,7 +1,7 @@
-export function recordDate(record, basis = "reviewed") {
+export function recordDate(record, basis = "coverage") {
   if (basis === "coverage") return Date.parse(record.published_at);
   const info = record.announcement || {};
-  const allowed = basis === "reviewed" ? ["reviewed"] : ["reviewed", "first_reported"];
+  const allowed = basis === "reviewed" ? ["reviewed"] : ["reviewed", "first_reported", "filed_first_sale", "reported_first_sale"];
   return allowed.includes(info.status) && /^\d{4}-\d{2}-\d{2}$/.test(info.date || "")
     ? Date.parse(`${info.date}T00:00:00Z`) : NaN;
 }
@@ -28,8 +28,8 @@ export function csvCell(value) {
 }
 
 export function toCSV(records) {
-  const fields = ["Company", "Amount", "Currency", "Stage", "Announcement / first report date (UTC)", "Date status", "Date evidence", "Date note", "Article published (UTC)", "First seen (UTC)", "Region", "Country", "Location status", "Location evidence", "Headline", "Sources", "Quality"];
-  return [fields, ...records.map(r => [r.company, r.amount, r.currency, r.stage, r.announcement?.date, r.announcement?.status || "unverified", r.announcement?.source_url, r.announcement?.note, r.published_at, r.first_seen_at, r.location?.region || "Unknown", r.location?.country || "Unknown", r.location?.status || "unknown", r.location?.source_url, r.headline, r.sources.map(s => s.url).join(" | "), r.quality])]
+  const fields = ["Company", "Amount", "Currency", "Stage", "Event date (UTC)", "Date status", "Date evidence", "Date note", "Article published (UTC)", "First seen (UTC)", "Region", "Country", "Location status", "Location evidence", "Headline", "Sources", "Quality", "Record type", "Filing date", "First sale date", "Amount basis", "Industry", "Accession"];
+  return [fields, ...records.map(r => [r.company, r.amount, r.currency, r.stage, r.announcement?.date, r.announcement?.status || "unverified", r.announcement?.source_url, r.announcement?.note, r.kind === "sec_form_d" ? "" : r.published_at, r.first_seen_at, r.location?.region || "Unknown", r.location?.country || "Unknown", r.location?.status || "unknown", r.location?.source_url, r.headline, r.sources.map(s => s.url).join(" | "), r.quality, r.kind || "news", r.filing?.filed_on, r.filing?.first_sale_on, r.filing?.amount_basis || "headline_reported_round", r.filing?.industry, r.filing?.accession])]
     .map(row => row.map(csvCell).join(",")).join("\r\n");
 }
 
@@ -59,13 +59,16 @@ function compactAmount(record) {
   return `${symbol}${value}`;
 }
 
-function renderCard(record, today) {
+function renderCard(record) {
+  const filing = record.kind === "sec_form_d";
   const card = node("article", "funding-card");
   card.append(node("div", "company-icon", record.company.slice(0, 2)));
   const body = node("div", "card-body");
   const title = node("div", "company-title");
   title.append(node("h3", "", record.company), node("span", "badge", record.stage));
-  if (record.first_seen_at.slice(0, 10) === today) title.append(node("span", "badge new-badge", "DISCOVERED TODAY"));
+  if (Date.parse(record.published_at) - recordDate(record, "timeline") > 7 * 86400000) {
+    title.append(node("span", "badge", filing ? "FILING LAGS FIRST SALE" : "OLDER ROUND / LATER COVERAGE"));
+  }
   body.append(title, node("p", "headline", record.headline));
   const location = record.location || {};
   body.append(node("p", "location", `Location: ${location.country || "Unknown"}${location.region ? ` \u00b7 ${location.region}` : ""}${location.status === "conflicting" ? " \u00b7 conflicting reports" : ""}`));
@@ -87,16 +90,16 @@ function renderCard(record, today) {
   }
   body.append(links);
   const amount = node("div", "card-amount", compactAmount(record));
-  amount.append(node("div", "card-currency", record.currency === "$" ? "Dollar currency unspecified" : record.currency));
+  amount.append(node("div", "card-currency", filing ? "USD \u00b7 cumulative amount sold" : record.currency === "$" ? "Dollar currency unspecified" : record.currency));
   const date = Number.isFinite(recordDate(record, "timeline"))
-    ? `${info.status === "reviewed" ? "Announced" : "First reported"} ${dateLabel(`${info.date}T00:00:00Z`)}`
-    : `Funding date ${info.status === "disputed" ? "disputed" : "unverified"}`;
+    ? `${filing ? "First sale" : info.status === "reviewed" ? "Announced" : "First reported"} ${dateLabel(`${info.date}T00:00:00Z`)}`
+    : `${filing ? "First-sale date" : "Funding date"} ${info.status === "disputed" ? "disputed" : "unverified"}`;
   const dateNode = node("div", "card-date round-date", date);
   dateNode.title = info.note || "No announcement date has been established.";
   amount.append(dateNode);
   if (info.status === "first_reported") amount.append(node("div", "card-quality", "Earliest match found; not a verified announcement"));
-  amount.append(node("div", "card-date", `Article: ${dateLabel(record.published_at)}`));
-  amount.append(node("div", "card-quality", "Headline signal \u00b7 verify source"));
+  amount.append(node("div", "card-date", `${filing ? "Filed" : "Article"}: ${dateLabel(record.published_at)}`));
+  amount.append(node("div", "card-quality", filing ? "Private offering; not necessarily a startup or VC round" : "Headline signal \u00b7 verify source"));
   card.append(body, amount);
   return card;
 }
@@ -124,9 +127,10 @@ async function init() {
   get("total-count").textContent = records.length;
   const reviewed = records.filter(r => r.announcement?.status === "reviewed").length;
   const firstReported = records.filter(r => r.announcement?.status === "first_reported").length;
-  get("dated-count").textContent = reviewed + firstReported;
+  const firstSale = records.filter(r => ["filed_first_sale", "reported_first_sale"].includes(r.announcement?.status)).length;
+  get("dated-count").textContent = reviewed + firstReported + firstSale;
   const failedChecks = records.filter(r => r.announcement?.check_status === "error").length;
-  get("date-coverage").textContent = `${reviewed} reviewed announcement dates; ${firstReported} earliest matching reports found; ${records.length - reviewed - firstReported} undated or disputed. The default excludes unreviewed dates. Funding timeline adds historical estimates; Article coverage includes undated signals.${failedChecks ? ` Historical lookup failed for ${failedChecks} signals; prior evidence is retained where available.` : ""}`;
+  get("date-coverage").textContent = `Coverage: ${reviewed} reviewed news dates, ${firstReported} earliest-report estimates, ${firstSale} reported first-sale dates, ${records.length - reviewed - firstReported - firstSale} undated or disputed. These are collected signals, not a count of all companies funded. Direct SEC access and the independent FormDs tracker have separate source-health entries.${failedChecks ? ` Historical lookup failed for ${failedChecks} signals; prior evidence is retained where available.` : ""}`;
   const healthy = data.sources.filter(s => s.status === "ok").length;
   get("source-count").textContent = `${healthy}/${data.sources.length}`;
   if (data.last_success_at) get("last-check").textContent = dateLabel(data.last_success_at);
@@ -161,7 +165,7 @@ async function init() {
   if (!data.sources.length) health.textContent = "No collection has run yet.";
   for (const source of data.sources) {
     const row = node("div", "source-health-row");
-    row.append(node("span", "", source.name), node("span", "", source.status === "ok" ? `${source.items_read} entries / ${source.accepted} signals / ${source.invalid} invalid` : "Unavailable - see private Actions logs"));
+    row.append(node("span", "", source.name), node("span", "", source.status !== "error" ? `${source.items_read} inputs / ${source.accepted} signals / ${source.invalid} invalid${source.pending ? ` / ${source.pending} pending` : ""}${source.status === "partial" ? " / partial" : ""}` : "Unavailable - see Actions logs; existing records are not fresh coverage"));
     health.append(row);
   }
   let visible = [];
@@ -169,12 +173,12 @@ async function init() {
   function render() {
     const dateBasis = get("date-basis").value;
     visible = filterRecords(records, {search: get("search").value, stage: get("stage").value, source: get("source").value, days: Number(get("window").value), dateBasis, region: get("region").value, country: get("country").value}, now);
-    get("sort-label").textContent = dateBasis === "coverage" ? "NEWEST ARTICLES FIRST" : dateBasis === "reviewed" ? "REVIEWED ANNOUNCEMENTS FIRST" : "ANNOUNCEMENT / FIRST REPORT DATE";
-    get("feed").replaceChildren(...visible.slice(0, limit).map(r => renderCard(r, today)));
-    get("results-count").textContent = `${visible.length} ${visible.length === 1 ? "signal" : "signals"}${visible.length > limit ? ` \u00b7 showing ${limit}` : ""}`;
+    get("sort-label").textContent = dateBasis === "coverage" ? "NEWEST REPORTS / FILINGS FIRST" : dateBasis === "reviewed" ? "REVIEWED NEWS ANNOUNCEMENTS FIRST" : "ANNOUNCEMENT / FIRST SALE / FIRST REPORT";
+    get("feed").replaceChildren(...visible.slice(0, limit).map(r => renderCard(r)));
+    get("results-count").textContent = `${visible.length} ${visible.length === 1 ? "signal" : "signals"} in this tracker${visible.length > limit ? ` \u00b7 showing ${limit}` : ""}`;
     get("empty").hidden = visible.length > 0;
     get("empty-title").textContent = "No matching signals";
-    get("empty-text").textContent = dateBasis === "coverage" ? "Try a wider date range or clear your filters. Unknown company locations are not guessed." : "Try a wider date range or Article coverage to include undated signals. No matches does not mean no funding occurred.";
+    get("empty-text").textContent = dateBasis === "coverage" ? "Try a wider date range or clear your filters. This is incomplete source coverage, not proof that no companies raised funding. Unknown locations are not guessed." : "Try a wider range or Recent reports & filings to include undated signals. No matches does not mean no funding occurred.";
     if (!records.length) {
       get("empty-title").textContent = data.status === "not_started" ? "Your radar is ready. Awaiting data." : "No qualifying funding headlines collected";
       get("empty-text").textContent = data.status === "not_started" ? "Run the collection workflow after deploying this app to its own repository." : "This is not proof that no companies raised funding. Check source health and feed coverage.";

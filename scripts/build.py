@@ -8,7 +8,8 @@ import shutil
 ROOT = Path(__file__).resolve().parents[1]
 RECORD_FIELDS = ("id", "company", "amount", "currency", "stage", "published_at",
                  "first_seen_at", "last_seen_at", "headline", "quality")
-SOURCE_FIELDS = ("name", "url", "status", "items_read", "accepted", "invalid")
+SOURCE_FIELDS = ("name", "url", "status", "items_read", "accepted", "invalid",
+                 "excluded", "pending", "index_days", "oldest_indexed_on", "next_page")
 
 
 def public_data(data):
@@ -17,10 +18,12 @@ def public_data(data):
     result["records"] = []
     for record in data["records"]:
         safe = {k: record[k] for k in RECORD_FIELDS}
+        safe["kind"] = record.get("kind", "news")
         safe["sources"] = [{"name": s["name"], "url": s["url"]} for s in record["sources"]]
         for field, allowed in (
             ("announcement", ("date", "status", "source_url", "note", "checked_at", "check_status")),
             ("location", ("country", "country_code", "region", "status", "source_url", "note")),
+            ("filing", ("accession", "cik", "form", "filed_on", "first_sale_on", "industry", "amount_basis", "provider")),
         ):
             safe[field] = {k: record[field][k] for k in allowed if k in record.get(field, {})}
         result["records"].append(safe)

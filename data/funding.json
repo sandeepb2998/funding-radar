@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "last_attempt_at": "2026-11-08T14:47:48Z",
-  "last_success_at": "2026-11-08T14:47:48Z",
+  "last_attempt_at": "2026-11-08T14:54:20Z",
+  "last_success_at": "2026-11-08T14:54:20Z",
   "status": "partial",
   "sources": [
     {
@@ -59,7 +59,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-06T09:13:13Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T14:47:48Z",
+      "last_seen_at": "2026-11-08T14:54:20Z",
       "headline": "Bioliberty raises \u20ac2.95 million to bring its AI-powered rehabilitation technology into the home",
       "sources": [
         {
@@ -71,13 +71,13 @@
     },
     {
       "id": "ddd07edaf99213028f10",
-      "company": "Oxford spin-out Alethio Therapeutics",
+      "company": "Alethio Therapeutics",
       "amount": 80460000,
       "currency": "EUR",
       "stage": "Series A",
       "published_at": "2026-11-06T08:17:05Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T14:47:48Z",
+      "last_seen_at": "2026-11-08T14:54:20Z",
       "headline": "Oxford spin-out Alethio Therapeutics raises \u20ac80.46 million Series A to advance targeted blood cancer therapies",
       "sources": [
         {
@@ -89,13 +89,13 @@
     },
     {
       "id": "d7cf84db30cbf3fd1db5",
-      "company": "Helsinki\u2019s Vensum Power",
+      "company": "Vensum Power",
       "amount": 9000000,
       "currency": "EUR",
       "stage": "Undisclosed",
       "published_at": "2026-11-06T07:49:11Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T14:47:48Z",
+      "last_seen_at": "2026-11-08T14:54:20Z",
       "headline": "Helsinki\u2019s Vensum Power secures \u20ac9 million to scale its software-defined power conversion platform",
       "sources": [
         {
@@ -113,7 +113,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T17:52:44Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T14:47:48Z",
+      "last_seen_at": "2026-11-08T14:54:20Z",
       "headline": "Harbinger raises $240M after expanding into defense",
       "sources": [
         {
@@ -125,13 +125,13 @@
     },
     {
       "id": "fa1c2099159941b43ed7",
-      "company": "Germany\u2019s V\u00c6RIDION",
+      "company": "V\u00c6RIDION",
       "amount": 124000000,
       "currency": "EUR",
       "stage": "Undisclosed",
       "published_at": "2026-11-05T12:10:04Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T14:47:48Z",
+      "last_seen_at": "2026-11-08T14:54:20Z",
       "headline": "Germany\u2019s V\u00c6RIDION raises \u20ac124 million to bring electric regional flights closer to reality",
       "sources": [
         {
@@ -149,7 +149,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-02T23:13:53Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T14:47:48Z",
+      "last_seen_at": "2026-11-08T14:54:20Z",
       "headline": "Trajectory raises $45M to make AI model training accessible to nontechnical experts",
       "sources": [
         {

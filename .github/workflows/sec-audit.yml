@@ -1,0 +1,75 @@
+name: Inspect official SEC Form D coverage
+on:
+  push:
+    paths: [".github/workflows/sec-audit.yml"]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Read SEC daily indexes and public filing fields
+        run: |
+          python - <<'PY'
+          import json, re, time
+          from datetime import datetime, timedelta, timezone
+          from urllib.request import Request, urlopen
+          from urllib.error import URLError, HTTPError
+          import xml.etree.ElementTree as ET
+          agent = "FundingRadar/1.2 (+https://github.com/sandeepb2998/funding-radar/issues)"
+          def fetch(url):
+              time.sleep(0.5)
+              with urlopen(Request(url, headers={"User-Agent": agent, "Accept-Encoding": "identity"}), timeout=25) as response:
+                  return response.read(8 * 1024 * 1024).decode("utf-8", errors="replace")
+          now = datetime.now(timezone.utc)
+          candidates = []
+          denied = False
+          for offset in range(1, 8):
+              day = (now - timedelta(days=offset)).date()
+              if day.weekday() >= 5:
+                  continue
+              url = f"https://www.sec.gov/Archives/edgar/daily-index/{day.year}/QTR{(day.month-1)//3+1}/master.{day:%Y%m%d}.idx"
+              try:
+                  body = fetch(url)
+              except HTTPError as error:
+                  print(json.dumps({"index": url, "http_error": error.code}))
+                  if error.code in (403, 429):
+                      denied = True
+                      break
+                  continue
+              except (URLError, TimeoutError) as error:
+                  print(json.dumps({"index": url, "error": str(error)}))
+                  break
+              rows = [line.split("|") for line in body.splitlines() if len(line.split("|")) == 5]
+              initial = [r for r in rows if r[2] == "D"]
+              amended = [r for r in rows if r[2] == "D/A"]
+              print(json.dumps({"date": str(day), "initial_form_d": len(initial), "amendments": len(amended), "examples": [{"issuer": r[1], "path": r[4]} for r in initial[:3]]}))
+              candidates.extend(initial)
+          if denied:
+              print("SEC denied automated access; no retries, alternate host bypass, or fabricated filings.")
+          else:
+              candidates.sort(key=lambda r: bool(re.search(r"\bfund\b|\bl\.?p\.?\b|\bpartners\b", r[1], re.I)))
+              for cik, issuer, form, filed, path in candidates[:8]:
+                  url = "https://www.sec.gov/Archives/" + path
+                  try:
+                      body = fetch(url)
+                      match = re.search(r"<XML>\s*(.*?)\s*</XML>", body, re.S)
+                      if not match:
+                          print(json.dumps({"issuer": issuer, "error": "No XML document found", "url": url}))
+                          continue
+                      root = ET.fromstring(match[1])
+                      for element in root.iter():
+                          element.tag = element.tag.rsplit("}", 1)[-1]
+                      fields = {}
+                      for field in ("entityName", "entityType", "stateOrCountry", "stateOrCountryDescription", "industryGroupType", "investmentFundType", "isAmendment", "dateOfFirstSale", "totalOfferingAmount", "totalAmountSold", "totalRemaining", "typesOfSecuritiesOffered", "isEquityType", "isDebtType", "isPooledInvestmentFundType"):
+                          nodes = root.findall(".//"+field)
+                          fields[field] = [" ".join(n.itertext()).strip() for n in nodes[:1]]
+                      print(json.dumps({"issuer": issuer, "filed": filed, "url": url, "fields": fields}))
+                  except HTTPError as error:
+                      print(json.dumps({"issuer": issuer, "http_error": error.code}))
+                      if error.code in (403, 429):
+                          break
+                  except (URLError, TimeoutError, ET.ParseError) as error:
+                      print(json.dumps({"issuer": issuer, "error": str(error)}))
+          PY

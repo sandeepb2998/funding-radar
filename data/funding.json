@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "last_attempt_at": "2026-11-08T15:45:14Z",
-  "last_success_at": "2026-11-08T15:45:14Z",
+  "last_attempt_at": "2026-11-08T16:32:50Z",
+  "last_success_at": "2026-11-08T16:32:50Z",
   "status": "partial",
   "sources": [
     {
@@ -72,8 +72,8 @@
       "url": "https://news.google.com/rss/search?q=%28startup+OR+%22start-up%22%29+%28raises+OR+secures+OR+closes%29+%28funding+OR+investment%29+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
       "status": "ok",
       "error": null,
-      "items_read": 48,
-      "accepted": 23,
+      "items_read": 50,
+      "accepted": 24,
       "invalid": 0
     },
     {
@@ -81,8 +81,8 @@
       "url": "https://news.google.com/rss/search?q=%28%22seed+funding%22+OR+%22seed+round%22+OR+%22pre-seed%22%29+%28raises+OR+secures+OR+closes+OR+announces%29+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
       "status": "ok",
       "error": null,
-      "items_read": 61,
-      "accepted": 43,
+      "items_read": 63,
+      "accepted": 45,
       "invalid": 0
     },
     {
@@ -90,8 +90,8 @@
       "url": "https://news.google.com/rss/search?q=%28%22Series+A%22+OR+%22Series+B%22%29+%28raises+OR+secures+OR+closes+OR+announces%29+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
       "status": "ok",
       "error": null,
-      "items_read": 87,
-      "accepted": 64,
+      "items_read": 88,
+      "accepted": 65,
       "invalid": 0
     },
     {
@@ -99,8 +99,8 @@
       "url": "https://news.google.com/rss/search?q=%28%22Series+C%22+OR+%22Series+D%22+OR+%22Series+E%22+OR+%22Series+F%22+OR+%22growth+funding%22%29+%28raises+OR+secures+OR+closes+OR+announces%29+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
       "status": "ok",
       "error": null,
-      "items_read": 57,
-      "accepted": 46,
+      "items_read": 56,
+      "accepted": 45,
       "invalid": 0
     },
     {
@@ -118,8 +118,33 @@
       "status": "ok",
       "error": null,
       "items_read": 53,
-      "accepted": 26,
+      "accepted": 25,
       "invalid": 0
+    },
+    {
+      "name": "SEC EDGAR - Form D",
+      "url": "https://www.sec.gov/Archives/edgar/daily-index/",
+      "status": "error",
+      "items_read": 0,
+      "accepted": 0,
+      "invalid": 0,
+      "excluded": 0,
+      "pending": 0,
+      "error": "HTTP 403",
+      "index_days": []
+    },
+    {
+      "name": "FormDs - SEC-derived filings",
+      "url": "https://www.formds.com/filings/newest",
+      "status": "ok",
+      "items_read": 45,
+      "accepted": 30,
+      "invalid": 0,
+      "excluded": 15,
+      "pending": 0,
+      "error": null,
+      "oldest_indexed_on": "2026-11-06",
+      "next_page": 5
     }
   ],
   "records": [
@@ -131,7 +156,7 @@
       "stage": "Series B",
       "published_at": "2026-11-08T15:05:12Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "T-Therapeutics Raises $133 Million In Series B Funding To Advance Cancer And Autoimmune Disease Treatments",
       "sources": [
         {
@@ -181,7 +206,7 @@
       "stage": "Series A",
       "published_at": "2026-11-08T14:32:08Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Alethio Therapeutics Raises $90 Million In Series A Funding To Advance Targeted Treatments For Blood Cancers",
       "sources": [
         {
@@ -219,7 +244,7 @@
       "stage": "Seed",
       "published_at": "2026-11-08T06:17:37Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "BCC Media Network raises $213,000 seed round to build owned media IPs",
       "sources": [
         {
@@ -253,7 +278,7 @@
       "stage": "Series A",
       "published_at": "2026-11-07T15:50:48Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "MediaCore secures $4.5 mln in Series A funding led by Vanedge Capital",
       "sources": [
         {
@@ -287,12 +312,16 @@
       "stage": "Seed",
       "published_at": "2026-11-07T13:08:52Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Aformic Raises $6.95 Million In Seed Funding Led By Veteran Ventures Capital For Autonomous Industrial Robotics",
       "sources": [
         {
           "name": "Pulse 2.0 via Google News",
           "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQNS1qdXBiUEtUTWd2dy1BTWUwc1ZwMF9iSDA5SnU1bWdDVzdsUFdDVXB3YjV4T3lFRWNVRVcwTDZJdW14eG55ZENnWnR4UzdZYmhkTzJuOHhOV2RIT2g3WDF5b29vODJRYi1OZzZrU2l6TFFkWnctNUw1MUZ4STVtVGpWc1dhX0p0azh5TVdZY3c4MTVXY0VmeDZkWjVwVHUteExYdHc1UE9LZnA0ekFKWDVQS25DMGNJWlh4VW1rN0tyNk1OVjFncUln?oc=5"
+        },
+        {
+          "name": "citybiz via Google News",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQQnBNMmszelc3dENNdnJsbmNRRXpyWUloVEd4bFlxQnY1dFJ5TTZUSjc4d0s1TnduTEJaNGh6aXQwOE90YU14NENEV0VkcXNwa1ZMMkRtUXRKdE1RMk80cDZRb3h5bjBLWjctUjVlZDhaZzJyd0hSTGxhLWJURnFUcEJyYWtfRXJfMExQRmJNbmZma2piclR0VEgtNlJMeXdieVNqRWZIV2t5SjZTdXNyRW9OeDVuLUk1aS1hbjQ2bVRKc0k4RWR0OFBlVFp6cWVHcGVmYjBfbUQ5V1U?oc=5"
         }
       ],
       "quality": "Headline-extracted; verify source",
@@ -321,7 +350,7 @@
       "stage": "Series D",
       "published_at": "2026-11-07T09:01:51Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Kyulux raises $53.7 million in a Series D round backed by LG Display and Samsung, signs a joint development agreement with LGD",
       "sources": [
         {
@@ -355,7 +384,7 @@
       "stage": "Series A",
       "published_at": "2026-11-07T06:00:03Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Go.AI Raises $85 Million in Series A Funding to Expand Private AI Infrastructure for Regulated Industries",
       "sources": [
         {
@@ -387,7 +416,7 @@
       "stage": "Series B",
       "published_at": "2026-11-06T23:33:33Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Hypersonica Raises \u20ac100M: Europe Startup Funding [2026]",
       "sources": [
         {
@@ -433,7 +462,7 @@
       "stage": "Series A",
       "published_at": "2026-11-06T23:21:17Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Claimlane Raises \u20ac5.6 Million In Series A Funding To Expand AI-Powered Aftersales Platform In The U.S.",
       "sources": [
         {
@@ -475,7 +504,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-06T22:33:15Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Nasal GLP-1 startup LionBio raises $6M pre-seed",
       "sources": [
         {
@@ -509,7 +538,7 @@
       "stage": "Series A",
       "published_at": "2026-11-06T16:40:12Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Rongu Bio raises $15M Series A for CAR-NK cell therapies",
       "sources": [
         {
@@ -543,7 +572,7 @@
       "stage": "Seed",
       "published_at": "2026-11-06T13:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Physicl Raises $10 Million to Solve Physical AI\u2019s Edge Case Gap",
       "sources": [
         {
@@ -581,7 +610,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-06T10:57:17Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Indrus Raises A$750K in Pre-Seed Funding",
       "sources": [
         {
@@ -615,7 +644,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-06T10:54:12Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "OnSport AI Raises $2M in Pre-Seed Funding",
       "sources": [
         {
@@ -649,7 +678,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-06T10:36:58Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Juritas Raises \u20ac1.4M in Pre-Seed Funding",
       "sources": [
         {
@@ -676,6 +705,44 @@
       }
     },
     {
+      "id": "09d6a90e2a7737fa7534",
+      "company": "PowerUp Money",
+      "amount": 10000000,
+      "currency": "$",
+      "stage": "Undisclosed",
+      "published_at": "2026-11-06T10:25:42Z",
+      "first_seen_at": "2026-11-08T15:13:51Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Wealthtech startup PowerUp Money raises $10 Mn led by Flourish Ventures | Startup Story",
+      "sources": [
+        {
+          "name": "Startup Story via Google News",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaFJyaU9tcWlJQU1KVTJSdmVHZllpX3ZxMnpjLUhHZGVXb1E1V0d2Vi1sdWhzRXdVY3lMRkU1c2w3eEJrdzdicXQyNEFWSFFmWk91NTZuQ2wzRFVaTllCTWQ4cmJxaXpldzV4S0tJNlNYVy1aRjBMUE1CcWQxZEljYlF5UU1LbTlkcUdEZFB6WTFfejlfMXhUZHdDREJReC11c2lN0gGrAUFVX3lxTE9ZS2swTzQ5dVU4VTIxQmo1ZWhENWtuUWNvMDdFT0N5MlotQzlYSzRtWHI0QURNTHV2Y2M1bDRjbVVPOExqSWlVQk9kd1paUi1OQUZ2ZmZySHVoWGZYVXVjbnhxMF9xQkRQMmZSQlNBSEd1SGo4RF9Ja0oxY21MM1lMQ0lpOWZmc0d0clk1bEZOTk9EWk1WSHNzU1lXUFBsOTRSanpHMVJUamJMYw?oc=5"
+        },
+        {
+          "name": "Siliconindia via Google News",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOOE1tNS1PZy1YOUdBaWxYX1NOY2wzRGFWUUd4bFhQNTFxeTRBWmwtUWhJZEJvQk5JbzJ1MTc5X2JNRUFzR1BERjFqNUcxd3JGSkdYSTVKWHcyWGhQMGhfYndfU09MTHQ0S092dkNnaDFZSnBiTlBoaDNldVBvd1d1TXNJUnVnUkR4NU1UblpkdmZTTzFKdG9JcDE4bXVuWE9KdmxrYjRyU1lHWjdpZEVfR3pLRWt1a1U4ckVoS3dSSjdLWUpqNUE?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": "2026-11-02",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNLXM1QkZXNkM2ZGJWRWV2ZVlpbm50X1FvVFN0UTJUWXhxUGp1M0t6YXNzYlBXRVhNSWNBVXI4V3BLcHdueGNCczBVOXhPWnVveFVlejJKWnduX2Z2a1dveWNjcHVTM3U2NXQzM3h0bGRuUl9fR3ZJQUp6LWMzbWQzV0V0UnMwZFNwRGdhVm9vSm9qSWhNWFJtWHlmVDJVeERMczdNdjhnQmFTNW5VbjNoTnhxbnNpalNuamlpQThlb3gwMzRvR05fcnZXejZKM29uNDAxX29B0gHbAUFVX3lxTFB0TTd2cjVCeXlFajR4VUI3cjN0bEtCcUZLRFUxd1pab05XM2FTME1XdDdJTjFlTUl5bklHM1NFanNIclMzd1ptUUlkWklDQ1Vlb1A5QVZfV0NCWUtZZmpBcXB5NmszQXV2NGlxdU5qYUFSNGJuYnlqMnFjRDZFa0lwMnR1cFlJYWtTNndVM3VpTl9MVGRPUFlFMDdPZGV6S0dIVGV5aDllQnN3WlpTTG9LVnNRMXJESEZLUjdwVFJHMFo5R01DV0FPTVdFOFdGd3R4cGdIRmlXYUFMRQ?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": null,
+        "note": ""
+      }
+    },
+    {
       "id": "14de94d74d0b7266b380",
       "company": "EOS-X Space",
       "amount": 120000000,
@@ -683,7 +750,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-06T10:16:36Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "EOS-X Space raises $120M at $1.2B valuation ahead of its first commercial balloon flight",
       "sources": [
         {
@@ -717,7 +784,7 @@
       "stage": "Seed",
       "published_at": "2026-11-06T09:48:23Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Former ISRO scientist's space debris startup Cosmoserve raises $6 million, opens Base 1 in Hyderabad",
       "sources": [
         {
@@ -763,7 +830,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-06T09:13:13Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Bioliberty raises \u20ac2.95 million to bring its AI-powered rehabilitation technology into the home",
       "sources": [
         {
@@ -797,7 +864,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-06T09:00:50Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Ethiopian gaming startup Rise of Fearless raises US$1m to scale African battle royale title",
       "sources": [
         {
@@ -831,7 +898,7 @@
       "stage": "Series A",
       "published_at": "2026-11-06T08:17:05Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Oxford spin-out Alethio Therapeutics raises \u20ac80.46 million Series A to advance targeted blood cancer therapies",
       "sources": [
         {
@@ -869,7 +936,7 @@
       "stage": "Seed",
       "published_at": "2026-11-06T06:19:13Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Cosmoserve Space Raises $6 Million in Seed Funding Round",
       "sources": [
         {
@@ -907,7 +974,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-06T05:00:00Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Vensum Power lands \u20ac9M to expand its power converters for AI data centres",
       "sources": [
         {
@@ -945,7 +1012,7 @@
       "stage": "Series A",
       "published_at": "2026-11-06T00:45:54Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Robot autonomy startup URobotics raises $29.9M Series A at a tenfold valuation jump",
       "sources": [
         {
@@ -979,7 +1046,7 @@
       "stage": "Series D",
       "published_at": "2026-11-05T21:45:38Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "CesiumAstro Secures $730 Million in Janus Henderson-Led Series D at a Valuation Above $4.5 Billion; Unveils Synchronicity Satellite Constellation Following Fully Successful Element-1 Mission",
       "sources": [
         {
@@ -1037,7 +1104,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-05T21:06:36Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Strive Robotics raises $3M pre-seed to automate high-mix factories",
       "sources": [
         {
@@ -1071,7 +1138,7 @@
       "stage": "Seed",
       "published_at": "2026-11-05T20:06:30Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Nyquis Raises $6.3 Million Seed Round To Improve Grid Monitoring And Wildfire Risk Detection",
       "sources": [
         {
@@ -1081,8 +1148,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNdG9pLUl4NDZveGd3RG5rXzZNckR6NFRaY2N5MmRlcnQtUXFyb3dqZjk3QXNnandWRC1jQURKVFFLYTNwUTRxUFlnZ3ZmcUpFeHh3NXduc2VCcWlPSmQwMzNNODRYRzhtT3h4cmkza2pScmFEbjJMZDVIRTRlNWs5U2pWbVE5aDZmdk14eFZ4WXpOa3o5Y1Z3VElValRqWGdfc3ljYThqQ09kYkFVVzRUNDMxWTNFeHlzTlhJUUVaWkFIQXZiRWc?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1101,7 +1172,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T19:09:03Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Finpilot Raises $10 Million Series A Led By Lobby Capital To Expand AI Agents For Institutional Investors",
       "sources": [
         {
@@ -1111,12 +1182,20 @@
         {
           "name": "Pulse 2.0 via Google News",
           "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNakpBdDJyczhvRXlUWTdtZTJGbkwwSFVLN05Wc3B5QWxvWWpjdmJ2ZHFlcHA5VTRRLWRqeXUtRFJlSmVfRjdOOUhoM01oREFfcDhoWkJnYzFiaE1sOEJOZlRjUEpPYlRmdGlwa25ESUkzRlowVFZwNEo1cFNxRXpndFVlUWEtdnE4RFN1T2VjM3MzMHNhRUxrTnc5UmQxMUhYT282ZFZRSUxiYlVqRmlNVkpnRmU2aHIwUEJGQ0dDa1ZTQQ?oc=5"
+        },
+        {
+          "name": "citybiz via Google News",
+          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNVkZHRjlxX1ZyU0M1T2hWRFMxNDBHWEsyVWdTZnBDVFVVOGJEdk1lTDNnTFc3aVJfN3V4M1N6dEZWdHVyS1pJdHNOR2ZsVU5rY29VcFJqaFNDeDJmT1ZlU0tHMWp4NmhaRUZUMEJ0UEFOT0pvUV9DcFBHUHo5OFlSc21yRUhwTlZsSV84eXgtaEtMeTFfQmc5N0NhRVh1M1lDejdJRHduT1Q4NHBqMkcxdG9ZcXNVMDJsd0dHVXMzZ3Bqd29GYUxOaFU2dEQ3TXJDejcyUQ?oc=5"
         }
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-04",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNLWR1NHMxWDJMc0cxcWtqejlwelRSOVIzWTNOOTE0MUMzOVhnSTRVRWF3LUd6OFBOYUY2VzZPSm1PZUlOLWZfcGg3djJWWUNCc1ROTzhfOHkySUFId1dGTWQzRnpTdzJHeE41Vm1Qek4yRTQ5cWlCUURrbkFFSEpMei12QVZPZndEbjEzSXE1cEVEcE41b1RzUzQ3emlmQQ?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1135,7 +1214,7 @@
       "stage": "Seed",
       "published_at": "2026-11-05T19:06:57Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Phaze Raises $8.75 Million In Seed Funding To Expand Remote Computing Access For People And AI Agents",
       "sources": [
         {
@@ -1149,8 +1228,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-04",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOY1N0N3BhNWREQlRzZVdkMG56Q3puNFlCTThXelF4Rl94aW0xTkktM0tuTlN5RVNjeFNwOUlrYzFrS1B2bEx4LVEwRW1DOW8wdmlzazZWS1Fmb2NFLU5TRlBzQk9HWE5nTHNTSVpkZVZFUEJRRHFiZzU4ekpia1Y2SWQyVFk?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1169,7 +1252,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T17:04:25Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Green Voltis Raises \u20ac13.5 Million Series A, Optimising Europe\u2019s Flexible Energy Assets with AI",
       "sources": [
         {
@@ -1179,8 +1262,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNdDNzTlVWZTllNFVtUlVWdVUtVEUtSzE3QlB5SHMtYjZyUlBTcG93dTM4RGI3TnAtVUgzMDJWLTAxYXZXQW1fb1RGcmJaZF9BQXducFpQOWRzWmlUQW5VakZ3ZnplOXhFUUdzR2o2cklVYjE0M3FYWHB3V2hrTFVndU1kSFYyWmU1ZFlVQjVmQzV2MXh2cWtudnhWN3RrQm9RWTdiNWwyNlk5VFIxNzkweHprS25uLXdZX3I3VA?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1199,7 +1286,7 @@
       "stage": "Series D",
       "published_at": "2026-11-05T17:00:00Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Harbinger Raises $240 Million Series D Funding Round, Led by Tiger Global",
       "sources": [
         {
@@ -1255,7 +1342,7 @@
       "stage": "Debt",
       "published_at": "2026-11-05T16:29:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Kennedy Funding Closes $3.633 Million Bridge Loan for Mixed-Use Resort in Naples, Florida",
       "sources": [
         {
@@ -1265,8 +1352,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNR0NNdkIwVWlacmpjOVBzWWd1cWU0Yl95ekFDR0JaM2NVcElySWh1bEozTDM3NTE0UDFhT0cxY0x5Ylp5TTdzZmk4akFtV05TbE1MSUQxM3ZVTVNBRXE1WXRMVVA2VFgwNkFadndOZjBRUlRHWjVFdnlORGJhWnd2YXlTRTJKRGVxNzJDQVhqYi1nU3dnNHFYNEsxTGdEVnAzbkYxMEJRRHpiaEs1aW1UbkdSQlltWkdvZjhLaFV4aFhHQi1mRlR0WUlUOHpaT2dxMjFTX3V0SWMtdU0?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1285,7 +1376,7 @@
       "stage": "Seed",
       "published_at": "2026-11-05T16:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Circularity Fuels Closes $7M Seed Round to Scale Jet Fuel Made from Dairy Biogas",
       "sources": [
         {
@@ -1303,8 +1394,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5KRjJfXzFzcmRER2FMOXdFdm9nYzJqeGVpWmVPZEJmSVFvSklXN1FQNkEyUHBrRXJycW1NYlJFcXN6RUdIWk9TQXZDT0dzeUIwQl9WQmgxUkgxaXZxRHAtbi1vWncxeVRLMnhTdGl0b1lYWU0?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1323,7 +1418,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T15:56:10Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Uranium Digital raises $16.5 million Series A led by Blockchain Capital",
       "sources": [
         {
@@ -1337,8 +1432,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5BbFBfaTFqVGFkV0tvLWtoa296eUtWdDZ3MTV6UUp1eWt0Q24wczZwOWFwcUU4VGxGMnZnbWRHME55Y0RBU2d2azFOR2Q3Z0NjMG5UTC0tV1dlYU81Y196SWk0SGdiRERnLVY2YVAtemJ2LVJKbUlWV2dZY3Q?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1357,7 +1456,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T15:40:17Z",
       "first_seen_at": "2026-11-08T15:43:06Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Oxford Uni spinout Alethio raises USD 90m Series A for G6B thrombocythemia antibody",
       "sources": [
         {
@@ -1367,8 +1466,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxON01hckR5dmU1cjg0X2ZrVkt4MklaalgyS3BWQjA5WnhGU0xUSmgxX29zUktVQkN4WFdITW8xVEhFMzdsMGN3UklQUVk2N2hETnlzUVVIQnVPaGR4SV9UcEZxZndGZUh1UVE1dWRUSzltVl9mLVFXaXExdmU4bEJYZWMzTzc?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1387,7 +1490,7 @@
       "stage": "Series C",
       "published_at": "2026-11-05T15:28:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Ocient Raises $100M in Series C Funding to Advance Trusted AI Solutions for Petabyte-Scale Environments",
       "sources": [
         {
@@ -1413,8 +1516,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQOXRPcmk1clB1RzhJUzlCQmxhMjJjaFlIbUlVcnJIbUZzWUJWRlNXZ2VXM0xoWkQ2anFHTVJaNVhfNnpJZFh0Z0JPTVlPLW54QnFycEZsb1B4X3ZYMFVaS2ZSWGs5OHUzUF8wVzA2a0R1MTNVYTlEd1ozWEtrc2ZVekdWaDNwVXQ3aHc?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1433,7 +1540,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T15:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Humble Robotics Raises $51 Million Series A to Scale Its Unified Approach to Autonomous and Electric Freight",
       "sources": [
         {
@@ -1455,8 +1562,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQR1BKZ2M5eEJ6RDFydEl1b2pmeGJnN1RNRmF6RkxzTlNValRlcXZGV0tMNHY3TFhoYkVRSm85WXZkcG5ydjI2R0xRRnB3UzkycFBlejYwNDRvQWJrX1B5YThzbTA3RnppTFV2VUkwaHhJLTBzS3hlSGpJOENZcFllU3Q4MkMtZjRhaXB1RlJfUmI2ZEhIb0QwSGZjeVh1UQ?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1475,7 +1586,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T14:45:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "RadianX Secures $9 Million in Venture and Project Financing for Perovskite Photovoltaics",
       "sources": [
         {
@@ -1485,8 +1596,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-05",
+        "status": "first_reported",
+        "checked_at": "2026-11-08T16:32:50Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPcFRUbW96NGI4N0std3NydHpET0U0c3gxYkV6WFpnc1FxTmhkS3RVRFRQSHJ2cnFCZkNhbG13cFY4dXcwWHZINi1BSUlaanVBRXlkZmdnajlITVJkTXlELXhhMThPblRsSEYxTjkySU9JcTIwYnFJNFgyZE9fZ2oxS3ZpNVlxSGR3SDNXZlcyNl9Gc1BPN2pGZ0hCLXIwVjBNRDVneDJ6cWt0aTc0dVg5U21QcThkMXBGcW9TajJIV0YyVlVrVDBhQ1NjY1ozYVpBYlVGMldMSl9uQlk?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -1505,7 +1620,7 @@
       "stage": "Series B",
       "published_at": "2026-11-05T14:44:25Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Cambridge spinout T-Therapeutics closes USD 133m Series B for TCR bispecifics",
       "sources": [
         {
@@ -1535,7 +1650,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T14:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Billd Secures $100 Million Facility from Victory Park Capital to Expand Working Capital Financing for Commercial Construction Subcontractors",
       "sources": [
         {
@@ -1565,7 +1680,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T14:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "firmly Raises $15 Million Series A and Launches Ask Agent to Help Merchants More Easily Adopt Agentic Commerce",
       "sources": [
         {
@@ -1619,7 +1734,7 @@
       "stage": "Series D",
       "published_at": "2026-11-05T14:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Fact Base Raises $28.8M Series D to Digitize the Factory Floor",
       "sources": [
         {
@@ -1657,7 +1772,7 @@
       "stage": "Seed",
       "published_at": "2026-11-05T14:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Shinka Raises \u20ac1.9M Seed Round to Bring Mediation to Digital Out-of-Home Advertising",
       "sources": [
         {
@@ -1691,7 +1806,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T13:35:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Fathers Beer Announces $2 Million Funding Round; Chef Robert Irvine Invests and Joins as Strategic Partner",
       "sources": [
         {
@@ -1721,7 +1836,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T13:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Alethio raises \u00a367M series A for mutation-agnostic platelet disorder therapy",
       "sources": [
         {
@@ -1751,7 +1866,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T13:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Kalepa Raises $75 Million at a $470 Million Valuation to Bring Professional Grade AI to Every Task in the Insurance Value Chain",
       "sources": [
         {
@@ -1781,7 +1896,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T13:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Arena.io Secures $4.5 Million in Closed Capital to Accelerate Workforce Mobility Through AI-Powered Labor Market Intelligence",
       "sources": [
         {
@@ -1811,7 +1926,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T13:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Nova Anchora Announces $23 Million Financing to Advance",
       "sources": [
         {
@@ -1841,7 +1956,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T12:22:45Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Israeli cybersecurity startup Brava raises $15 million to expose gaps in AI-driven threat detection",
       "sources": [
         {
@@ -1871,7 +1986,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T12:10:04Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Germany\u2019s V\u00c6RIDION raises \u20ac124 million to bring electric regional flights closer to reality",
       "sources": [
         {
@@ -1901,7 +2016,7 @@
       "stage": "Seed",
       "published_at": "2026-11-05T10:01:54Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Brava Security Raises $15M in Seed Funding",
       "sources": [
         {
@@ -1931,7 +2046,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T09:40:56Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Former Tesla executives' startup altM raises $10.3 million to make chemicals from rice straw and bagasse",
       "sources": [
         {
@@ -1989,7 +2104,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T08:48:13Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Oxford's Alethiomics raises \u00a367M Series A to target blood cancers",
       "sources": [
         {
@@ -2019,7 +2134,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T08:47:38Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "FluoRok Raises $30M in Series A Funding",
       "sources": [
         {
@@ -2049,7 +2164,7 @@
       "stage": "Series A",
       "published_at": "2026-11-05T08:36:59Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Oxford spinout Alethio raises $90M Series A for chronic blood cancer trials",
       "sources": [
         {
@@ -2083,7 +2198,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-05T08:09:18Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Bio-tech startup Venomics AI raises $2.7 Mn in pre-seed round",
       "sources": [
         {
@@ -2113,7 +2228,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-05T08:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "AI-for-science startup ChemLex raises USD 45M, launching self-driving lab for drug discovery in Singapore",
       "sources": [
         {
@@ -2143,7 +2258,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-05T06:41:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Persona closes $630k pre-seed round",
       "sources": [
         {
@@ -2173,7 +2288,7 @@
       "stage": "Series C",
       "published_at": "2026-11-05T02:22:14Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "NovuMicro raises $150M Series C extension as inference demand fuels in-memory chip bets",
       "sources": [
         {
@@ -2203,7 +2318,7 @@
       "stage": "Series D",
       "published_at": "2026-11-05T00:51:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Fact Base raises $28.4M Series D to push drawing-management software abroad",
       "sources": [
         {
@@ -2233,7 +2348,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-04T22:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Entr\u00e9e Resources Closes Oversubscribed $36.2 Million Financing",
       "sources": [
         {
@@ -2263,12 +2378,16 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-04T21:38:23Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "IM Cannabis Raises US$1,200,000 of Gross Proceeds in Convertible Note Financing",
       "sources": [
         {
           "name": "PR Newswire via Google News",
           "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQWTBwVV80d3NKdGZwSXJMZFNWaTVlT19JTDJaZGVMWUFWV01kRGtGakJnNWVJSDRoVk9YZjU4V3pKWHFVM3hyTTI0eG1IVm9hdmpQaXlVLWdjak5RUTlxazBvOUY3OWlld1pJUVN6bXV6SF8tblZVUGkxZGJLelliUlJnVUlKdWpjYjlPS2VyZjZoODBZb21SS3RjUzlKX3NsYUJzdFI3ZnJrVVk1eXdkUVhJZ0M3dFVObmUySW5qU2NtRmxwb1VOQ25YZWxlVVJyMVBv?oc=5"
+        },
+        {
+          "name": "PR Newswire via Google News",
+          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNRmRFTVROTXFsa2QyaWVxcTl3QkQ5SUZaTnR6OGhTc1E0NXFIMVFKVnI5U2FBYVRyaDVzUnNoZkVoWmFDSUdxc2tsc1huQ1QxeHJSQ1JMSjIxbHFkWk42bWNjVWoxYU1RaGVKQUdFR1V5elZTMDMzeGhKWi1DbWZPbUFIbXpxSkNiRzRHMXBmMDBPWnVabW9WUUt6Q254UHlReFk4cTRVdlpmcmhKYVIyUlJQc1JnblZLNHdLZmpTWHZIY1M4a08wTE0yRTJJY1JBS0dlUA?oc=5"
         }
       ],
       "quality": "Headline-extracted; verify source",
@@ -2293,7 +2412,7 @@
       "stage": "Pre-Series A",
       "published_at": "2026-11-04T21:29:44Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Fan-goods swap app treportal raises $430,000 pre-Series A",
       "sources": [
         {
@@ -2346,6 +2465,36 @@
       }
     },
     {
+      "id": "01c854c3da617151684d",
+      "company": "Conlio",
+      "amount": 6400000,
+      "currency": "EUR",
+      "stage": "Undisclosed",
+      "published_at": "2026-11-04T21:02:46Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "German AI startup Conlio raises \u20ac6.4 mn to automate freight finance",
+      "sources": [
+        {
+          "name": "Beinsure via Google News",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQVTJUaTJyd1JKMXMxNnNxSGV6eXlvVjN6RXB5alVOLVpkN2h1eks5aXAyQVNBc3FFaVd2ZTROaTdJMUEzRTd2WU53YXdmc3o0X19scWRNVWVtMnctZjdNWXRPQ180TlJrZ2wyaXh2WkRKMVJ6cXFkVFR0ZW53TVVIM3Jn?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": null,
+        "status": "unverified"
+      },
+      "location": {
+        "country": "Germany",
+        "country_code": "DE",
+        "region": "Europe",
+        "status": "reported",
+        "source_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQVTJUaTJyd1JKMXMxNnNxSGV6eXlvVjN6RXB5alVOLVpkN2h1eks5aXAyQVNBc3FFaVd2ZTROaTdJMUEzRTd2WU53YXdmc3o0X19scWRNVWVtMnctZjdNWXRPQ180TlJrZ2wyaXh2WkRKMVJ6cXFkVFR0ZW53TVVIM3Jn?oc=5",
+        "note": "Company location stated in headline; not verified headquarters."
+      }
+    },
+    {
       "id": "343b61115174ca97d395",
       "company": "bit.bio",
       "amount": 25000000,
@@ -2353,7 +2502,7 @@
       "stage": "Series D",
       "published_at": "2026-11-04T18:08:20Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "bit.bio Raises $25 Million In Series D Funding As Human Cell Model Demand Surges 76%",
       "sources": [
         {
@@ -2383,7 +2532,7 @@
       "stage": "Seed",
       "published_at": "2026-11-04T17:59:32Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Cowboy Raises $5 Million in Seed Funding, Launches AI Agent Marketplace",
       "sources": [
         {
@@ -2413,12 +2562,16 @@
       "stage": "Seed",
       "published_at": "2026-11-04T15:42:46Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Tumbleweed raises \u20ac6.9 mn in Austria\u2019s largest SpaceTech seed round",
       "sources": [
         {
           "name": "Beinsure via Google News",
           "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPYjhLcl9nc291alVuMmFoVHBYcGpIbG50aDRObWktVllxUFRmVzJVUDVyaDhVNnZDN3B6bzdpSlcwQUVlVDNIczU2RFZNUmJPdi1heUlmMzlGbzk5djNJMXIzUF9QLWFXNzlEWllEX0htOWlIMjN4SjFJR1NNQnhCUVhxT2hpTS12akVkNHp5elE0MmZxdkNN?oc=5"
+        },
+        {
+          "name": "www.trendingtopics.eu via Google News",
+          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1tXzlTMWxaZXVwXy1VQUt1TFh3RGI2d2RQU18zWmVIbnlnM1VGNEVpRzFrNzRneGhYenlsMnpjaHdnV2tvcjRLTjBneTVpcnBLOWNZMjJrSkVERzhGSmJMMmZ3R0czRmVKajNYQnUxakE3UQ?oc=5"
         }
       ],
       "quality": "Headline-extracted; verify source",
@@ -2473,12 +2626,16 @@
       "stage": "Series C",
       "published_at": "2026-11-04T14:10:11Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "EloElo Raises $80M in Series C Funding",
       "sources": [
         {
           "name": "FinSMEs via Google News",
           "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5JNGxIamduWlVZUlRzdllsRmVHdUs0S3FLVEh0Q1NYaTN5Q0g5eTV4bUxNNGVPTnF2Y1ltU3FsUU5ncGJMZzFuQjZ5ZmRqS09laUVBN3hzMlVHREVDVWhTYjByVWZITGRvVmUtbW9BSzhULUNIbHcteUZ2RDZ2UkE?oc=5"
+        },
+        {
+          "name": "BusinessLine via Google News",
+          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOMUlpVDh2aXlRNW1hZENoOUJGQjdXTFNBSjc3RWZCdm5mVjVKcVVMY2psZ0d4Tk9MMHdlQzgxTWJRS3REdXNtNmxZQUxDM3Y0WVREbjRJT092THZ3T2R4dVVSMmN3d1RHWjFwUEd1Z0pvTjladnkxSE1kRGVwWi03SFlZQ1lXMVNuN21GZnJZTjVoYnJvNlBFRU5iNW1NVlRBdnFnUXBzb1Mwa2hRY2l3RTRVZG5ZTUZhNkdweVhYQURxaWk5RVk3c2wxeDZpdnQ3dEHSAdgBQVVfeXFMTVlNYW81aFItRkYxc0QyNUo4c2NOeGQ0cnppQlZLRHFmQmx4S2toSTY1VjJ5VG55VGdxcDR4aERaZVVuc2s0OVp2dkEwbzNWN2ZWdUd5Smp4WDhzX21wNC12NHZJUHByQlUyR3lxVHk4anlLejJhenRwaEtMbFZoRzZmWFBXOFZoTVJpUnItZVFMN003Mk1mNzB3TlZ2N3J5anFldEd4NEdQTi1PMHhfVnRqVzVLd29sekpMRDVxbFlhZGRlMGFST0VmNjVyMmU1VW9kMm9qbGVT?oc=5"
         }
       ],
       "quality": "Headline-extracted; verify source",
@@ -2503,7 +2660,7 @@
       "stage": "Series C",
       "published_at": "2026-11-04T13:58:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Pliant Raises $80 Million Series C to Open B2B Payment Infrastructure to AI Agents",
       "sources": [
         {
@@ -2541,7 +2698,7 @@
       "stage": "Seed",
       "published_at": "2026-11-04T13:56:13Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Shackleton AI Raises $5M in Seed Funding",
       "sources": [
         {
@@ -2571,7 +2728,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-04T12:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "AI Security Startup Sentra Raises $150 Million to Police Autonomous Agents",
       "sources": [
         {
@@ -2601,7 +2758,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-04T11:31:49Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "AI sales startup Nooks secures $500 million in funding for expansion",
       "sources": [
         {
@@ -2651,7 +2808,7 @@
       "stage": "Series C",
       "published_at": "2026-11-04T11:30:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "EloElo Group Raises $80 Million in Series C Led by Hornbill Capital and NBCUniversal to Reimagine Mobile Entertainment for the Next Billion Users",
       "sources": [
         {
@@ -2701,7 +2858,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-04T10:59:03Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Unitoq raises \u20ac155K pre-seed",
       "sources": [
         {
@@ -2735,7 +2892,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-04T10:59:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Sports bank startup Sporta secures \u00a35m investment in bid for UK banking licence\"",
       "sources": [
         {
@@ -2765,7 +2922,7 @@
       "stage": "Seed",
       "published_at": "2026-11-04T09:36:16Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Supa raises \u00a321M in seed funding to transform UK residential block management",
       "sources": [
         {
@@ -2803,7 +2960,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-04T08:27:46Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Tabular Data AI Startup Nums AI Closes USD 1.5M Second Pre-Seed Round, Selected for TIPS",
       "sources": [
         {
@@ -2833,7 +2990,7 @@
       "stage": "Pre-Series B",
       "published_at": "2026-11-04T06:58:39Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Peppermint Robotics raises \u20b9100 Cr pre-series B funding led by pi Ventures, Crane Venture Partners",
       "sources": [
         {
@@ -2893,7 +3050,7 @@
       "stage": "Series F",
       "published_at": "2026-11-04T01:50:58Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Generative Media Inference Platform fal Raises $1.3B Series F",
       "sources": [
         {
@@ -2927,7 +3084,7 @@
       "stage": "Series A",
       "published_at": "2026-11-03T23:14:09Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Xinju raises $14.9M Series A to expand AI chip substrate production",
       "sources": [
         {
@@ -2957,7 +3114,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-03T20:37:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "BRIJ Medical Closes Upsized $5M Financing Round, Led by Board with Strong Existing-Investor Participation",
       "sources": [
         {
@@ -2987,7 +3144,7 @@
       "stage": "Seed",
       "published_at": "2026-11-03T19:42:35Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "SpendRule Raises $4 Million Seed Round Led By Mark Cuban\u2019s Radical Investments",
       "sources": [
         {
@@ -3017,7 +3174,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-03T19:39:23Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "CareLumi Raises $2.5 Million Pre-Seed Round To Build Verification Layer For Healthcare AI",
       "sources": [
         {
@@ -3047,7 +3204,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-03T19:14:56Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "SYNCERE Raises $11 Million Pre-Seed Round Led By a16z Speedrun For Home Robotics",
       "sources": [
         {
@@ -3081,7 +3238,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-03T18:46:03Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Corridian raises $38M to build underwater \"stealth logistics\"",
       "sources": [
         {
@@ -3111,7 +3268,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-03T17:41:25Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Legal AI Startup Athena Raises $2.5M Pre-Seed Funding",
       "sources": [
         {
@@ -3145,7 +3302,7 @@
       "stage": "Series D",
       "published_at": "2026-11-03T17:27:07Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Whop announces $200 million Series D funding at $5.1 billion valuation",
       "sources": [
         {
@@ -3175,7 +3332,7 @@
       "stage": "Series B",
       "published_at": "2026-11-03T17:24:27Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "China's CQMTEK raises $75M Series B at $700M valuation for quantum sensing",
       "sources": [
         {
@@ -3205,7 +3362,7 @@
       "stage": "Series B",
       "published_at": "2026-11-03T17:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Traversal Raises $120M with a $1 Billion Valuation to Keep Code Running With a Superintelligent AI Site Reliability Engineer",
       "sources": [
         {
@@ -3243,7 +3400,7 @@
       "stage": "Seed",
       "published_at": "2026-11-03T16:23:30Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "e2e Raises \u20ac7M in Seed Funding",
       "sources": [
         {
@@ -3273,7 +3430,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-03T15:50:51Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Marrow Raises $2M in Pre-Seed Funding",
       "sources": [
         {
@@ -3303,7 +3460,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-03T15:48:42Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Talky Labs Raises \u20ac1.5M in Pre-Seed Funding",
       "sources": [
         {
@@ -3333,7 +3490,7 @@
       "stage": "Pre-Series A",
       "published_at": "2026-11-03T15:00:13Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "TDS Innovation raises $4.68M pre-Series A for 2D chip deposition",
       "sources": [
         {
@@ -3363,7 +3520,7 @@
       "stage": "Seed",
       "published_at": "2026-11-03T14:48:05Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "ShareWillow Raises $8.5M in Seed Funding",
       "sources": [
         {
@@ -3393,7 +3550,7 @@
       "stage": "Series A",
       "published_at": "2026-11-03T14:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Journify Raises $12M Series A Amid 5x Growth",
       "sources": [
         {
@@ -3427,7 +3584,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-03T13:30:36Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Lazarus AI Raises $43 Million to Advance Independent AI",
       "sources": [
         {
@@ -3457,7 +3614,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-03T13:21:42Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Vitroscope Raises $7M to Scale Live-Tissue Platform",
       "sources": [
         {
@@ -3487,46 +3644,12 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-03T13:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Thryv Therapeutics Announces $30 Million Financing to Launch the ASPIRE-HF Study in Patients with Heart Failure; Wave II Efficacy Cohort Fully Enrolled in Long QT Syndrome",
       "sources": [
         {
           "name": "PR Newswire via Google News",
           "url": "https://news.google.com/rss/articles/CBMiyAJBVV95cUxQeUJmUFhIb0d1bHUtSTZDZlpHZF8wODZ6cVFmRVN0U3FQUm1kZ3JwZ19wWGFaMnVfQ1lONDFIWThtUkQwejMteWpvQnVNSFBTV01YUEU2ZUdfT0JZY1ZmM3dlN0JtN1VJd0lvRFVwMHUzTG51c3gtbUlPLWpIU0ttVmdxbk1uYWozb19ra3cwdE9IUDcyVl9fV0RnZ1N5WjA0Y1NFSGRJYklqU1lwVUFlTHpNWElldG5NU2NWM0Y4QW42cHMzVVFMR3dXOGlrSm9lZXV4azgyNVJrNHZYV1FtSWNBdGJDT1NQb1N6c3I5OWd6ZGUtd0luaEtucnBQQWNGcHJqeG5XbzJGeFNNSjA4cWdMZVpBeTBJTndLTVVKWFAxYWJ6OGNXZlVIMTZzRk9YdExWU0RRVzZDMnNYdHUzMWcxWnQ2SVJX?oc=5"
-        }
-      ],
-      "quality": "Headline-extracted; verify source",
-      "announcement": {
-        "date": null,
-        "status": "unverified"
-      },
-      "location": {
-        "country": null,
-        "country_code": null,
-        "region": null,
-        "status": "unknown",
-        "source_url": null,
-        "note": ""
-      }
-    },
-    {
-      "id": "09d6a90e2a7737fa7534",
-      "company": "PowerUp Money",
-      "amount": 10000000,
-      "currency": "$",
-      "stage": "Undisclosed",
-      "published_at": "2026-11-03T07:28:24Z",
-      "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
-      "headline": "PowerUp Money Raises $10 Million in Funding Led by Flourish",
-      "sources": [
-        {
-          "name": "Startup Story via Google News",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaFJyaU9tcWlJQU1KVTJSdmVHZllpX3ZxMnpjLUhHZGVXb1E1V0d2Vi1sdWhzRXdVY3lMRkU1c2w3eEJrdzdicXQyNEFWSFFmWk91NTZuQ2wzRFVaTllCTWQ4cmJxaXpldzV4S0tJNlNYVy1aRjBMUE1CcWQxZEljYlF5UU1LbTlkcUdEZFB6WTFfejlfMXhUZHdDREJReC11c2lN0gGrAUFVX3lxTE9ZS2swTzQ5dVU4VTIxQmo1ZWhENWtuUWNvMDdFT0N5MlotQzlYSzRtWHI0QURNTHV2Y2M1bDRjbVVPOExqSWlVQk9kd1paUi1OQUZ2ZmZySHVoWGZYVXVjbnhxMF9xQkRQMmZSQlNBSEd1SGo4RF9Ja0oxY21MM1lMQ0lpOWZmc0d0clk1bEZOTk9EWk1WSHNzU1lXUFBsOTRSanpHMVJUamJMYw?oc=5"
-        },
-        {
-          "name": "Siliconindia via Google News",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOOE1tNS1PZy1YOUdBaWxYX1NOY2wzRGFWUUd4bFhQNTFxeTRBWmwtUWhJZEJvQk5JbzJ1MTc5X2JNRUFzR1BERjFqNUcxd3JGSkdYSTVKWHcyWGhQMGhfYndfU09MTHQ0S092dkNnaDFZSnBiTlBoaDNldVBvd1d1TXNJUnVnUkR4NU1UblpkdmZTTzFKdG9JcDE4bXVuWE9KdmxrYjRyU1lHWjdpZEVfR3pLRWt1a1U4ckVoS3dSSjdLWUpqNUE?oc=5"
         }
       ],
       "quality": "Headline-extracted; verify source",
@@ -3551,7 +3674,7 @@
       "stage": "Series A",
       "published_at": "2026-11-03T07:11:20Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Clinics On Cloud Raises $12.5 Million in Series A Funding from Dubai-Based Investors",
       "sources": [
         {
@@ -3585,7 +3708,7 @@
       "stage": "Series C",
       "published_at": "2026-11-03T01:36:53Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Nanochap raises $75.2M Series C extension to advance vision brain-computer interface",
       "sources": [
         {
@@ -3615,7 +3738,7 @@
       "stage": "Series A",
       "published_at": "2026-11-02T23:13:53Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Trajectory raises $45M to make AI model training accessible to nontechnical experts",
       "sources": [
         {
@@ -3661,7 +3784,7 @@
       "stage": "Series C",
       "published_at": "2026-11-02T20:20:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Northwood Space raises $375M as it expands antenna production",
       "sources": [
         {
@@ -3737,7 +3860,7 @@
       "stage": "Series A",
       "published_at": "2026-11-02T19:18:10Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Celes raises $5M Series A led by SP Ventures",
       "sources": [
         {
@@ -3767,7 +3890,7 @@
       "stage": "Series A",
       "published_at": "2026-11-02T18:19:45Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Larridin Raises $30 Million Series A to Measure AI Spending and Workforce Impact",
       "sources": [
         {
@@ -3801,7 +3924,7 @@
       "stage": "Seed",
       "published_at": "2026-11-02T17:19:02Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "42AI Secures $62.5M in Seed Funding for Behavioral World Model",
       "sources": [
         {
@@ -3831,7 +3954,7 @@
       "stage": "Series B",
       "published_at": "2026-11-02T16:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Tutor Intelligence Raises $75 Million Series B Led by Andreessen Horowitz to Scale Frontier Robotics Model Training, Manufacturing and Deployment",
       "sources": [
         {
@@ -3865,7 +3988,7 @@
       "stage": "Series A",
       "published_at": "2026-11-02T15:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Specific Biologics Announces Oversubscribed US$35 Million Series A Financing to Advance Gene-Editing Therapy for ALS",
       "sources": [
         {
@@ -3899,7 +4022,7 @@
       "stage": "Series C",
       "published_at": "2026-11-02T14:21:55Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Northwood Raises $375 Million Series C to Expand Global Satellite Ground Network",
       "sources": [
         {
@@ -3933,7 +4056,7 @@
       "stage": "Series A",
       "published_at": "2026-11-02T14:06:24Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "FinMaq Raises $6.5M in Series A Funding",
       "sources": [
         {
@@ -3963,7 +4086,7 @@
       "stage": "Series D",
       "published_at": "2026-11-02T12:07:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "nPhase Secures $30 Million in Series D Funding to Drive Global Expansion of AI-Native Clinical Data Platform for Life Sciences",
       "sources": [
         {
@@ -3990,6 +4113,36 @@
       }
     },
     {
+      "id": "45279a6f3a3b8c2520bf",
+      "company": "Unify Foodworks",
+      "amount": 50000000,
+      "currency": "INR",
+      "stage": "Seed",
+      "published_at": "2026-11-02T11:50:22Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Unify Foodworks raises \u20b95 crore seed funding to expand Moe's and Carvel in India",
+      "sources": [
+        {
+          "name": "ET Entrepreneur via Google News",
+          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOWTJTS09iYVpfN01WdDFXRWRtcmtYaDR3UGpldUtHaVNOaGs0Qkt6SlhMeU0wOTRra1d3Z29XS2JUd0JtdnpsaG84ZGZsYVd4Y0pMZHJQd0tDckdkNHNLRlIwSk9GT3dnczhvMnJiOXAxREplaVhpNEFpd1ZwZEtJSWt1dDdhNzZnbVEwRGR0Z2NGMWV3UWFVbkZ5Z25ZNlcwSGVfbFdsRVZ4VXlTQjRFT25ndDZvN2ltb3FuMVhoOWF2Mno2NHl0QXB0UFRKelR1Q2FGUzhCV1hVREtWLWRNTWY4alZ5UdIB6wFBVV95cUxOdzhJR3hsOGhBWUh5dzJhaHZxVklMd0wzTVNCZnBnZkNwRUdOZUw5OTlwT1pqaGJ6UXVWT3ZUUTJVSFZDZlF6Q3V3NV9ENzkzZ1JZc1V3anlaYlZiX1RkX0FBZUs4cDJPSmRSSFRtU2dfMUFGZnN5UmJlcGdVYVBWVHYxS0VLeE5NRXJrT2NEWExsZnpYY3VIZ2hydWYyWmlrbDdFdUd4ZkU5OXFDbnFTaW5IYWtiazhqODVuV200amtUOUh1bkdsZ0hYeEQwR2E5SnMwZk5ibHVNcWJNUmwwbUhCMFNkblN5QVRF?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": null,
+        "status": "unverified"
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": null,
+        "note": ""
+      }
+    },
+    {
       "id": "bf64e04500c0dbd5816b",
       "company": "Pecoy Copper",
       "amount": 49800000,
@@ -3997,7 +4150,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-02T11:15:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Pecoy Copper Announces C$49.8 Million Strategic Financing Led by Hudbay Minerals",
       "sources": [
         {
@@ -4027,7 +4180,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-02T08:06:10Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Dispatch raises $527K pre-seed to build AI layer for last-mile delivery",
       "sources": [
         {
@@ -4057,7 +4210,7 @@
       "stage": "Series A",
       "published_at": "2026-11-02T06:20:02Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-08T15:45:14Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
       "headline": "Pathfinder Raises $12 Million Series A to Simplify How Families Use Education Savings Account Funds",
       "sources": [
         {
@@ -4082,6 +4235,1378 @@
         "source_url": null,
         "note": ""
       }
+    },
+    {
+      "id": "sec-0002163963-26-000001",
+      "kind": "sec_form_d",
+      "company": "1DER, Inc.",
+      "amount": 1000000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "1DER, Inc.: Form D reports $1,000,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/1der-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163963/000216396326000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-03-19",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/1der-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/1der-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163963-26-000001",
+        "cik": "2163963",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-03-19",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002162274-26-000001",
+      "kind": "sec_form_d",
+      "company": "Big3BB-LA, LLC",
+      "amount": 12000000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Big3BB-LA, LLC: Form D reports $12,000,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/big3bb-la-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2162274/000216227426000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2025-06-01",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/big3bb-la-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/big3bb-la-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002162274-26-000001",
+        "cik": "2162274",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2025-06-01",
+        "industry": "Investing",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001929908-26-000003",
+      "kind": "sec_form_d",
+      "company": "Black Mammoth Metals Corp",
+      "amount": 828025,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Black Mammoth Metals Corp: Form D reports $828,025 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/black-mammoth-metals-corp"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1929908/000192990826000003/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-22",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/black-mammoth-metals-corp",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": "https://www.formds.com/issuers/black-mammoth-metals-corp",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001929908-26-000003",
+        "cik": "1929908",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-22",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002163077-26-000001",
+      "kind": "sec_form_d",
+      "company": "Envex AI, Inc.",
+      "amount": 500000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Envex AI, Inc.: Form D reports $500,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/envex-ai-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163077/000216307726000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-28",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/envex-ai-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/envex-ai-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163077-26-000001",
+        "cik": "2163077",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-28",
+        "industry": "Other Technology",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002164160-26-000001",
+      "kind": "sec_form_d",
+      "company": "GiftWellSoon, LLC",
+      "amount": 75000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "GiftWellSoon, LLC: Form D reports $75,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/giftwellsoon-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2164160/000216416026000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-20",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/giftwellsoon-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/giftwellsoon-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002164160-26-000001",
+        "cik": "2164160",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-20",
+        "industry": "Other Health Care",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002163462-26-000001",
+      "kind": "sec_form_d",
+      "company": "HAWKEYE GROUP, LLC /IN/",
+      "amount": 1635000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "HAWKEYE GROUP, LLC /IN/: Form D reports $1,635,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/hawkeye-group-llc-in"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163462/000216346226000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-09-30",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/hawkeye-group-llc-in",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/hawkeye-group-llc-in",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163462-26-000001",
+        "cik": "2163462",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-09-30",
+        "industry": "Other Health Care",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002151282-26-000002",
+      "kind": "sec_form_d",
+      "company": "Jemal's 4100 Fairfax Investor LLC",
+      "amount": 6250000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Jemal's 4100 Fairfax Investor LLC: Form D reports $6,250,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/jemal-s-4100-fairfax-investor-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2151282/000215128226000002/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-07-28",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/jemal-s-4100-fairfax-investor-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/jemal-s-4100-fairfax-investor-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002151282-26-000002",
+        "cik": "2151282",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-07-28",
+        "industry": "Commercial",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002151302-26-000002",
+      "kind": "sec_form_d",
+      "company": "Jemal's Tysons 4100 LLC",
+      "amount": 6580911,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Jemal's Tysons 4100 LLC: Form D reports $6,580,911 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/jemal-s-tysons-4100-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2151302/000215130226000002/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-07-28",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/jemal-s-tysons-4100-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/jemal-s-tysons-4100-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002151302-26-000002",
+        "cik": "2151302",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-07-28",
+        "industry": "Commercial",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001790365-26-000001",
+      "kind": "sec_form_d",
+      "company": "Live Play Mobile Inc.",
+      "amount": 150000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Live Play Mobile Inc.: Form D reports $150,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/live-play-mobile-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1790365/000179036526000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-11-03",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/live-play-mobile-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/live-play-mobile-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001790365-26-000001",
+        "cik": "1790365",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-11-03",
+        "industry": "Other Technology",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001982235-26-000003",
+      "kind": "sec_form_d",
+      "company": "Luminoah, Inc.",
+      "amount": 25413863,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Luminoah, Inc.: Form D reports $25,413,863 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/luminoah-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1982235/000198223526000003/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-22",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/luminoah-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/luminoah-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001982235-26-000003",
+        "cik": "1982235",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-22",
+        "industry": "Other Health Care",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002163967-26-000002",
+      "kind": "sec_form_d",
+      "company": "Lumon Solutions Marshfield, LLC",
+      "amount": 4000000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Lumon Solutions Marshfield, LLC: Form D reports $4,000,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/lumon-solutions-marshfield-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163967/000216396726000002/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-11-03",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/lumon-solutions-marshfield-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/lumon-solutions-marshfield-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163967-26-000002",
+        "cik": "2163967",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-11-03",
+        "industry": "Other Technology",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002163682-26-000001",
+      "kind": "sec_form_d",
+      "company": "Onrail, Inc.",
+      "amount": 1500000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Onrail, Inc.: Form D reports $1,500,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/onrail-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163682/000216368226000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-30",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/onrail-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/onrail-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163682-26-000001",
+        "cik": "2163682",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-30",
+        "industry": "REITS and Finance",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001477932-26-006747",
+      "kind": "sec_form_d",
+      "company": "Open Clear Capital Inc.",
+      "amount": 100000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Open Clear Capital Inc.: Form D reports $100,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/open-clear-capital-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2079738/000147793226006747/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2025-10-09",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/open-clear-capital-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/open-clear-capital-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001477932-26-006747",
+        "cik": "2079738",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2025-10-09",
+        "industry": "Investing",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0000935836-26-000556",
+      "kind": "sec_form_d",
+      "company": "OTHRAM, INC.",
+      "amount": 10000000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "OTHRAM, INC.: Form D reports $10,000,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/othram-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1756249/000093583626000556/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-09-10",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/othram-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/othram-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0000935836-26-000556",
+        "cik": "1756249",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-09-10",
+        "industry": "Other Technology",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002164237-26-000001",
+      "kind": "sec_form_d",
+      "company": "Pacific Sands Pine Investments, LLC",
+      "amount": 859810,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Pacific Sands Pine Investments, LLC: Form D reports $859,810 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/pacific-sands-pine-investments-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2164237/000216423726000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-28",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/pacific-sands-pine-investments-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/pacific-sands-pine-investments-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002164237-26-000001",
+        "cik": "2164237",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-28",
+        "industry": "Commercial",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0000877019-26-000003",
+      "kind": "sec_form_d",
+      "company": "Galleon Gold Corp.",
+      "amount": 5932123,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Galleon Gold Corp.: Form D reports $5,932,123 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/pure-nickel-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/877019/000087701926000003/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-11-03",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/pure-nickel-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": "https://www.formds.com/issuers/pure-nickel-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0000877019-26-000003",
+        "cik": "877019",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-11-03",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002141650-26-000002",
+      "kind": "sec_form_d",
+      "company": "RMXD AVENUE SOUTH INVESTMENTS, LLC",
+      "amount": 500000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "RMXD AVENUE SOUTH INVESTMENTS, LLC: Form D reports $500,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/rmxd-avenue-south-investments-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2141650/000214165026000002/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-01",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/rmxd-avenue-south-investments-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/rmxd-avenue-south-investments-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002141650-26-000002",
+        "cik": "2141650",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-01",
+        "industry": "Commercial",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001493152-26-050480",
+      "kind": "sec_form_d",
+      "company": "Silver Pony Resources Corp.",
+      "amount": 198177,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Silver Pony Resources Corp.: Form D reports $198,177 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/silver-pony-resources-corp"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163219/000149315226050480/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-23",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/silver-pony-resources-corp",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": "https://www.formds.com/issuers/silver-pony-resources-corp",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001493152-26-050480",
+        "cik": "2163219",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-23",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001593621-26-000002",
+      "kind": "sec_form_d",
+      "company": "Six/Ten Group, LLC",
+      "amount": 873319,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Six/Ten Group, LLC: Form D reports $873,319 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/sixten-group-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1593621/000159362126000002/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-08-17",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/sixten-group-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/sixten-group-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001593621-26-000002",
+        "cik": "1593621",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-08-17",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002161104-26-000001",
+      "kind": "sec_form_d",
+      "company": "STRAIGHT CREEK MEDIA, LLC",
+      "amount": 175000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "STRAIGHT CREEK MEDIA, LLC: Form D reports $175,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/straight-creek-media-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2161104/000216110426000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-08-26",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/straight-creek-media-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/straight-creek-media-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002161104-26-000001",
+        "cik": "2161104",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-08-26",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001835643-26-000003",
+      "kind": "sec_form_d",
+      "company": "Sugar23, Inc.",
+      "amount": 1000000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "Sugar23, Inc.: Form D reports $1,000,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/sugar23-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1835643/000183564326000003/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-22",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/sugar23-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/sugar23-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001835643-26-000003",
+        "cik": "1835643",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-22",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001104659-26-123863",
+      "kind": "sec_form_d",
+      "company": "VECTORMAX Corp",
+      "amount": 5500,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "VECTORMAX Corp: Form D reports $5,500 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/vectormax-corp"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1136418/000110465926123863/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-11-01",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/vectormax-corp",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/vectormax-corp",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001104659-26-123863",
+        "cik": "1136418",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-11-01",
+        "industry": "Other Technology",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002126454-26-000004",
+      "kind": "sec_form_d",
+      "company": "VidAngel Entertainment, Inc.",
+      "amount": 9800000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "VidAngel Entertainment, Inc.: Form D reports $9,800,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/vidangel-entertainment-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2126454/000212645426000004/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-11-01",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/vidangel-entertainment-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/vidangel-entertainment-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002126454-26-000004",
+        "cik": "2126454",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-11-01",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002163633-26-000001",
+      "kind": "sec_form_d",
+      "company": "American Senior Housing Credit Fund LLC",
+      "amount": 200000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "American Senior Housing Credit Fund LLC: Form D reports $200,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/american-senior-housing-credit-fund-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163633/000216363326000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-09-24",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/american-senior-housing-credit-fund-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/american-senior-housing-credit-fund-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163633-26-000001",
+        "cik": "2163633",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-09-24",
+        "industry": "Commercial",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002160193-26-000001",
+      "kind": "sec_form_d",
+      "company": "LP/CE Woodland Park LLC",
+      "amount": 600000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "LP/CE Woodland Park LLC: Form D reports $600,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/lp-ce-woodland-park-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2160193/000216019326000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-11-05",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/lp-ce-woodland-park-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/lp-ce-woodland-park-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002160193-26-000001",
+        "cik": "2160193",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-11-05",
+        "industry": "Residential",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002163064-26-000001",
+      "kind": "sec_form_d",
+      "company": "PD TRANSCEND CREDIT PARTNERS, LLC",
+      "amount": 3885000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "PD TRANSCEND CREDIT PARTNERS, LLC: Form D reports $3,885,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/pd-transcend-credit-partners-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163064/000216306426000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2025-12-04",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/pd-transcend-credit-partners-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/pd-transcend-credit-partners-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163064-26-000001",
+        "cik": "2163064",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2025-12-04",
+        "industry": "Investing",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002163188-26-000001",
+      "kind": "sec_form_d",
+      "company": "SFA Credit Fund 2026, LLC",
+      "amount": 5100000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "SFA Credit Fund 2026, LLC: Form D reports $5,100,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/sfa-credit-fund-2026-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2163188/000216318826000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-11-02",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/sfa-credit-fund-2026-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/sfa-credit-fund-2026-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002163188-26-000001",
+        "cik": "2163188",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-11-02",
+        "industry": "Investing",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002157946-26-000003",
+      "kind": "sec_form_d",
+      "company": "SHAC CW DEV PARTNERS LLC",
+      "amount": 23905000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-06T00:00:00Z",
+      "first_seen_at": "2026-11-08T16:32:50Z",
+      "last_seen_at": "2026-11-08T16:32:50Z",
+      "headline": "SHAC CW DEV PARTNERS LLC: Form D reports $23,905,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/shac-cw-dev-partners-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2157946/000215794626000003/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-13",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/shac-cw-dev-partners-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/shac-cw-dev-partners-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002157946-26-000003",
+        "cik": "2157946",
+        "form": "D",
+        "filed_on": "2026-11-06",
+        "first_sale_on": "2026-10-13",
+        "industry": "Investing",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
     }
-  ]
+  ],
+  "sec_state": {
+    "processed": {},
+    "pending": [],
+    "index_days": []
+  },
+  "formds_state": {
+    "processed": {
+      "https://www.formds.com/issuers/1der-inc|2026-11-06|1000000": "2026-11-06",
+      "https://www.formds.com/issuers/1der-inc|2026-11-06|375000": "2026-11-06",
+      "https://www.formds.com/issuers/alg-trinity-llc|2026-11-06|800000": "2026-11-06",
+      "https://www.formds.com/issuers/big3bb-la-llc|2026-11-06|12000000": "2026-11-06",
+      "https://www.formds.com/issuers/black-mammoth-metals-corp|2026-11-06|828025": "2026-11-06",
+      "https://www.formds.com/issuers/crown-us-invest-llc-series-d|2026-11-06|6475000": "2026-11-06",
+      "https://www.formds.com/issuers/envex-ai-inc|2026-11-06|500000": "2026-11-06",
+      "https://www.formds.com/issuers/giftwellsoon-llc|2026-11-06|75000": "2026-11-06",
+      "https://www.formds.com/issuers/hawkeye-group-llc-in|2026-11-06|1635000": "2026-11-06",
+      "https://www.formds.com/issuers/integra-master-series-llc-growth-equity-vi|2026-11-06|5000000": "2026-11-06",
+      "https://www.formds.com/issuers/jemal-s-4100-fairfax-investor-llc|2026-11-06|6250000": "2026-11-06",
+      "https://www.formds.com/issuers/jemal-s-tysons-4100-llc|2026-11-06|6580911": "2026-11-06",
+      "https://www.formds.com/issuers/live-play-mobile-inc|2026-11-06|150000": "2026-11-06",
+      "https://www.formds.com/issuers/luminoah-inc|2026-11-06|25413863": "2026-11-06",
+      "https://www.formds.com/issuers/lumon-solutions-marshfield-llc|2026-11-06|4000000": "2026-11-06",
+      "https://www.formds.com/issuers/madisodex-ltd|2026-11-06|100000000": "2026-11-06",
+      "https://www.formds.com/issuers/msw-brick-llc|2026-11-06|1000000": "2026-11-06",
+      "https://www.formds.com/issuers/onrail-inc|2026-11-06|1500000": "2026-11-06",
+      "https://www.formds.com/issuers/open-clear-capital-inc|2026-11-06|100000": "2026-11-06",
+      "https://www.formds.com/issuers/othram-inc|2026-11-06|10000000": "2026-11-06",
+      "https://www.formds.com/issuers/pacific-sands-pine-investments-llc|2026-11-06|859810": "2026-11-06",
+      "https://www.formds.com/issuers/pure-nickel-inc|2026-11-06|5932123": "2026-11-06",
+      "https://www.formds.com/issuers/rmxd-avenue-south-investments-llc|2026-11-06|500000": "2026-11-06",
+      "https://www.formds.com/issuers/silver-pony-resources-corp|2026-11-06|198177": "2026-11-06",
+      "https://www.formds.com/issuers/sixten-group-llc|2026-11-06|873319": "2026-11-06",
+      "https://www.formds.com/issuers/star-castle-ventures-vc-bow-river|2026-11-06|643000": "2026-11-06",
+      "https://www.formds.com/issuers/straight-creek-media-llc|2026-11-06|175000": "2026-11-06",
+      "https://www.formds.com/issuers/sugar23-inc|2026-11-06|1000000": "2026-11-06",
+      "https://www.formds.com/issuers/vectormax-corp|2026-11-06|5500": "2026-11-06",
+      "https://www.formds.com/issuers/vidangel-entertainment-inc|2026-11-06|9800000": "2026-11-06",
+      "https://www.formds.com/issuers/vimy-pharmaceuticals-inc|2026-11-06|278174": "2026-11-06",
+      "https://www.formds.com/issuers/01a-bald-eagle-02-l-p|2026-11-06|72600000": "2026-11-06",
+      "https://www.formds.com/issuers/american-senior-housing-credit-fund-llc|2026-11-06|200000": "2026-11-06",
+      "https://www.formds.com/issuers/blue-heron-real-estate-opportunity-fund-v-lp|2026-11-06|63850000": "2026-11-06",
+      "https://www.formds.com/issuers/crayhill-stepstone-abf-opportunities-fund-lp-series-2|2026-11-06|57200000": "2026-11-06",
+      "https://www.formds.com/issuers/fund-v-a-series-of-browder-capital-early-stage-ventures-lp|2026-11-06|100000000": "2026-11-06",
+      "https://www.formds.com/issuers/k5-tech-fund-ii-lp-series-212|2026-11-06|55449981": "2026-11-06",
+      "https://www.formds.com/issuers/lp-ce-woodland-park-llc|2026-11-06|600000": "2026-11-06",
+      "https://www.formds.com/issuers/pd-transcend-credit-partners-llc|2026-11-06|2000000": "2026-11-06",
+      "https://www.formds.com/issuers/pd-transcend-credit-partners-llc|2026-11-06|3885000": "2026-11-06",
+      "https://www.formds.com/issuers/picture-capital-leaders-fund-i-l-p|2026-11-06|18000000": "2026-11-06",
+      "https://www.formds.com/issuers/private-market-securities-fund-ii-llc-series-h|2026-11-06|4787800": "2026-11-06",
+      "https://www.formds.com/issuers/sfa-credit-fund-2026-llc|2026-11-06|5100000": "2026-11-06",
+      "https://www.formds.com/issuers/shac-cw-dev-partners-llc|2026-11-06|23905000": "2026-11-06",
+      "https://www.formds.com/issuers/valutia-wellness-lp|2026-11-06|1897100": "2026-11-06"
+    },
+    "pending": {},
+    "next_page": 5
+  }
 }

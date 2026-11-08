@@ -97,6 +97,11 @@ The independently published [FormDs newest-filings page](https://www.formds.com/
 was accessible, including pagination and current November 6 disclosures.
 Its public crawl policy permits the list and issuer pages for this collector;
 the policy is checked again each run.
+The newest page was capped and only reached November 6 in the initial audit.
+The collector instead uses the publicly exposed advanced filter with
+`Last Week`, `New Filings` and `Show as a list`. These controls and the
+filtered list's next-page links were retrieved and verified directly; the
+default map's limited sample is not used as the funding database.
 
 A directly retrieved example is [Luminoah](https://www.formds.com/issuers/luminoah-inc):
 the tracker reports an initial filing on November 6, 2026, with exactly

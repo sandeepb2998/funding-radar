@@ -49,6 +49,8 @@ class SecParserTests(unittest.TestCase):
                         {"amend": "true"}, {"form": "D/A"}):
             with self.subTest(changes=changes):
                 self.assertIsNone(parse_filing(filing_xml(**changes), FILING, NOW, COUNTRIES))
+        named_fund = filing_xml().replace(b"Example Robotics Inc.", b"Example Credit Fund LLC")
+        self.assertIsNone(parse_filing(named_fund, FILING, NOW, COUNTRIES))
 
     def test_foreign_issuer_is_not_us_just_because_it_files_with_sec(self):
         row = parse_filing(filing_xml(state="A1", description="CANADA"), FILING, NOW, COUNTRIES)

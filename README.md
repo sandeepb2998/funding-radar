@@ -80,17 +80,23 @@ SEC-derived filing histories, exact reported sold amounts, first-sale dates,
 issuer locations and links to original SEC documents. Its crawl policy is
 checked each run. Collection reads at most eight list pages and 60 issuer
 profiles per run, with rate spacing, a four-minute budget, persistent pending
-work and cached completed profiles. Initial backfill is incomplete until
-later runs; the latest four pages are revisited while older pages advance.
+work and cached completed profiles. It uses the published **Last Week / New
+Filings / Show as a list** search controls, not the capped newest-filings
+sample or map view. Initial backfill can span later runs; the latest four
+pages are revisited while older pages advance. This remains bounded,
+third-party coverage, not an exhaustive SEC or market total.
 
-Both adapters exclude pooled investment funds, amendments, business
+Both adapters exclude pooled investment funds, issuers explicitly named
+`Fund`/`Funds`, amendments, business
 combinations and zero-sale notices. Amount means **cumulative amount sold**,
 not the offering target, a sum of incremental changes, or money necessarily
 raised this week. First-sale date and filing date remain separate. A Form D
 is issuer-reported disclosure, not SEC approval, proof of a completed VC
 round, or proof that the issuer is a startup. Filing dates have day precision.
 FormDs records are explicitly labeled third-party SEC-derived data, not
-independently retrieved SEC documents.
+independently retrieved SEC documents. The conservative fund-name rule can
+also exclude an operating business with that word in its name; no claim of
+complete startup classification is made.
 
 Offering records are deduplicated by accession across the two providers,
 preferring direct SEC data when available. They are **not** automatically

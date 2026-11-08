@@ -7,14 +7,23 @@ from html.parser import HTMLParser
 import re
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import parse_qs, urlencode, urlsplit
 from urllib.request import Request, urlopen
 from urllib.robotparser import RobotFileParser
 
-from sec import US_STATES
+from sec import US_STATES, is_fund_name
 
 BASE = "https://www.formds.com"
-LIST_URL = BASE + "/filings/newest"
+LIST_URL = BASE + "/filings/advanced_filter?" + urlencode({
+    "filters_params[date_select]": "Last Week",
+    "filters_params[size_select]": "",
+    "filters_params[industry_select]": "",
+    "filters_params[new_amended_select]": "New Filings",
+    "filters_params[equity_debt_select]": "",
+    "filters_params[state_select]": "",
+    "filters_params[miles_select]": "",
+    "filters_params[list_or_map_select]": "Show as a list",
+})
 MAX_BYTES = 4 * 1024 * 1024
 AGENT = "FundingRadar/1.2 (+https://github.com/sandeepb2998/funding-radar/issues)"
 
@@ -98,7 +107,7 @@ def cells(row):
 
 def parse_listing(body):
     root = Page(body).root
-    table = next(root.elements("table", "newest-filings-table"), None)
+    table = next(root.elements("table", "newest-filings-table"), None) or next(root.elements("table", "filing-cards-xs"), None)
     if table is None:
         raise ValueError("Missing newest-filings table; source layout or access changed")
     records, dates, invalid = [], [], 0
@@ -124,9 +133,13 @@ def parse_listing(body):
         link = next(columns[0].elements("a"), None)
         if link is None or not re.fullmatch(r"/issuers/[a-zA-Z0-9-]+", link.attrs.get("href", "")):
             raise ValueError("Missing issuer profile link")
+        industry = next(columns[0].elements("span", "hidden-xs"), None)
+        if is_fund_name(link.text()) or (industry and industry.text().strip("() ") == "Pooled Investment Fund"):
+            continue
         records.append({"url": BASE + link.attrs["href"], "company": link.text(),
                         "filed_on": filed, "amount": amount})
-    has_next = any(re.search(r"/filings/newest\?page=\d+", link.attrs.get("href", "")) and
+    has_next = any(urlsplit(link.attrs.get("href", "")).path in ("/filings/newest", "/filings/advanced_filter") and
+                   parse_qs(urlsplit(link.attrs.get("href", "")).query).get("page", [""])[0].isdigit() and
                    ("Next" in link.text() or "next" in link.attrs.get("rel", ""))
                    for link in root.elements("a"))
     return records, min(dates) if dates else None, has_next, invalid
@@ -140,7 +153,7 @@ def parse_profile(body, url, now):
         raise ValueError("Missing issuer header or filing history")
     name = next(header.elements("h1"), None)
     category = next(header.elements("p", "fp-kicker"), None)
-    if name is None or category is None:
+    if name is None or not name.text() or category is None:
         raise ValueError("Missing issuer identity or industry")
     if not category.text().startswith("Form D \u00b7 "):
         raise ValueError("Unrecognized issuer classification")
@@ -151,7 +164,7 @@ def parse_profile(body, url, now):
             label, value = next(group.elements("dt"), None), next(group.elements("dd"), None)
             if label is not None and value is not None:
                 facts[label.text()] = value.text()
-    if industry == "Pooled Investment Fund" or "pooled" in facts.get("Securities", "").lower() or facts.get("Business combination") == "Yes":
+    if is_fund_name(name.text()) or industry == "Pooled Investment Fund" or "pooled" in facts.get("Securities", "").lower() or facts.get("Business combination") == "Yes":
         return None
     history = [cells(row) for row in table.elements("tr")]
     history = [row for row in history if len(row) == 6 and row[1].text() in ("Initial", "Amendment")]
@@ -214,7 +227,7 @@ def parse_profile(body, url, now):
 def collect_formds(previous_records, previous_state, now, fetch=fetch_page, pages=8, limit=60):
     cutoff = (now - timedelta(days=180)).date().isoformat()
     week = (now - timedelta(days=6)).date().isoformat()
-    records = {r["id"]: dict(r) for r in previous_records if r["filing"]["filed_on"] >= cutoff}
+    records = {r["id"]: dict(r) for r in previous_records if r["filing"]["filed_on"] >= cutoff and not is_fund_name(r["company"])}
     processed = {k: v for k, v in previous_state.get("processed", {}).items() if v >= cutoff}
     pending = {key: value for key, value in previous_state.get("pending", {}).items() if value["filed_on"] >= cutoff}
     cursor = max(5, previous_state.get("next_page", 5))
@@ -257,7 +270,7 @@ def collect_formds(previous_records, previous_state, now, fetch=fetch_page, page
     page_numbers = list(range(1, min(pages, 4) + 1)) + list(range(cursor, cursor + max(0, pages - 4)))
     for page_number in page_numbers:
         try:
-            entries, oldest, more, invalid = parse_listing(request(LIST_URL + (f"?page={page_number}" if page_number > 1 else "")))
+            entries, oldest, more, invalid = parse_listing(request(LIST_URL + (f"&page={page_number}" if page_number > 1 else "")))
             source["items_read"] += len(entries)
             source["invalid"] += invalid
             if invalid:

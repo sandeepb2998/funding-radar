@@ -6,7 +6,8 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 from test_collector import NOW, SOURCE, record
-from formds import collect_formds, parse_listing, parse_profile
+from formds import LIST_URL, collect_formds, parse_listing, parse_profile
+from urllib.parse import parse_qs, urlsplit
 from build import public_data
 from collect import main
 
@@ -55,11 +56,38 @@ class FormDsTests(unittest.TestCase):
         self.assertEqual(rows, [])
         self.assertEqual(invalid, 1)
 
+    def test_weekly_query_uses_the_published_list_controls_and_preserves_pagination(self):
+        query = parse_qs(urlsplit(LIST_URL).query)
+        self.assertEqual(query["filters_params[date_select]"], ["Last Week"])
+        self.assertEqual(query["filters_params[new_amended_select]"], ["New Filings"])
+        self.assertEqual(query["filters_params[list_or_map_select]"], ["Show as a list"])
+        html = listing().replace(b"newest-filings-table", b"filing-cards-xs")
+        html += b'<a rel="next" href="/filings/advanced_filter?filters_params%5Bdate_select%5D=Last+Week&amp;page=2">2</a>'
+        self.assertTrue(parse_listing(html)[2])
+        html = html.replace(b'rel="next"', b'rel="prev"')
+        self.assertFalse(parse_listing(html)[2])
+
+    def test_industry_and_fund_names_are_filtered_before_profile_requests(self):
+        by_industry = listing().replace(b"</a>", b'</a><span class="hidden-xs">(Pooled Investment Fund)</span>')
+        self.assertEqual(parse_listing(by_industry)[0], [])
+        by_name = listing().replace(b"Example Robotics Inc.", b"Example Credit Fund LLC")
+        self.assertEqual(parse_listing(by_name)[0], [])
+
     def test_profiles_exclude_pooled_funds_business_combinations_and_amendments(self):
         for kwargs in ({"industry": "Pooled Investment Fund"}, {"combination": "Yes"},
                        {"form": "Amendment"}, {"amount": "$0"}):
             with self.subTest(kwargs=kwargs):
                 self.assertIsNone(parse_profile(profile(**kwargs), URL, NOW))
+        named_fund = profile().replace(b"Example Robotics Inc.", b"Example Credit Fund 2026 LLC")
+        self.assertIsNone(parse_profile(named_fund, URL, NOW))
+
+    def test_previously_collected_named_funds_are_removed(self):
+        row = parse_profile(profile(), URL, NOW)
+        row["company"] = "Example Credit Fund 2026 LLC"
+        def fetch(url):
+            return b"User-agent: *\nDisallow: /" if url.endswith("/robots.txt") else self.fail("No pages allowed")
+        rows, _, _ = collect_formds([row], {}, NOW, fetch=fetch)
+        self.assertEqual(rows, [])
 
     def test_date_precision_and_identity_are_validated(self):
         for body in (profile(first_sale="Nov 7, 2026"), profile(amount="$12M"),

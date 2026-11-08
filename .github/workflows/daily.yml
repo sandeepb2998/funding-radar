@@ -163,7 +163,7 @@ jobs:
                   if "contacts" in data or any("email" in row or "contacts" in row for row in data["records"]):
                       raise ValueError("Private contact fields must not appear in public data")
                   healthy = sum(source["status"] == "ok" for source in data["sources"])
-                  dated = sum(row.get("announcement", {}).get("status") in ("reviewed", "first_reported") for row in data["records"])
+                  dated = sum(row.get("announcement", {}).get("status") in ("reviewed", "first_reported", "filed_first_sale", "reported_first_sale") for row in data["records"])
                   located = sum(bool(row.get("location", {}).get("country")) for row in data["records"])
                   offerings = [row for row in data["records"] if row.get("kind") == "sec_form_d"]
                   for row in offerings:

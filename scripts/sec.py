@@ -15,6 +15,10 @@ MAX_BYTES = 8 * 1024 * 1024
 US_STATES = set("AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split())
 
 
+def is_fund_name(name):
+    return bool(re.search(r"\bfunds?\b", name, re.I))
+
+
 def fetch_sec(url):
     if not url.startswith(BASE):
         raise ValueError("SEC requests must use the official archive")
@@ -62,8 +66,11 @@ def parse_filing(body, filing, now, countries):
 
     if field("submissionType") != "D":
         return None
+    company = field("primaryIssuer/entityName")
+    if not company:
+        raise ValueError("Missing issuer name")
     industry = field("offeringData/industryGroup/industryGroupType")
-    if (industry == "Pooled Investment Fund"
+    if (is_fund_name(company) or industry == "Pooled Investment Fund"
             or field("offeringData/industryGroup/investmentFundInfo/investmentFundType")
             or field("offeringData/typesOfSecuritiesOffered/isPooledInvestmentFundType") == "true"
             or field("offeringData/typeOfFiling/newOrAmendment/isAmendment") == "true"
@@ -82,14 +89,14 @@ def parse_filing(body, filing, now, countries):
         raise ValueError("Positive amount sold without an actual first-sale date")
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", first_sale):
         raise ValueError("Invalid first-sale date")
-    if datetime.strptime(first_sale, "%Y-%m-%d").date() > datetime.strptime(filing["filed_on"], "%Y-%m-%d").date():
+    filed = datetime.strptime(filing["filed_on"], "%Y-%m-%d").date()
+    if filed > now.date():
+        raise ValueError("Filing date is in the future")
+    if datetime.strptime(first_sale, "%Y-%m-%d").date() > filed:
         raise ValueError("First sale is after filing date")
     cik = field("primaryIssuer/cik")
     if not cik.isdigit() or int(cik) != int(filing["cik"]):
         raise ValueError("Issuer CIK does not match the index")
-    company = field("primaryIssuer/entityName")
-    if not company:
-        raise ValueError("Missing issuer name")
     state = field("primaryIssuer/issuerAddress/stateOrCountry")
     description = field("primaryIssuer/issuerAddress/stateOrCountryDescription")
     country = "US" if state in US_STATES else next(
@@ -119,7 +126,7 @@ def parse_filing(body, filing, now, countries):
 
 def collect_sec(previous_records, previous_state, now, countries, fetch=fetch_sec, limit=80):
     cutoff = (now - timedelta(days=180)).date().isoformat()
-    records = {r["id"]: dict(r) for r in previous_records if r["filing"]["filed_on"] >= cutoff}
+    records = {r["id"]: dict(r) for r in previous_records if r["filing"]["filed_on"] >= cutoff and not is_fund_name(r["company"])}
     processed = {k: v for k, v in previous_state.get("processed", {}).items() if v >= cutoff}
     pending = {r["accession"]: r for r in previous_state.get("pending", []) if r["filed_on"] >= cutoff}
     recent_days = [(now - timedelta(days=n)).date() for n in range(1, 8)

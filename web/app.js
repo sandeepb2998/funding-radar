@@ -143,7 +143,7 @@ async function init() {
     banner.textContent = "The latest collection failed for every source. Previous records are preserved; check the Actions run before relying on freshness.";
   } else if (data.status === "partial" || stale) {
     banner.className = "notice warning";
-    banner.textContent = `${healthy}/${data.sources.length} feeds responded on the latest attempt.${stale ? " Data is over three hours old." : ""} Coverage is incomplete; see source health below.`;
+    banner.textContent = `${healthy}/${data.sources.length} sources were fully healthy on the latest attempt.${stale ? " Data is over three hours old." : ""} Coverage is incomplete; see source health below.`;
   } else {
     banner.textContent = "Hourly collection is healthy. Publisher and index delays still apply. These are headline-extracted signals, not a comprehensive or independently verified funding database.";
   }

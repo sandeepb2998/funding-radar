@@ -1,0 +1,98 @@
+name: Funding date and location evidence audit
+on:
+  push:
+    paths: [".github/workflows/evidence-audit.yml"]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trace original dates and company-location statements
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          import sys
+          from concurrent.futures import ThreadPoolExecutor
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.error import URLError
+          from urllib.parse import urlencode, urlsplit
+          from urllib.request import Request, urlopen
+          sys.path.insert(0, "scripts")
+          from collect import parse_feed
+
+          class Page(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.hidden = 0
+                  self.parts = []
+                  self.links = []
+                  self.meta = {}
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag in ("script", "style"):
+                      self.hidden += 1
+                  if tag == "a" and attrs.get("href", "").startswith("http"):
+                      self.links.append(attrs["href"])
+                  if tag == "meta":
+                      name = attrs.get("property", attrs.get("name", ""))
+                      if any(k in name.lower() for k in ("published", "modified", "date")):
+                          self.meta[name] = attrs.get("content", "")[:300]
+              def handle_endtag(self, tag):
+                  if tag in ("script", "style"):
+                      self.hidden = max(0, self.hidden - 1)
+              def handle_data(self, text):
+                  if not self.hidden:
+                      self.parts.append(text)
+
+          def fetch(url):
+              with urlopen(Request(url, headers={"User-Agent": "FundingRadar evidence research"}), timeout=25) as response:
+                  return response.geturl(), response.read(4 * 1024 * 1024).decode("utf-8", errors="replace")
+
+          def inspect(item):
+              name, url = item
+              try:
+                  final, body = fetch(url)
+                  page = Page()
+                  page.feed(body)
+                  text = " ".join(" ".join(page.parts).split())
+                  hosts = [u for u in dict.fromkeys(page.links) if not (urlsplit(u).hostname or "").endswith(("google.com", "gstatic.com", "googleusercontent.com"))]
+                  result = {"company": name, "url": url, "final_url": final, "meta": page.meta,
+                            "external_links": hosts[:15],
+                            "date_facts": re.findall(r".{0,35}(?:September\s+\d{1,2}|Sep\.\s+\d{1,2}|November\s+\d{1,2}|today announced|announced today|headquartered in|based in|based company).{0,55}", text, re.I)[:3]}
+                  return result
+              except (URLError, TimeoutError, ValueError) as error:
+                  return {"company": name, "url": url, "error": str(error)}
+
+          queries = [
+              '"Go.AI" ("85 million" OR "85M")',
+              '"Go AI" funding September',
+              '"Go.AI" headquarters',
+              '"Harbinger" "$240" funding',
+          ]
+          items = []
+          for query in queries:
+              url = "https://news.google.com/rss/search?" + urlencode({"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"})
+              try:
+                  _, body = fetch(url)
+                  entries = parse_feed(body.encode())
+                  print(json.dumps({"query": query, "entries": entries[:15]}, ensure_ascii=True))
+                  if "Go" in query:
+                      items.extend(("Go.AI search", e["url"]) for e in entries[:3])
+              except (URLError, TimeoutError, ValueError) as error:
+                  print(json.dumps({"query": query, "error": str(error)}))
+
+          records = json.loads(Path("data/funding.json").read_text())["records"]
+          for company in ("Go.AI", "Harbinger", "Nooks", "Ocient", "firmly", "Vensum Power", "Claimlane", "altM"):
+              record = next((r for r in records if r["company"] == company), None)
+              if record:
+                  preferred = sorted(record["sources"], key=lambda s: not any(p in s["name"].lower() for p in ("business wire", "pr newswire", "globenewswire", "techcrunch")))
+                  items.append((company, preferred[0]["url"]))
+          with ThreadPoolExecutor(max_workers=5) as pool:
+              for result in pool.map(inspect, items):
+                  print(json.dumps(result, ensure_ascii=True))
+          PY

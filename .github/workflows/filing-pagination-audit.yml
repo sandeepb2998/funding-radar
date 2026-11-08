@@ -1,0 +1,28 @@
+name: Verify public filing pagination coverage
+on:
+  push:
+    paths: [".github/workflows/filing-pagination-audit.yml"]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, "scripts")
+          from formds import fetch_page, Page, parse_listing
+          for url in ("https://www.formds.com/filings/advanced_filter", "https://www.formds.com/filings/newest?page=5"):
+              root = Page(fetch_page(url)).root
+              if "advanced_filter" in url:
+                  for form in root.elements("form"):
+                      print(json.dumps({"form": form.attrs, "controls": [{"tag": n.tag, "attributes": n.attrs, "choices": [o.text() for o in n.elements("option")]} for n in form.elements() if n.tag in ("input", "select", "button") and n.attrs.get("type") != "hidden"]}))
+              else:
+                  rows, oldest, more, invalid = parse_listing(fetch_page(url))
+                  print(json.dumps({"url": url, "qualifying_rows": len(rows), "oldest": oldest, "has_more": more,
+                                    "pagination": [a.attrs for a in root.elements("a") if "page=" in a.attrs.get("href", "")]}))
+          PY

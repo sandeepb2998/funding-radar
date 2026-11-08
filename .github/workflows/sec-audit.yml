@@ -99,6 +99,7 @@ jobs:
                       self.row.append(text)
           base = "https://www.formds.com/filings/newest"
           try:
+              print(json.dumps({"formds_robots": fetch("https://www.formds.com/robots.txt")[:4000]}))
               body = fetch(base)
               Path("audit").mkdir(exist_ok=True)
               Path("audit/formds-newest.html").write_text(body)

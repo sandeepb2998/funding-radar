@@ -1,0 +1,7 @@
+[
+  {"name": "FinSMEs", "url": "https://www.finsmes.com/feed"},
+  {"name": "TechCrunch Startups", "url": "https://techcrunch.com/category/startups/feed/"},
+  {"name": "EU-Startups", "url": "https://www.eu-startups.com/feed/"},
+  {"name": "Crunchbase News", "url": "https://news.crunchbase.com/feed/"},
+  {"name": "Tech.eu", "url": "https://tech.eu/feed/"}
+]

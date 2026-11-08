@@ -1,0 +1,164 @@
+export function filterRecords(records, filters, now = new Date()) {
+  const search = filters.search.trim().toLocaleLowerCase();
+  const cutoff = filters.days ? now.getTime() - filters.days * 86400000 : -Infinity;
+  return records.filter(record =>
+    (!search || `${record.company} ${record.headline}`.toLocaleLowerCase().includes(search)) &&
+    (!filters.stage || record.stage === filters.stage) &&
+    (!filters.source || record.sources.some(source => source.name === filters.source)) &&
+    Date.parse(record.published_at) >= cutoff
+  );
+}
+
+export function csvCell(value) {
+  let text = String(value ?? "");
+  if (/^[\s]*[=+\-@\t\r]/.test(text)) text = `'${text}`;
+  return `"${text.replaceAll('"', '""')}"`;
+}
+
+export function toCSV(records) {
+  const fields = ["Company", "Amount", "Currency", "Stage", "Published (UTC)", "First seen (UTC)", "Headline", "Sources", "Quality"];
+  return [fields, ...records.map(r => [r.company, r.amount, r.currency, r.stage, r.published_at, r.first_seen_at, r.headline, r.sources.map(s => s.url).join(" | "), r.quality])]
+    .map(row => row.map(csvCell).join(",")).join("\r\n");
+}
+
+export function safeURL(value) {
+  try {
+    const url = new URL(value);
+    return ["https:", "http:"].includes(url.protocol) && !url.username && !url.password ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
+function node(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
+
+function dateLabel(value) {
+  return new Intl.DateTimeFormat("en", {month: "short", day: "numeric", year: "numeric", timeZone: "UTC"}).format(new Date(value));
+}
+
+function compactAmount(record) {
+  const value = new Intl.NumberFormat("en", {notation: "compact", maximumFractionDigits: 2}).format(record.amount);
+  const symbol = {USD: "$", EUR: "\u20ac", GBP: "\u00a3", INR: "\u20b9", CAD: "CA$", AUD: "A$", SGD: "S$", "$": "$"}[record.currency] || `${record.currency} `;
+  return `${symbol}${value}`;
+}
+
+function renderCard(record, today) {
+  const card = node("article", "funding-card");
+  card.append(node("div", "company-icon", record.company.slice(0, 2)));
+  const body = node("div", "card-body");
+  const title = node("div", "company-title");
+  title.append(node("h3", "", record.company), node("span", "badge", record.stage));
+  if (record.first_seen_at.slice(0, 10) === today) title.append(node("span", "badge new-badge", "NEW TODAY"));
+  body.append(title, node("p", "headline", record.headline));
+  const links = node("div", "source-links");
+  for (const source of record.sources) {
+    const href = safeURL(source.url);
+    if (!href) continue;
+    const link = node("a", "", `${source.name} \u2197`);
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", `Read funding report about ${record.company} at ${source.name}`);
+    links.append(link);
+  }
+  body.append(links);
+  const amount = node("div", "card-amount", compactAmount(record));
+  amount.append(node("div", "card-currency", record.currency === "$" ? "Dollar currency unspecified" : record.currency));
+  amount.append(node("div", "card-date", dateLabel(record.published_at)));
+  amount.append(node("div", "card-quality", "Headline signal \u00b7 verify source"));
+  card.append(body, amount);
+  return card;
+}
+
+async function init() {
+  const get = id => document.getElementById(id);
+  const banner = get("status-banner");
+  let data;
+  try {
+    const response = await fetch("./data.json", {cache: "no-store"});
+    if (!response.ok) throw new Error(`Data request failed (HTTP ${response.status})`);
+    data = await response.json();
+    if (data.schema_version !== 1 || !Array.isArray(data.records) || !Array.isArray(data.sources)) {
+      throw new Error("Unsupported funding data format");
+    }
+  } catch (error) {
+    banner.className = "notice error";
+    banner.textContent = `Unable to load funding data: ${error.message}. Reload after checking the deployment.`;
+    get("results-count").textContent = "Feed unavailable";
+    return;
+  }
+  const now = new Date();
+  const today = now.toISOString().slice(0, 10);
+  const records = data.records.toSorted((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at));
+  get("total-count").textContent = records.length;
+  get("new-count").textContent = records.filter(r => r.first_seen_at.slice(0, 10) === today).length;
+  const healthy = data.sources.filter(s => s.status === "ok").length;
+  get("source-count").textContent = `${healthy}/${data.sources.length}`;
+  if (data.last_success_at) get("last-check").textContent = dateLabel(data.last_success_at);
+  const stale = data.last_success_at && now.getTime() - Date.parse(data.last_success_at) > 36 * 3600000;
+  if (data.status === "not_started") {
+    banner.className = "notice warning";
+    banner.textContent = "Awaiting the first collection. No sample companies or invented funding rounds are shown.";
+  } else if (data.status === "error") {
+    banner.className = "notice error";
+    banner.textContent = "The latest collection failed for every source. Previous records are preserved; check the Actions run before relying on freshness.";
+  } else if (data.status === "partial" || stale) {
+    banner.className = "notice warning";
+    banner.textContent = `${healthy}/${data.sources.length} sources responded on the latest attempt.${stale ? " Data is over 36 hours old." : ""} Coverage is incomplete; see source health below.`;
+  } else {
+    banner.textContent = "Daily collection is healthy. These are headline-extracted signals, not a comprehensive or independently verified funding database.";
+  }
+  if (data.last_attempt_at) get("freshness").textContent = `Last attempt: ${new Date(data.last_attempt_at).toLocaleTimeString("en", {timeZone: "UTC", hour: "2-digit", minute: "2-digit", hour12: false})} UTC`;
+  for (const [id, values] of [
+    ["stage", [...new Set(records.map(r => r.stage))].sort()],
+    ["source", [...new Set(records.flatMap(r => r.sources.map(s => s.name)))].sort()]
+  ]) {
+    for (const value of values) {
+      const option = node("option", "", value);
+      option.value = value;
+      get(id).append(option);
+    }
+  }
+  const health = get("source-health");
+  health.replaceChildren();
+  if (!data.sources.length) health.textContent = "No collection has run yet.";
+  for (const source of data.sources) {
+    const row = node("div", "source-health-row");
+    row.append(node("span", "", source.name), node("span", "", source.status === "ok" ? `${source.items_read} entries / ${source.accepted} signals / ${source.invalid} invalid` : "Unavailable - see private Actions logs"));
+    health.append(row);
+  }
+  let visible = [];
+  let limit = 50;
+  function render() {
+    visible = filterRecords(records, {search: get("search").value, stage: get("stage").value, source: get("source").value, days: Number(get("window").value)}, now);
+    get("feed").replaceChildren(...visible.slice(0, limit).map(r => renderCard(r, today)));
+    get("results-count").textContent = `${visible.length} ${visible.length === 1 ? "signal" : "signals"}${visible.length > limit ? ` \u00b7 showing ${limit}` : ""}`;
+    get("empty").hidden = visible.length > 0;
+    if (!records.length) {
+      get("empty-title").textContent = data.status === "not_started" ? "Your radar is ready. Awaiting data." : "No qualifying funding headlines collected";
+      get("empty-text").textContent = data.status === "not_started" ? "Run the daily workflow after deploying this app to its own repository." : "This is not proof that no companies raised funding. Check source health and feed coverage.";
+    }
+    get("load-more").hidden = visible.length <= limit;
+    get("export").disabled = visible.length === 0;
+  }
+  for (const id of ["search", "stage", "source", "window"]) {
+    get(id).addEventListener(id === "search" ? "input" : "change", () => {limit = 50; render();});
+  }
+  get("load-more").addEventListener("click", () => {limit += 50; render();});
+  get("export").addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob(["\ufeff", toCSV(visible)], {type: "text/csv;charset=utf-8"}));
+    const anchor = node("a");
+    anchor.href = url;
+    anchor.download = `funding-radar-${today}.csv`;
+    anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  render();
+}
+
+if (typeof document !== "undefined") init();

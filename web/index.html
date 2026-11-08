@@ -46,10 +46,10 @@
         <label><span class="sr-only">Company country</span><select id="country"><option value="">All countries</option></select></label>
         <label><span class="sr-only">Funding stage</span><select id="stage"><option value="">All stages</option></select></label>
         <label><span class="sr-only">News source</span><select id="source"><option value="">All sources</option></select></label>
-        <label><span class="sr-only">Date basis</span><select id="date-basis"><option value="timeline">Funding timeline</option><option value="reviewed">Reviewed dates only</option><option value="coverage">Article coverage</option></select></label>
+        <label><span class="sr-only">Date basis</span><select id="date-basis"><option value="reviewed">Reviewed dates only</option><option value="timeline">Funding timeline (estimates too)</option><option value="coverage">Article coverage</option></select></label>
         <label><span class="sr-only">Date window (UTC calendar days)</span><select id="window"><option value="1">Today (UTC)</option><option value="7">Past 7 days</option><option value="30" selected>Past 30 days</option><option value="0">All collected</option></select></label>
       </div>
-      <p class="filter-help">Funding timeline uses reviewed announcements or clearly labeled earliest reports found, not verified closing dates. Region means source-reported company location, not publisher location or currency.</p>
+      <p class="filter-help">Reviewed dates only is the default: an unverified report is not presented as newly raised funding. Funding timeline also includes earliest reports found, not verified closing dates. Region means source-reported company location, not publisher location or currency.</p>
       <p id="date-coverage" class="filter-help" role="status"></p>
       <div class="feed-meta"><span id="results-count" aria-live="polite">Loading...</span><span id="sort-label">ANNOUNCEMENT / FIRST REPORT DATE</span></div>
       <div id="feed" class="feed" aria-live="polite"></div>

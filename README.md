@@ -63,11 +63,12 @@ This is a research starting point, not a verified worldwide company database.
 
 ## Dates and geographic filters
 
-The default **Funding timeline** filters and sorts by a reviewed announcement
-date or an explicitly labeled **First reported** date, never by an undated
-record's current article timestamp. **Reviewed dates only** excludes automatic
-historical matches; **Article coverage** includes unverified/disputed dates and
-uses article publication instead. Windows use UTC calendar days. All modes
+The default **Reviewed dates only** filters and sorts by checked announcement
+dates and excludes automatic historical matches. **Funding timeline** also
+includes explicitly labeled **First reported** estimates, never silently
+substituting an undated record's current article timestamp. **Article coverage**
+includes unverified/disputed dates and uses article publication instead.
+Windows use UTC calendar days. All modes
 retain the original article and discovery timestamps in CSV exports.
 
 Each successful hourly collection checks up to 12 unreviewed signals against
@@ -77,7 +78,7 @@ searches may find reports older than the 180-day archive. A first-report date
 is the earliest matching indexed result **found**, not proof of the original
 announcement or closing date. Search caps, missing sources, company aliases
 and repeated similar rounds limit this heuristic. Undated signals are excluded
-from the default timeline, but remain accessible in Article coverage.
+from both dated views, but remain accessible in Article coverage.
 Unchecked signals are prioritized, successful checks are cached for seven
 days, and failures are explicit and retryable after one hour. First-run
 historical backfill can therefore take several hourly runs.

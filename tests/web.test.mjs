@@ -47,6 +47,7 @@ test("reviewed-only mode excludes automatic earliest-report estimates", () => {
   ];
   assert.deepEqual(filterRecords(rows, {...filters, dateBasis: "timeline"}, now), [rows[1], rows[0]]);
   assert.deepEqual(filterRecords(rows, {...filters, dateBasis: "reviewed"}, now), [rows[1]]);
+  assert.deepEqual(filterRecords(rows, {...filters, dateBasis: undefined}, now), [rows[1]]);
 });
 test("regions and countries compose without guessing from currency", () => {
   const rows = [{...records[0], location: {region: "North America", country: "United States"}}, records[1]];

@@ -1,4 +1,4 @@
-export function recordDate(record, basis = "timeline") {
+export function recordDate(record, basis = "reviewed") {
   if (basis === "coverage") return Date.parse(record.published_at);
   const info = record.announcement || {};
   const allowed = basis === "reviewed" ? ["reviewed"] : ["reviewed", "first_reported"];
@@ -88,7 +88,7 @@ function renderCard(record, today) {
   body.append(links);
   const amount = node("div", "card-amount", compactAmount(record));
   amount.append(node("div", "card-currency", record.currency === "$" ? "Dollar currency unspecified" : record.currency));
-  const date = Number.isFinite(recordDate(record))
+  const date = Number.isFinite(recordDate(record, "timeline"))
     ? `${info.status === "reviewed" ? "Announced" : "First reported"} ${dateLabel(`${info.date}T00:00:00Z`)}`
     : `Funding date ${info.status === "disputed" ? "disputed" : "unverified"}`;
   const dateNode = node("div", "card-date round-date", date);
@@ -126,7 +126,7 @@ async function init() {
   const firstReported = records.filter(r => r.announcement?.status === "first_reported").length;
   get("dated-count").textContent = reviewed + firstReported;
   const failedChecks = records.filter(r => r.announcement?.check_status === "error").length;
-  get("date-coverage").textContent = `${reviewed} reviewed announcement dates; ${firstReported} earliest matching reports found; ${records.length - reviewed - firstReported} undated or disputed. Funding timeline never falls back to the current article date. Undated signals remain in Article coverage.${failedChecks ? ` Historical lookup failed for ${failedChecks} signals; prior evidence is retained where available.` : ""}`;
+  get("date-coverage").textContent = `${reviewed} reviewed announcement dates; ${firstReported} earliest matching reports found; ${records.length - reviewed - firstReported} undated or disputed. The default excludes unreviewed dates. Funding timeline adds historical estimates; Article coverage includes undated signals.${failedChecks ? ` Historical lookup failed for ${failedChecks} signals; prior evidence is retained where available.` : ""}`;
   const healthy = data.sources.filter(s => s.status === "ok").length;
   get("source-count").textContent = `${healthy}/${data.sources.length}`;
   if (data.last_success_at) get("last-check").textContent = dateLabel(data.last_success_at);

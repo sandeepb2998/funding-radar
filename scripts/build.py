@@ -18,6 +18,11 @@ def public_data(data):
     for record in data["records"]:
         safe = {k: record[k] for k in RECORD_FIELDS}
         safe["sources"] = [{"name": s["name"], "url": s["url"]} for s in record["sources"]]
+        for field, allowed in (
+            ("announcement", ("date", "status", "source_url", "note", "checked_at", "check_status")),
+            ("location", ("country", "country_code", "region", "status", "source_url", "note")),
+        ):
+            safe[field] = {k: record[field][k] for k in allowed if k in record.get(field, {})}
         result["records"].append(safe)
     return result
 

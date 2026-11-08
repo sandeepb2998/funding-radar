@@ -1,7 +1,7 @@
 # Funding Radar
 
 A startup funding-news dashboard refreshed hourly: searchable signals, source
-links, stage/source/date filters, CSV export and transparent source health.
+links, region/country/stage/source/date filters, CSV export and transparent source health.
 Python standard library + vanilla HTML/CSS/JavaScript; no browser API keys,
 database or paid AI model required.
 
@@ -41,8 +41,8 @@ This is a research starting point, not a verified worldwide company database.
   than being mislabeled as dollars. Bare `$` remains **dollar currency
   unspecified**, not automatically USD.
   Different currencies are never added together.
-- Publication date is not necessarily the deal closing date. First discovery
-  date is separate; an older article can be newly discovered today.
+- Article publication, first discovery, reviewed announcement date and earliest
+  matching report are distinct. A later repost is not a new funding round.
 - News-index records retain the named publisher and are explicitly labeled
   "via Google News". Those URLs open Google's article redirects; they are not
   misrepresented as direct publisher URLs. Government-domain results, grants,
@@ -60,6 +60,43 @@ This is a research starting point, not a verified worldwide company database.
 - Websites, founder identities, geography, investors and emails are not guessed.
 - Partial feed failures publish a warning. If all feeds fail, old records are
   preserved, the site shows an error and the workflow fails visibly.
+
+## Dates and geographic filters
+
+The default **Funding timeline** filters and sorts by a reviewed announcement
+date or an explicitly labeled **First reported** date, never by an undated
+record's current article timestamp. **Reviewed dates only** excludes automatic
+historical matches; **Article coverage** includes unverified/disputed dates and
+uses article publication instead. Windows use UTC calendar days. All modes
+retain the original article and discovery timestamps in CSV exports.
+
+Each successful hourly collection checks up to 12 unreviewed signals against
+historical Google News searches, without the discovery feed's seven-day limit.
+Exact normalized company, amount, currency and stage must match. These
+searches may find reports older than the 180-day archive. A first-report date
+is the earliest matching indexed result **found**, not proof of the original
+announcement or closing date. Search caps, missing sources, company aliases
+and repeated similar rounds limit this heuristic. Undated signals are excluded
+from the default timeline, but remain accessible in Article coverage.
+Unchecked signals are prioritized, successful checks are cached for seven
+days, and failures are explicit and retryable after one hour. First-run
+historical backfill can therefore take several hourly runs.
+
+`config/reviews.json` contains manually checked announcement/location facts,
+bound to a source URL's stable SHA-256 ID plus exact round fields. Each fact
+requires evidence. Reviews override historical estimates and are reapplied
+after archive revalidation; malformed or contradictory reviews fail visibly.
+This is not automatic verification of the funding transaction. Go.AI's $85M
+Series A is dated **September 22, 2026**, not its November 7 syndicated article.
+
+Region and country refer to **company location**, not investor location,
+publisher origin, currency or search locale. Only explicit company-location
+headline prefixes or reviewed source evidence populate them. Reported
+locations are not necessarily verified headquarters. Geography is partial;
+unrecognized, absent or conflicting locations remain **Unknown**, which is
+itself filterable. Current region buckets are North America, Latin America &
+Caribbean, Europe, Middle East & Africa, and Asia-Pacific. Date and location
+evidence links are displayed and exported; contacts remain excluded.
 
 ## Founder emails
 

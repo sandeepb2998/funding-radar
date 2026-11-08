@@ -1,0 +1,30 @@
+[
+  {
+    "source_id": "4028859b80a8956a388c",
+    "company": "Go.AI",
+    "amount": 85000000,
+    "currency": "$",
+    "stage": "Series A",
+    "date": "2026-09-22",
+    "status": "reviewed",
+    "evidence_url": "https://finovate.com/go-ai-secures-85-million-in-series-a-funding/",
+    "note": "The September 22 funding report links the original Business Wire announcement. November 7 is later coverage, not a new Series A.",
+    "country_code": "US",
+    "location_evidence_url": "https://finovate.com/go-ai-secures-85-million-in-series-a-funding/",
+    "location_note": "The report explicitly identifies headquarters in Chicago, Illinois."
+  },
+  {
+    "source_id": "af03e88c19417d5523ba",
+    "company": "Harbinger",
+    "amount": 240000000,
+    "currency": "$",
+    "stage": "Series D",
+    "date": "2026-11-05",
+    "status": "reviewed",
+    "evidence_url": "https://www.prnewswire.com/news-releases/harbinger-raises-240-million-series-d-funding-round-led-by-tiger-global-302930560.html",
+    "note": "The November 5 issuer press release explicitly announces the $240 million Series D that day.",
+    "country_code": "US",
+    "location_evidence_url": "https://techcrunch.com/2026/11/05/harbinger-raises-240m-after-expanding-into-defense/",
+    "location_note": "TechCrunch identifies the company as Los Angeles-based; this is a reported company location, not a separately audited headquarters."
+  }
+]

@@ -20,7 +20,7 @@
       <div>
         <p class="eyebrow"><span class="live-dot"></span> THE HOURLY FUNDING BRIEF</p>
         <h1>Follow the<br><span>next wave.</span></h1>
-        <p class="intro">Discover companies announcing fresh capital.<br>News coverage and press releases, checked every hour.</p>
+        <p class="intro">Track funding, not just fresh headlines.<br>Announcement dates, earlier reports and source evidence.</p>
       </div>
       <div class="radar-art" aria-hidden="true">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
@@ -29,24 +29,29 @@
       </div>
     </section>
     <section class="stats" aria-label="Funding feed summary">
-      <div><p>Funding signals</p><strong id="total-count">--</strong><small>in the 180-day archive</small></div>
-      <div><p>Discovered today</p><strong id="new-count">--</strong><small>first seen, UTC</small></div>
+      <div><p>News signals</p><strong id="total-count">--</strong><small>in the 180-day archive</small></div>
+      <div><p>Dated signals</p><strong id="dated-count">--</strong><small>reviewed dates + earliest reports found</small></div>
       <div><p>Healthy feeds</p><strong id="source-count">--</strong><small>publisher feeds + news searches</small></div>
       <div><p>Last successful check</p><strong id="last-check" class="date-stat">Not yet</strong><small id="freshness">Hourly, at :17 UTC</small></div>
     </section>
     <div id="status-banner" class="notice" role="status">Loading the latest funding feed...</div>
     <section class="feed-section" aria-labelledby="feed-title">
       <div class="section-heading">
-        <div><p class="eyebrow">YOUR DISCOVERY FEED</p><h2 id="feed-title">Fresh capital. New possibilities.</h2></div>
+        <div><p class="eyebrow">YOUR DISCOVERY FEED</p><h2 id="feed-title">Funding, with context.</h2></div>
         <button id="export" class="export" type="button" disabled>Export CSV <span aria-hidden="true">&darr;</span></button>
       </div>
       <div class="filters">
         <label class="search-label"><span class="sr-only">Search companies and headlines</span><input id="search" type="search" placeholder="Search companies or headlines..." autocomplete="off"></label>
+        <label><span class="sr-only">Company region</span><select id="region"><option value="">All regions</option></select></label>
+        <label><span class="sr-only">Company country</span><select id="country"><option value="">All countries</option></select></label>
         <label><span class="sr-only">Funding stage</span><select id="stage"><option value="">All stages</option></select></label>
         <label><span class="sr-only">News source</span><select id="source"><option value="">All sources</option></select></label>
-        <label><span class="sr-only">Publication window</span><select id="window"><option value="1">Past 24 hours</option><option value="7">Past 7 days</option><option value="30" selected>Past 30 days</option><option value="0">All collected</option></select></label>
+        <label><span class="sr-only">Date basis</span><select id="date-basis"><option value="timeline">Funding timeline</option><option value="reviewed">Reviewed dates only</option><option value="coverage">Article coverage</option></select></label>
+        <label><span class="sr-only">Date window (UTC calendar days)</span><select id="window"><option value="1">Today (UTC)</option><option value="7">Past 7 days</option><option value="30" selected>Past 30 days</option><option value="0">All collected</option></select></label>
       </div>
-      <div class="feed-meta"><span id="results-count" aria-live="polite">Loading...</span><span>NEWEST ANNOUNCEMENTS FIRST</span></div>
+      <p class="filter-help">Funding timeline uses reviewed announcements or clearly labeled earliest reports found, not verified closing dates. Region means source-reported company location, not publisher location or currency.</p>
+      <p id="date-coverage" class="filter-help" role="status"></p>
+      <div class="feed-meta"><span id="results-count" aria-live="polite">Loading...</span><span id="sort-label">ANNOUNCEMENT / FIRST REPORT DATE</span></div>
       <div id="feed" class="feed" aria-live="polite"></div>
       <div id="empty" class="empty" hidden><span class="empty-icon" aria-hidden="true">+</span><h3 id="empty-title">No matching signals</h3><p id="empty-text">Try a wider date range or clear your filters.</p></div>
       <button id="load-more" class="load-more" type="button" hidden>Show more signals</button>
@@ -55,7 +60,7 @@
       <div><p class="eyebrow">BUILT FOR CLARITY</p><h2>Signals, not<br>unverifiable promises.</h2><p>Funding announcements are a starting point for research, not a complete company database.</p></div>
       <div class="method-cards">
         <article><span>01 / DISCOVER</span><h3>Broad coverage, checked hourly</h3><p>Publisher feeds and Google News searches discover startup funding, seed, Series A/B, growth rounds, India coverage and press releases. News-search links are labeled by publisher. Indexing and publication delays mean this is not an instant or complete feed.</p></article>
-        <article><span>02 / QUALIFY</span><h3>Facts stay attached to evidence</h3><p>Company, amount and stage are extracted conservatively from headlines, not independently verified. Publication is not necessarily the deal closing date. Bare dollar signs retain an unspecified currency. Duplicate reports are merged only when strong fields match.</p></article>
+        <article><span>02 / QUALIFY</span><h3>Reposts are not new rounds</h3><p>Reviewed announcement dates and earliest matching indexed reports are separate from article publication and discovery. Historical searches are bounded and may miss earlier reports; choose Reviewed dates only for checked announcements. Company location needs explicit headline or reviewed evidence; unknowns stay Unknown. Amount and stage are headline-extracted, not independently verified.</p></article>
         <article><span>03 / CONNECT</span><h3>Contacts stay private</h3><p>This public site never displays founder email addresses. Optional Hunter enrichment requires a secret API key and reviewed company domains; results are private workflow artifacts, not automatic outreach.</p></article>
       </div>
     </section>

@@ -46,6 +46,39 @@ EXCLUDED = re.compile(
     r"dividends?|preferred\s+shares|share\s+repurchase|combined|"
     r"lawsuit|donations?|grants?|crowdfunding|roundup|round-up)\b", re.I
 )
+COUNTRIES = {
+    "US": ("United States", "North America"), "CA": ("Canada", "North America"),
+    "MX": ("Mexico", "Latin America & Caribbean"), "BR": ("Brazil", "Latin America & Caribbean"),
+    "GB": ("United Kingdom", "Europe"), "DE": ("Germany", "Europe"),
+    "FR": ("France", "Europe"), "FI": ("Finland", "Europe"),
+    "SE": ("Sweden", "Europe"), "NO": ("Norway", "Europe"),
+    "DK": ("Denmark", "Europe"), "NL": ("Netherlands", "Europe"),
+    "IE": ("Ireland", "Europe"), "ES": ("Spain", "Europe"),
+    "IT": ("Italy", "Europe"), "CH": ("Switzerland", "Europe"),
+    "AT": ("Austria", "Europe"), "BE": ("Belgium", "Europe"),
+    "PL": ("Poland", "Europe"), "EE": ("Estonia", "Europe"),
+    "PT": ("Portugal", "Europe"), "GR": ("Greece", "Europe"),
+    "IL": ("Israel", "Middle East & Africa"), "AE": ("United Arab Emirates", "Middle East & Africa"),
+    "SA": ("Saudi Arabia", "Middle East & Africa"), "ZA": ("South Africa", "Middle East & Africa"),
+    "KE": ("Kenya", "Middle East & Africa"), "NG": ("Nigeria", "Middle East & Africa"),
+    "EG": ("Egypt", "Middle East & Africa"), "IN": ("India", "Asia-Pacific"),
+    "CN": ("China", "Asia-Pacific"), "JP": ("Japan", "Asia-Pacific"),
+    "SG": ("Singapore", "Asia-Pacific"), "AU": ("Australia", "Asia-Pacific"),
+    "NZ": ("New Zealand", "Asia-Pacific"), "KR": ("South Korea", "Asia-Pacific"),
+}
+LOCATION_PREFIXES = {
+    "US": r"US|U\.S\.|American|United States|San Francisco|Los Angeles|Chicago|New York",
+    "CA": r"Canada|Canadian|Toronto|Vancouver",
+    "GB": r"UK|U\.K\.|United Kingdom|British|London|Oxford",
+    "DE": r"Germany|German|Berlin|Munich", "FR": r"France|French|Paris",
+    "FI": r"Finland|Finnish|Helsinki", "SE": r"Sweden|Swedish|Stockholm",
+    "NO": r"Norway|Norwegian|Oslo", "DK": r"Denmark|Danish|Copenhagen",
+    "NL": r"Netherlands|Dutch|Amsterdam", "IE": r"Ireland|Irish|Dublin",
+    "IL": r"Israel|Israeli|Tel Aviv", "IN": r"India|Indian|Bengaluru|Bangalore|Mumbai",
+    "CN": r"China|Chinese|Beijing|Shanghai", "JP": r"Japan|Japanese|Tokyo",
+    "SG": r"Singapore|Singaporean", "AU": r"Australia|Australian|Sydney",
+    "BR": r"Brazil|Brazilian", "MX": r"Mexico|Mexican",
+}
 
 
 class TextOnly(HTMLParser):
@@ -64,7 +97,24 @@ def plain(text):
 
 
 def key(text):
-    return "".join(c for c in unicodedata.normalize("NFKC", text).casefold() if c.isalnum())
+    return "".join(c for c in unicodedata.normalize("NFKC", text.replace("\u2122", "").replace("\u00ae", "")).casefold() if c.isalnum())
+
+
+def location_fact(code=None, source_url=None, status="unknown", note=""):
+    country, region = COUNTRIES[code] if code else (None, None)
+    return {"country": country, "country_code": code, "region": region,
+            "status": status, "source_url": source_url, "note": note}
+
+
+def headline_location(title, source_url):
+    for code, names in LOCATION_PREFIXES.items():
+        match = re.match(
+            rf"^(?:{names})(?:['\u2019]s\s+|[- ]based\s+|\s+(?:[\w-]+\s+){{0,3}}(?:startup|start-up|company|firm)\s+)",
+            title, re.I,
+        )
+        if match:
+            return location_fact(code, source_url, "reported", "Company location stated in headline; not verified headquarters.")
+    return location_fact()
 
 
 def timestamp(value):
@@ -230,6 +280,8 @@ def extract(entry, source, now):
         "headline": title,
         "sources": [{"name": f"{publisher} via Google News" if publisher and source.get("kind") == "news_search" else source["name"], "url": url}],
         "quality": "Headline-extracted; verify source",
+        "announcement": {"date": None, "status": "unverified"},
+        "location": headline_location(title, url),
     }
 
 
@@ -254,14 +306,31 @@ def merge_records(existing, incoming, now):
             records.append(dict(candidate, sources=[dict(s) for s in candidate["sources"]]))
             continue
         if any(s["url"] == t["url"] for s in previous["sources"] for t in candidate["sources"]):
+            old_identity = tuple(previous[k] for k in ("company", "amount", "currency", "stage"))
             for field in ("company", "amount", "currency", "stage", "headline", "published_at"):
                 if field == "stage" and candidate["stage"] == "Undisclosed" and previous["stage"] != "Undisclosed":
                     continue
                 previous[field] = candidate[field]
-        elif previous["stage"] == "Undisclosed":
+            if old_identity != tuple(previous[k] for k in ("company", "amount", "currency", "stage")):
+                previous["announcement"] = {"date": None, "status": "unverified"}
+            if key(old_identity[0]) != key(previous["company"]):
+                previous["location"] = candidate.get("location", location_fact())
+        elif previous["stage"] == "Undisclosed" and candidate["stage"] != "Undisclosed":
             previous["stage"] = candidate["stage"]
+            previous["announcement"] = {"date": None, "status": "unverified"}
         previous["first_seen_at"] = min(previous["first_seen_at"], candidate["first_seen_at"])
         previous["last_seen_at"] = max(previous["last_seen_at"], candidate["last_seen_at"])
+        old_location = previous.get("location", location_fact())
+        new_location = candidate.get("location", location_fact())
+        if old_location["status"] != "conflicting":
+            if old_location.get("country_code") and new_location.get("country_code") and old_location["country_code"] != new_location["country_code"]:
+                previous["location"] = location_fact(status="conflicting", note="Sources report different company locations; review required.")
+            elif not old_location.get("country_code") and new_location.get("country_code"):
+                previous["location"] = new_location
+        old_date = previous.get("announcement", {})
+        new_date = candidate.get("announcement", {})
+        if new_date.get("status") == "first_reported" and (not old_date.get("date") or new_date["date"] < old_date["date"]):
+            previous["announcement"] = new_date
         for source in candidate["sources"]:
             existing_source = next((s for s in previous["sources"] if s["url"] == source["url"]), None)
             if existing_source:
@@ -287,6 +356,16 @@ def reparse_records(records, now):
             updated["stage"] = record["stage"]
         for field in ("id", "first_seen_at", "last_seen_at", "sources"):
             updated[field] = record[field]
+        unchanged = key(updated["company"]) == key(record["company"]) and all(
+            updated[k] == record[k] for k in ("amount", "currency", "stage"))
+        if unchanged and record.get("announcement", {}).get("status") in ("first_reported", "unverified"):
+            updated["announcement"] = record.get("announcement", updated["announcement"])
+        old_location = record.get("location", {})
+        if old_location.get("status") == "conflicting" or (
+            key(updated["company"]) == key(record["company"]) and
+            not updated["location"]["country_code"] and old_location.get("status") == "reported"
+        ):
+            updated["location"] = old_location
         reparsed.append(updated)
     if rejected:
         print(f"Archive revalidation: {rejected} expired or nonqualifying headlines removed.", file=sys.stderr)
@@ -341,14 +420,103 @@ def collect(previous, feeds, now, fetch=fetch_feed):
     return state
 
 
+def apply_reviews(records, reviews, now):
+    """Bind reviewed facts to an existing source, not a company-name guess."""
+    seen = set()
+    for review in reviews:
+        source_id = review["source_id"]
+        if source_id in seen:
+            raise ValueError(f"Duplicate reviewed source: {source_id}")
+        seen.add(source_id)
+        date = review.get("date")
+        status = review.get("status", "reviewed")
+        if status not in ("reviewed", "disputed"):
+            raise ValueError("Review status must be reviewed or disputed")
+        if status == "reviewed":
+            if not isinstance(date, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+                raise ValueError("Reviewed announcement needs an explicit ISO date")
+            if datetime.strptime(date, "%Y-%m-%d").date() > now.date():
+                raise ValueError("Reviewed announcement date is in the future")
+        elif date is not None:
+            raise ValueError("Disputed announcements must not expose an asserted date")
+        evidence = canonical_url(review["evidence_url"])
+        country = review.get("country_code")
+        if country is not None and country not in COUNTRIES:
+            raise ValueError("Unknown reviewed country code")
+        location_url = canonical_url(review["location_evidence_url"]) if country else None
+        for record in records:
+            source_ids = {hashlib.sha256(canonical_url(s["url"]).encode()).hexdigest()[:20] for s in record["sources"]}
+            if source_id not in source_ids:
+                continue
+            if key(record["company"]) != key(review["company"]) or any(record[k] != review[k] for k in ("amount", "currency", "stage")):
+                raise ValueError(f"Reviewed round no longer matches source {source_id}; review the extraction")
+            record["announcement"] = {"date": date, "status": status, "source_url": evidence,
+                                      "note": review["note"]}
+            if country:
+                record["location"] = location_fact(country, location_url, "reviewed", review["location_note"])
+
+
+def resolve_history(records, now, fetch=fetch_feed, limit=12):
+    """Find earlier matching reports without calling their dates verified funding dates."""
+    pending = []
+    for record in records:
+        info = record.get("announcement", {})
+        if info.get("status") in ("reviewed", "disputed"):
+            continue
+        checked = timestamp(info["checked_at"]) if info.get("checked_at") else None
+        retry = timedelta(hours=1) if info.get("check_status") == "error" else timedelta(days=7)
+        if checked is None or now - checked >= retry:
+            pending.append(record)
+    pending.sort(key=lambda r: r.get("announcement", {}).get("checked_at", ""))
+    selected = pending[:limit]
+    feeds = [{"name": f"Historical coverage: {r['company']}", "kind": "news_search",
+              "query": f'"{r["company"]}" (funding OR raises OR raised OR financing)'} for r in selected]
+    with ThreadPoolExecutor(max_workers=5) as pool:
+        results = list(pool.map(fetch, feeds))
+    for record, source, (entries, error) in zip(selected, feeds, results):
+        info = dict(record.get("announcement", {"date": None, "status": "unverified"}), checked_at=iso(now))
+        if error:
+            info["check_status"] = "error"
+            print(f"{source['name']}: {error}", file=sys.stderr)
+        else:
+            matches = []
+            for entry in entries[:100]:
+                try:
+                    published = timestamp(entry["published"])
+                    if published > now + timedelta(minutes=5):
+                        continue
+                    candidate = extract(entry, source, published)
+                    if candidate and key(candidate["company"]) == key(record["company"]) and all(candidate[k] == record[k] for k in ("amount", "currency", "stage")):
+                        matches.append(candidate)
+                except (ValueError, TypeError, KeyError) as error:
+                    print(f"{source['name']}: invalid historical item ({type(error).__name__})", file=sys.stderr)
+            info["check_status"] = "ok" if matches else "no_match"
+            if matches:
+                earliest = min(matches, key=lambda r: r["published_at"])
+                if not info.get("date") or earliest["published_at"][:10] < info["date"]:
+                    info.update(date=earliest["published_at"][:10], status="first_reported",
+                                source_url=earliest["sources"][0]["url"],
+                                note="Earliest matching indexed report found; not a verified announcement or closing date.")
+                if record.get("location", {}).get("status") != "conflicting" and not record.get("location", {}).get("country_code") and earliest["location"]["country_code"]:
+                    record["location"] = earliest["location"]
+        record["announcement"] = info
+    print(f"Historical date checks: {len(selected)} attempted; {max(0, len(pending) - len(selected))} awaiting a later run.")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=ROOT / "data/funding.json")
     parser.add_argument("--feeds", type=Path, default=ROOT / "config/feeds.json")
+    parser.add_argument("--reviews", type=Path, default=ROOT / "config/reviews.json")
     args = parser.parse_args()
     previous = json.loads(args.data.read_text()) if args.data.exists() else {}
     feeds = json.loads(args.feeds.read_text())
-    result = collect(previous, feeds, datetime.now(UTC))
+    reviews = json.loads(args.reviews.read_text())
+    now = datetime.now(UTC)
+    result = collect(previous, feeds, now)
+    apply_reviews(result["records"], reviews, now)
+    if result["status"] != "error":
+        resolve_history(result["records"], now)
     args.data.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.data.with_suffix(".tmp")
     temporary.write_text(json.dumps(result, indent=2, ensure_ascii=True) + "\n")

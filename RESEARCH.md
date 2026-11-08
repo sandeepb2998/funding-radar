@@ -58,6 +58,36 @@ and a clearly labeled Google News redirect link. Publication/indexing delays,
 blocked publisher feeds still limit coverage. The app does not claim instant
 or exhaustive funding detection.
 
+## Date correction: Go.AI and republished funding
+
+The original dashboard conflated article publication with funding recency.
+Its Go.AI record came from an openPR result published November 7, 2026.
+Historical search and direct publisher retrieval established earlier evidence:
+
+- [Finovate's funding report](https://finovate.com/go-ai-secures-85-million-in-series-a-funding/)
+  was published September 22, 2026 (page metadata:
+  `2026-09-22T20:54:54+00:00`). It reports the $85 million Series A,
+  identifies headquarters in Chicago, Illinois, and links the
+  [original Business Wire announcement](https://www.businesswire.com/news/home/20260922352774/en/Go.AI-Raises-%2485-Million-Series-A-to-Accelerate-On-Prem-AI-Infrastructure-for-Regulated-Industries).
+- [FinTech Global's report](https://fintech.global/2026/09/22/go-ai-raises-85m-series-a-for-on-prem-ai-push/)
+  independently has September 22 publication metadata and identifies the
+  Chicago-based company. These pages were retrieved on November 8.
+- November 7 is therefore later coverage, **not a new November Series A**.
+  September 22 is the reviewed announcement date; the legal closing date
+  has not been independently established.
+
+For comparison, Harbinger's [issuer press release](https://www.prnewswire.com/news-releases/harbinger-raises-240-million-series-d-funding-round-led-by-tiger-global-302930560.html)
+was retrieved directly and explicitly announces its $240 million Series D
+on November 5, 2026, consistent with the page's timestamp.
+
+The app now separates reviewed announcements, earliest matching historical
+reports, article publication and discovery. Bounded hourly historical checks
+can surface older rounds, but are labeled estimates, not verified dates.
+Region/country filters use explicit reported company locations or reviewed
+evidence; they never derive company geography from the news source or currency.
+This correction demonstrates why broader news coverage alone does not recreate
+a curated deal database.
+
 ## Likely architecture, not a claim about Fundable's private implementation
 
 1. Detect funding announcements from licensed databases, permitted news feeds,

@@ -1,12 +1,24 @@
+export function recordDate(record, basis = "timeline") {
+  if (basis === "coverage") return Date.parse(record.published_at);
+  const info = record.announcement || {};
+  const allowed = basis === "reviewed" ? ["reviewed"] : ["reviewed", "first_reported"];
+  return allowed.includes(info.status) && /^\d{4}-\d{2}-\d{2}$/.test(info.date || "")
+    ? Date.parse(`${info.date}T00:00:00Z`) : NaN;
+}
+
 export function filterRecords(records, filters, now = new Date()) {
   const search = filters.search.trim().toLocaleLowerCase();
-  const cutoff = filters.days ? now.getTime() - filters.days * 86400000 : -Infinity;
+  const day = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const cutoff = filters.days ? day - (filters.days - 1) * 86400000 : -Infinity;
   return records.filter(record =>
     (!search || `${record.company} ${record.headline}`.toLocaleLowerCase().includes(search)) &&
     (!filters.stage || record.stage === filters.stage) &&
     (!filters.source || record.sources.some(source => source.name === filters.source)) &&
-    Date.parse(record.published_at) >= cutoff
-  );
+    (!filters.region || (record.location?.region || "Unknown") === filters.region) &&
+    (!filters.country || (record.location?.country || "Unknown") === filters.country) &&
+    recordDate(record, filters.dateBasis) >= cutoff &&
+    recordDate(record, filters.dateBasis) < day + 86400000
+  ).toSorted((a, b) => recordDate(b, filters.dateBasis) - recordDate(a, filters.dateBasis) || a.company.localeCompare(b.company));
 }
 
 export function csvCell(value) {
@@ -16,8 +28,8 @@ export function csvCell(value) {
 }
 
 export function toCSV(records) {
-  const fields = ["Company", "Amount", "Currency", "Stage", "Published (UTC)", "First seen (UTC)", "Headline", "Sources", "Quality"];
-  return [fields, ...records.map(r => [r.company, r.amount, r.currency, r.stage, r.published_at, r.first_seen_at, r.headline, r.sources.map(s => s.url).join(" | "), r.quality])]
+  const fields = ["Company", "Amount", "Currency", "Stage", "Announcement / first report date (UTC)", "Date status", "Date evidence", "Date note", "Article published (UTC)", "First seen (UTC)", "Region", "Country", "Location status", "Location evidence", "Headline", "Sources", "Quality"];
+  return [fields, ...records.map(r => [r.company, r.amount, r.currency, r.stage, r.announcement?.date, r.announcement?.status || "unverified", r.announcement?.source_url, r.announcement?.note, r.published_at, r.first_seen_at, r.location?.region || "Unknown", r.location?.country || "Unknown", r.location?.status || "unknown", r.location?.source_url, r.headline, r.sources.map(s => s.url).join(" | "), r.quality])]
     .map(row => row.map(csvCell).join(",")).join("\r\n");
 }
 
@@ -53,10 +65,17 @@ function renderCard(record, today) {
   const body = node("div", "card-body");
   const title = node("div", "company-title");
   title.append(node("h3", "", record.company), node("span", "badge", record.stage));
-  if (record.first_seen_at.slice(0, 10) === today) title.append(node("span", "badge new-badge", "NEW TODAY"));
+  if (record.first_seen_at.slice(0, 10) === today) title.append(node("span", "badge new-badge", "DISCOVERED TODAY"));
   body.append(title, node("p", "headline", record.headline));
+  const location = record.location || {};
+  body.append(node("p", "location", `Location: ${location.country || "Unknown"}${location.region ? ` \u00b7 ${location.region}` : ""}${location.status === "conflicting" ? " \u00b7 conflicting reports" : ""}`));
   const links = node("div", "source-links");
-  for (const source of record.sources) {
+  const info = record.announcement || {};
+  const evidence = [
+    {name: "Date evidence", url: info.source_url},
+    {name: "Location evidence", url: location.source_url}
+  ].filter(source => source.url);
+  for (const source of [...record.sources, ...evidence]) {
     const href = safeURL(source.url);
     if (!href) continue;
     const link = node("a", "", `${source.name} \u2197`);
@@ -69,7 +88,14 @@ function renderCard(record, today) {
   body.append(links);
   const amount = node("div", "card-amount", compactAmount(record));
   amount.append(node("div", "card-currency", record.currency === "$" ? "Dollar currency unspecified" : record.currency));
-  amount.append(node("div", "card-date", dateLabel(record.published_at)));
+  const date = Number.isFinite(recordDate(record))
+    ? `${info.status === "reviewed" ? "Announced" : "First reported"} ${dateLabel(`${info.date}T00:00:00Z`)}`
+    : `Funding date ${info.status === "disputed" ? "disputed" : "unverified"}`;
+  const dateNode = node("div", "card-date round-date", date);
+  dateNode.title = info.note || "No announcement date has been established.";
+  amount.append(dateNode);
+  if (info.status === "first_reported") amount.append(node("div", "card-quality", "Earliest match found; not a verified announcement"));
+  amount.append(node("div", "card-date", `Article: ${dateLabel(record.published_at)}`));
   amount.append(node("div", "card-quality", "Headline signal \u00b7 verify source"));
   card.append(body, amount);
   return card;
@@ -94,9 +120,13 @@ async function init() {
   }
   const now = new Date();
   const today = now.toISOString().slice(0, 10);
-  const records = data.records.toSorted((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at));
+  const records = data.records;
   get("total-count").textContent = records.length;
-  get("new-count").textContent = records.filter(r => r.first_seen_at.slice(0, 10) === today).length;
+  const reviewed = records.filter(r => r.announcement?.status === "reviewed").length;
+  const firstReported = records.filter(r => r.announcement?.status === "first_reported").length;
+  get("dated-count").textContent = reviewed + firstReported;
+  const failedChecks = records.filter(r => r.announcement?.check_status === "error").length;
+  get("date-coverage").textContent = `${reviewed} reviewed announcement dates; ${firstReported} earliest matching reports found; ${records.length - reviewed - firstReported} undated or disputed. Funding timeline never falls back to the current article date. Undated signals remain in Article coverage.${failedChecks ? ` Historical lookup failed for ${failedChecks} signals; prior evidence is retained where available.` : ""}`;
   const healthy = data.sources.filter(s => s.status === "ok").length;
   get("source-count").textContent = `${healthy}/${data.sources.length}`;
   if (data.last_success_at) get("last-check").textContent = dateLabel(data.last_success_at);
@@ -116,7 +146,9 @@ async function init() {
   if (data.last_attempt_at) get("freshness").textContent = `Last attempt: ${new Date(data.last_attempt_at).toLocaleTimeString("en", {timeZone: "UTC", hour: "2-digit", minute: "2-digit", hour12: false})} UTC`;
   for (const [id, values] of [
     ["stage", [...new Set(records.map(r => r.stage))].sort()],
-    ["source", [...new Set(records.flatMap(r => r.sources.map(s => s.name)))].sort()]
+    ["source", [...new Set(records.flatMap(r => r.sources.map(s => s.name)))].sort()],
+    ["region", [...new Set(records.map(r => r.location?.region || "Unknown"))].sort()],
+    ["country", [...new Set(records.map(r => r.location?.country || "Unknown"))].sort()]
   ]) {
     for (const value of values) {
       const option = node("option", "", value);
@@ -135,10 +167,14 @@ async function init() {
   let visible = [];
   let limit = 50;
   function render() {
-    visible = filterRecords(records, {search: get("search").value, stage: get("stage").value, source: get("source").value, days: Number(get("window").value)}, now);
+    const dateBasis = get("date-basis").value;
+    visible = filterRecords(records, {search: get("search").value, stage: get("stage").value, source: get("source").value, days: Number(get("window").value), dateBasis, region: get("region").value, country: get("country").value}, now);
+    get("sort-label").textContent = dateBasis === "coverage" ? "NEWEST ARTICLES FIRST" : dateBasis === "reviewed" ? "REVIEWED ANNOUNCEMENTS FIRST" : "ANNOUNCEMENT / FIRST REPORT DATE";
     get("feed").replaceChildren(...visible.slice(0, limit).map(r => renderCard(r, today)));
     get("results-count").textContent = `${visible.length} ${visible.length === 1 ? "signal" : "signals"}${visible.length > limit ? ` \u00b7 showing ${limit}` : ""}`;
     get("empty").hidden = visible.length > 0;
+    get("empty-title").textContent = "No matching signals";
+    get("empty-text").textContent = dateBasis === "coverage" ? "Try a wider date range or clear your filters. Unknown company locations are not guessed." : "Try a wider date range or Article coverage to include undated signals. No matches does not mean no funding occurred.";
     if (!records.length) {
       get("empty-title").textContent = data.status === "not_started" ? "Your radar is ready. Awaiting data." : "No qualifying funding headlines collected";
       get("empty-text").textContent = data.status === "not_started" ? "Run the collection workflow after deploying this app to its own repository." : "This is not proof that no companies raised funding. Check source health and feed coverage.";
@@ -146,7 +182,7 @@ async function init() {
     get("load-more").hidden = visible.length <= limit;
     get("export").disabled = visible.length === 0;
   }
-  for (const id of ["search", "stage", "source", "window"]) {
+  for (const id of ["search", "stage", "source", "window", "date-basis", "region", "country"]) {
     get(id).addEventListener(id === "search" ? "input" : "change", () => {limit = 50; render();});
   }
   get("load-more").addEventListener("click", () => {limit += 50; render();});

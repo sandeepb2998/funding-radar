@@ -136,10 +136,15 @@ jobs:
                       html = response.read().decode()
                   if "<title>Funding Radar" not in html:
                       raise ValueError("The live URL does not serve the Funding Radar homepage")
+                  if not all(f'id="{field}"' in html for field in ("region", "country", "date-basis")):
+                      raise ValueError("The live page does not yet include geographic and date-basis filters")
                   for asset in ("app.js", "styles.css"):
                       with urlopen(urljoin(base, asset), timeout=20) as response:
-                          if not response.read():
+                          content = response.read().decode()
+                          if not content:
                               raise ValueError(f"Empty public asset: {asset}")
+                          if asset == "app.js" and "export function recordDate(" not in content:
+                              raise ValueError("The live script still uses publication-only date filtering")
                   with urlopen(urljoin(base, "data.json"), timeout=20) as response:
                       raw = response.read()
                   if hashlib.sha256(raw).hexdigest() != os.environ["EXPECTED_DATA_SHA256"]:
@@ -152,8 +157,11 @@ jobs:
                   if "contacts" in data or any("email" in row or "contacts" in row for row in data["records"]):
                       raise ValueError("Private contact fields must not appear in public data")
                   healthy = sum(source["status"] == "ok" for source in data["sources"])
+                  dated = sum(row.get("announcement", {}).get("status") in ("reviewed", "first_reported") for row in data["records"])
+                  located = sum(bool(row.get("location", {}).get("country")) for row in data["records"])
                   print(f"Live URL verified: {base}")
                   print(f"Funding signals: {len(data['records'])}; healthy sources: {healthy}/{len(data['sources'])}; coverage: {data['status']}")
+                  print(f"Dated signals: {dated}; signals with company-location evidence: {located}")
                   break
               except (HTTPError, URLError, TimeoutError, ValueError) as error:
                   if attempt == 11:

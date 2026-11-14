@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "last_attempt_at": "2026-11-13T21:57:49Z",
-  "last_success_at": "2026-11-13T21:57:49Z",
+  "last_attempt_at": "2026-11-14T02:24:21Z",
+  "last_success_at": "2026-11-14T02:24:21Z",
   "status": "partial",
   "sources": [
     {
@@ -73,7 +73,7 @@
       "status": "ok",
       "error": null,
       "items_read": 53,
-      "accepted": 29,
+      "accepted": 28,
       "invalid": 0
     },
     {
@@ -81,8 +81,8 @@
       "url": "https://news.google.com/rss/search?q=%28%22seed+funding%22+OR+%22seed+round%22+OR+%22pre-seed%22%29+%28raises+OR+secures+OR+closes+OR+announces%29+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
       "status": "ok",
       "error": null,
-      "items_read": 76,
-      "accepted": 55,
+      "items_read": 74,
+      "accepted": 52,
       "invalid": 0
     },
     {
@@ -91,7 +91,7 @@
       "status": "ok",
       "error": null,
       "items_read": 100,
-      "accepted": 76,
+      "accepted": 73,
       "invalid": 0
     },
     {
@@ -99,7 +99,7 @@
       "url": "https://news.google.com/rss/search?q=%28%22Series+C%22+OR+%22Series+D%22+OR+%22Series+E%22+OR+%22Series+F%22+OR+%22growth+funding%22%29+%28raises+OR+secures+OR+closes+OR+announces%29+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
       "status": "ok",
       "error": null,
-      "items_read": 75,
+      "items_read": 78,
       "accepted": 55,
       "invalid": 0
     },
@@ -109,7 +109,7 @@
       "status": "ok",
       "error": null,
       "items_read": 100,
-      "accepted": 43,
+      "accepted": 44,
       "invalid": 0
     },
     {
@@ -117,8 +117,8 @@
       "url": "https://news.google.com/rss/search?q=%28startup+OR+%22start-up%22%29+%28raises+OR+secures+OR+closes%29+%28funding+OR+%22Series+A%22+OR+seed%29+when%3A7d&hl=en-IN&gl=IN&ceid=IN%3Aen",
       "status": "ok",
       "error": null,
-      "items_read": 65,
-      "accepted": 41,
+      "items_read": 63,
+      "accepted": 38,
       "invalid": 0
     },
     {
@@ -137,10 +137,10 @@
       "name": "FormDs - SEC-derived filings",
       "url": "https://www.formds.com/filings/advanced_filter?filters_params%5Bdate_select%5D=Last+Week&filters_params%5Bsize_select%5D=&filters_params%5Bindustry_select%5D=&filters_params%5Bnew_amended_select%5D=New+Filings&filters_params%5Bequity_debt_select%5D=&filters_params%5Bstate_select%5D=&filters_params%5Bmiles_select%5D=&filters_params%5Blist_or_map_select%5D=Show+as+a+list",
       "status": "partial",
-      "items_read": 47,
-      "accepted": 8,
+      "items_read": 45,
+      "accepted": 3,
       "invalid": 1,
-      "excluded": 3,
+      "excluded": 1,
       "pending": 1,
       "error": null,
       "oldest_indexed_on": "2026-11-13",
@@ -149,6 +149,40 @@
   ],
   "records": [
     {
+      "id": "9a57647de9164adabcd8",
+      "company": "GrabrFi Tops $1 Billion in Payments",
+      "amount": 6000000,
+      "currency": "$",
+      "stage": "Undisclosed",
+      "published_at": "2026-11-13T23:03:25Z",
+      "first_seen_at": "2026-11-14T02:24:21Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "GrabrFi Tops $1 Billion in Payments, Raises $6 Million to Launch Dollar Accounts for Businesses Abroad",
+      "sources": [
+        {
+          "name": "GlobeNewswire via Google News",
+          "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNOHp1Z1RCQTRmVkFMMFBWcjhLZTlaNHM3OE5EY2pvM1NjWHRlWHBhOE9SUk5CWS1Ia0ZCZUEzd1l2clRkeTZLajVlcEtjZVNoQ1ZYamI3TnNQaklsRTJMVHB2NnZQUXJGcWUtQlR4SWFkTHRJUjdlTjJzcmZZdlV6b2pLMkc1Z1l3TW5BRGc4OHVobVZZV3A5R2gyRDZKR041RExDb3RsNTR5akFvNG1rTlR4TnRRSFJ4ZUVES2UzdEw0RVlqZzEzckI2dFBOampjWFhHVFN0amR4ZHluYmlPU2xwN1EzMXRCREhhczRSUHJlc1MzSjFHNDQyUVJiLWJV?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": "2026-11-13",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPSWdQSTEweGg3dVFtcWFhaktDU1QwWGdNS1VsQU5Ram9mX245Q2g4andTaV85SmpJWmFram12eDctbTVRZk11SG1GNkpiLVZXbjktUHZMQWd0NXZWZm92LWdCb1IyZE1UeGxFNXA3ejA5VGZRZmZCUVNJY3RlQlBwdkFQR2xuUlBhelpmQ19KQ0FUQzBYdWRBTGQ1Ujl1SlhtWkpGakM2YjJWTEtGN2JQeGNtRVhjS2s?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": null,
+        "note": ""
+      }
+    },
+    {
       "id": "dd6ef56642dc26f498b6",
       "company": "Optics chipmaker Huayi Yingfei",
       "amount": 45000000,
@@ -156,7 +190,7 @@
       "stage": "Series A",
       "published_at": "2026-11-13T21:42:57Z",
       "first_seen_at": "2026-11-13T21:57:49Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Optics chipmaker Huayi Yingfei raises $45M Series A",
       "sources": [
         {
@@ -183,6 +217,48 @@
       }
     },
     {
+      "id": "ce5848cb9509edd83335",
+      "company": "Mirendil",
+      "amount": 1000000000,
+      "currency": "$",
+      "stage": "Series A",
+      "published_at": "2026-11-13T21:42:10Z",
+      "first_seen_at": "2026-11-12T18:15:48Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "Ex-Anthropic researchers' startup Mirendil raises $1 billion to let AI agents do the work of an AI lab",
+      "sources": [
+        {
+          "name": "Unite.AI via Google News",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQUszbXRZb1A0eEh2SVFYWHBhZjVxdEhqOG9zU1BrSHY2Tno2c3F4a29FM3Q1bFF0TVh0ZGp4cnVob25PcXRiZWNsSW0yTFRtTGZ2MTl1ODhOYzJ6SEVzeENFcmxIaFpNTW9McVJKakEzRFhqc1RfTlNXUzRTS3F3WHVyeTRoYWo2M1Y0a0NmVlF0RmdmdkNj?oc=5"
+        },
+        {
+          "name": "PR Newswire via Google News",
+          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOZ3NVQW5ZRGQzcWM0dDBQVDFURzdOdGp2WWlfZFVlS1lsdmU4dWNIVFZBWThsYzZGSEQxZEtfXzBSRGhGR3M4WmV4SkpfajlUVmFDVEtmejRkZmM2UW41TWd4dUExeG9DLUFYcXkxQzd5WWR4dWVlNlJDaHhFWEMtOGRyemd2LUo2eGYwMVVEZExmcUdUWExrWEU2SVJPbDkxNmEtY3ZtRQ?oc=5"
+        },
+        {
+          "name": "MLQ.ai via Google News",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPX1F1U29ZNGdON1pPZ09wdTdGMWtPSXpmTmJWOWI0bTY0djNES2Z2SFhYOTRNdnV5YTNzX2NGanU1Uks5bmxKMmh1NVFVOUhZZVZ0Mi01NkZNQmdTTThwZEFGNldBYzZlaU9BYjhXWEUyOERETzBFT2ZmbDVGQUhBRlZLaDZmRW50UlJLZ2Iwa2F3WkJGR211Z2tmWEhwTThHRjZwN2E1d1hZWHNNTWZfWjhOU2RGbDQ1bFlVVXNB?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": "2026-11-12",
+        "status": "first_reported",
+        "checked_at": "2026-11-12T18:15:48Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQUszbXRZb1A0eEh2SVFYWHBhZjVxdEhqOG9zU1BrSHY2Tno2c3F4a29FM3Q1bFF0TVh0ZGp4cnVob25PcXRiZWNsSW0yTFRtTGZ2MTl1ODhOYzJ6SEVzeENFcmxIaFpNTW9McVJKakEzRFhqc1RfTlNXUzRTS3F3WHVyeTRoYWo2M1Y0a0NmVlF0RmdmdkNj?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": null,
+        "note": ""
+      }
+    },
+    {
       "id": "d8ae7a86d3e66a88cc2c",
       "company": "Guance Cloud",
       "amount": 15000000,
@@ -190,7 +266,7 @@
       "stage": "Series A",
       "published_at": "2026-11-13T21:26:25Z",
       "first_seen_at": "2026-11-13T21:57:49Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Guance Cloud raises $15M Series A to build a Chinese Datadog",
       "sources": [
         {
@@ -224,7 +300,7 @@
       "stage": "Series D",
       "published_at": "2026-11-13T17:20:17Z",
       "first_seen_at": "2026-11-13T20:29:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "OSMUNDA raises ~$15M Series D to build device factory and AI platform",
       "sources": [
         {
@@ -258,7 +334,7 @@
       "stage": "Series C",
       "published_at": "2026-11-13T15:53:00Z",
       "first_seen_at": "2026-11-13T20:29:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "LangChain Raises $300M to Enable Every Company to Own Their Intelligence",
       "sources": [
         {
@@ -276,6 +352,10 @@
         {
           "name": "Business Wire via Google News",
           "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNVWswX1o3dEc2bEdmWlZrR1BnNV9WOXJlM29nZWhSQk1qVFhaYlNjeG01VU9QN3hqOVVKLXJVTDJENEh3LVktUW44dW41OHRLdnhRa2dmR2o4Wmx6QUNCQ1dEcEh1Qm15NE5jV1ZkRi1qTkhld3FYdEVRbFl1TnctNEZWbTJmRGZoTXNXWUc3RzY2TjMxY0VhZlR4eGlaTEZQem1aUk4xSzBRYzZxRTRXSTNjRUdmNHE2WFBJUDQ5UHVnNlp6ZjE4Wnk1SQ?oc=5"
+        },
+        {
+          "name": "Wowtale via Google News",
+          "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFA3UWxETFNNcU5NNF9RY2ZmVGVEMzl0eDB5a0I2cDdtMHc1R2ZFcU1IU3NvOWFUb0pzX2ZTQTdHUjU2R20xam9wWWk5SEFwb0J0eVA0?oc=5"
         }
       ],
       "quality": "Headline-extracted; verify source",
@@ -304,7 +384,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-13T14:28:43Z",
       "first_seen_at": "2026-11-13T15:21:03Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Morsa Raises $1.5 Million Pre-Seed Funding Led by Jackson Square Ventures to Automate Manufacturing Operations",
       "sources": [
         {
@@ -342,7 +422,7 @@
       "stage": "Series E",
       "published_at": "2026-11-13T14:22:57Z",
       "first_seen_at": "2026-11-13T15:21:03Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Suki raises US$90m Series E",
       "sources": [
         {
@@ -376,7 +456,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-13T13:11:11Z",
       "first_seen_at": "2026-11-13T15:21:03Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Kutlerri.ai Raises $4 Mn to Scale AI Agents for Restaurant Businesses",
       "sources": [
         {
@@ -414,7 +494,7 @@
       "stage": "Seed",
       "published_at": "2026-11-13T13:02:46Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "MistEO Raises \u20b918 Crore in Seed Funding Round Led by MGF-Kavachh to Scale Climate Intelligence Platform",
       "sources": [
         {
@@ -438,7 +518,7 @@
       "announcement": {
         "date": "2026-11-12",
         "status": "first_reported",
-        "checked_at": "2026-11-13T21:57:49Z",
+        "checked_at": "2026-11-14T02:24:21Z",
         "check_status": "ok",
         "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOUTNOY1VqbFJZTkg0MEY0Uy1mNk5WVGlhNFRmUGpCTlptTHI2Tng5ejNFMVowTUJpeWxuTU5iZ2x5WTJ2VHRPcEw4SzlvZ1FmcHFsRU91cEhmV2Mtek94R1hrekxPVnRRQ1JyT1U0REdoTXlKY1c1UVEyQWo4ZElwZTVPOXNOU2JMakFjbXBSTVAzZ1JDczJiMFZLTFJKTnR3aHVZSmtyRzRhX3c4Z0JfaG95ZnQ1bFdSZm1JNC04RjhGXy14T3fSAcsBQVVfeXFMT1dVVlVaZHhlWkVaWG1lVmZ0bXloTVhNdW9RdUo3eGRqSU5kcE9zLXpnUlYwTnlvc3hfdTVZdUI0X1V2RlBRWjladmVmWExJaUdFNUoxMnVLeUlFOEVFWEhBdjY0YWI1R0VLdGQ5QjBZeTAzN25tUmc2Qmw2VmlrMlc3a3hDUlFqTWZRUDV5dF9SSVFZNlhpRUxocmhQVGROUlpzZ2kxdkp1MW11VkRNSHcyVU5WN2c0bmVlNU8yZkltcDZlbk9MbnJzeVk?oc=5",
         "note": "Earliest matching indexed report found; not a verified announcement or closing date."
@@ -460,7 +540,7 @@
       "stage": "Series B",
       "published_at": "2026-11-13T12:02:02Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Griffin secures $20m series B to expand banking services",
       "sources": [
         {
@@ -506,7 +586,7 @@
       "stage": "Seed",
       "published_at": "2026-11-13T11:38:23Z",
       "first_seen_at": "2026-11-13T15:21:03Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "vinny Raises $2.1M in Seed Funding",
       "sources": [
         {
@@ -540,7 +620,7 @@
       "stage": "Seed",
       "published_at": "2026-11-13T09:06:20Z",
       "first_seen_at": "2026-11-13T15:21:03Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Pro Climbing League Raises \u00a33.2M in Seed Funding",
       "sources": [
         {
@@ -578,7 +658,7 @@
       "stage": "Series A",
       "published_at": "2026-11-13T07:59:49Z",
       "first_seen_at": "2026-11-13T15:21:03Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Mental health chain Jagruti raises $2.97M Series A from Alkemi",
       "sources": [
         {
@@ -612,7 +692,7 @@
       "stage": "Series F",
       "published_at": "2026-11-13T05:00:21Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Agile Robots Raises $500M Series F: Humanoid Factory Capacity Is Public, Shipment Count Is Not",
       "sources": [
         {
@@ -696,7 +776,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-13T02:01:58Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Britain's Fractile Raises $720 Million to Build AI Chips",
       "sources": [
         {
@@ -730,7 +810,7 @@
       "stage": "Seed",
       "published_at": "2026-11-13T00:46:50Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Events-Focused Fan-Intelligence Startup Toutix Raises $3 Million from DICE Backer Evolution Equity Partners",
       "sources": [
         {
@@ -772,7 +852,7 @@
       "stage": "Series A",
       "published_at": "2026-11-13T00:12:51Z",
       "first_seen_at": "2026-11-13T06:37:22Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Liflex raises $5.25M Series A for anti-aging RNA therapies",
       "sources": [
         {
@@ -806,7 +886,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T21:05:00Z",
       "first_seen_at": "2026-11-12T23:39:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Ameresco Secures $125 Million Financing from Nuveen to Support European Growth",
       "sources": [
         {
@@ -840,7 +920,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-12T20:00:00Z",
       "first_seen_at": "2026-11-12T20:49:02Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "BioWraptor Raises $1.5 Million Pre-Seed Round to Advance Room-Temperature Stabilization of Biologics",
       "sources": [
         {
@@ -908,7 +988,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-12T19:24:44Z",
       "first_seen_at": "2026-11-13T06:37:22Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "AI startup Morsa.ai raises $1.5 million pre-seed funding led by Jackson Square Ventures",
       "sources": [
         {
@@ -976,7 +1056,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T18:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Aline Accounting Partners Secures $206 Million Financing to Support Continued Growth and Expansion",
       "sources": [
         {
@@ -1003,48 +1083,6 @@
       }
     },
     {
-      "id": "ce5848cb9509edd83335",
-      "company": "Mirendil",
-      "amount": 1000000000,
-      "currency": "$",
-      "stage": "Series A",
-      "published_at": "2026-11-12T17:58:03Z",
-      "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
-      "headline": "Mirendil Raises $1B Series A to Bring Frontier AI R&D to More Teams",
-      "sources": [
-        {
-          "name": "Unite.AI via Google News",
-          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQUszbXRZb1A0eEh2SVFYWHBhZjVxdEhqOG9zU1BrSHY2Tno2c3F4a29FM3Q1bFF0TVh0ZGp4cnVob25PcXRiZWNsSW0yTFRtTGZ2MTl1ODhOYzJ6SEVzeENFcmxIaFpNTW9McVJKakEzRFhqc1RfTlNXUzRTS3F3WHVyeTRoYWo2M1Y0a0NmVlF0RmdmdkNj?oc=5"
-        },
-        {
-          "name": "PR Newswire via Google News",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOZ3NVQW5ZRGQzcWM0dDBQVDFURzdOdGp2WWlfZFVlS1lsdmU4dWNIVFZBWThsYzZGSEQxZEtfXzBSRGhGR3M4WmV4SkpfajlUVmFDVEtmejRkZmM2UW41TWd4dUExeG9DLUFYcXkxQzd5WWR4dWVlNlJDaHhFWEMtOGRyemd2LUo2eGYwMVVEZExmcUdUWExrWEU2SVJPbDkxNmEtY3ZtRQ?oc=5"
-        },
-        {
-          "name": "MLQ.ai via Google News",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPX1F1U29ZNGdON1pPZ09wdTdGMWtPSXpmTmJWOWI0bTY0djNES2Z2SFhYOTRNdnV5YTNzX2NGanU1Uks5bmxKMmh1NVFVOUhZZVZ0Mi01NkZNQmdTTThwZEFGNldBYzZlaU9BYjhXWEUyOERETzBFT2ZmbDVGQUhBRlZLaDZmRW50UlJLZ2Iwa2F3WkJGR211Z2tmWEhwTThHRjZwN2E1d1hZWHNNTWZfWjhOU2RGbDQ1bFlVVXNB?oc=5"
-        }
-      ],
-      "quality": "Headline-extracted; verify source",
-      "announcement": {
-        "date": "2026-11-12",
-        "status": "first_reported",
-        "checked_at": "2026-11-12T18:15:48Z",
-        "check_status": "ok",
-        "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQUszbXRZb1A0eEh2SVFYWHBhZjVxdEhqOG9zU1BrSHY2Tno2c3F4a29FM3Q1bFF0TVh0ZGp4cnVob25PcXRiZWNsSW0yTFRtTGZ2MTl1ODhOYzJ6SEVzeENFcmxIaFpNTW9McVJKakEzRFhqc1RfTlNXUzRTS3F3WHVyeTRoYWo2M1Y0a0NmVlF0RmdmdkNj?oc=5",
-        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
-      },
-      "location": {
-        "country": null,
-        "country_code": null,
-        "region": null,
-        "status": "unknown",
-        "source_url": null,
-        "note": ""
-      }
-    },
-    {
       "id": "8f10b46510b4ee28198b",
       "company": "Torus",
       "amount": 500000000,
@@ -1052,7 +1090,7 @@
       "stage": "Series C",
       "published_at": "2026-11-12T17:46:16Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Torus Raises $500M Series C for Modular AI Data Centres",
       "sources": [
         {
@@ -1090,7 +1128,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T17:31:44Z",
       "first_seen_at": "2026-11-12T23:39:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Hundo Pizza Raises \u20b97.5 Crore Maiden Institutional Round Led by Titan Capital to Fuel Mumbai Expansion",
       "sources": [
         {
@@ -1124,7 +1162,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T17:19:33Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Dallas AI Startup 4Minds Raises $15M Series A at $500M Valuation",
       "sources": [
         {
@@ -1212,7 +1250,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T16:55:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Exus Renewables North America Secures $345 Million Financing led by Goldman Sachs Alternatives",
       "sources": [
         {
@@ -1246,7 +1284,7 @@
       "stage": "Series A-2",
       "published_at": "2026-11-12T16:15:09Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "BluWave-ai Raises $8.1M Series A-2 Funding to Scale AI Grid Software",
       "sources": [
         {
@@ -1318,7 +1356,7 @@
       "stage": "Debt",
       "published_at": "2026-11-12T16:14:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Kennedy Funding Closes $5.625 Million Land Loan for 142-Acre Project in Dominican Republic",
       "sources": [
         {
@@ -1352,7 +1390,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-12T15:51:39Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "AI influencer startup Distribution Demon raises $200K pre-seed",
       "sources": [
         {
@@ -1386,7 +1424,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T15:47:43Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Tristar AI Raises $12M in Series A Funding",
       "sources": [
         {
@@ -1420,7 +1458,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T15:32:46Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Luminal raises $25M Series A to cut AI inference costs beyond Nvidia GPUs",
       "sources": [
         {
@@ -1454,7 +1492,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T15:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "YC-backed Luminal raises $25M from Standard Capital to loosen Nvidia\u2019s grip on AI inference",
       "sources": [
         {
@@ -1488,7 +1526,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T15:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Tristar AI Raises $12.4M Series A to Give Manufacturers a Quality Inspector That Never Blinks",
       "sources": [
         {
@@ -1526,7 +1564,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-12T14:44:31Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Jade secures \u00a3450,000 Pre-Seed funding led by GC Angels with Jenson Ventures",
       "sources": [
         {
@@ -1560,7 +1598,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T14:24:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Rowan Digital Infrastructure Secures $1.5 Billion in New Corporate Financing For Its Hyperscale Development Platform",
       "sources": [
         {
@@ -1594,7 +1632,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-12T14:08:42Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Skribe Medical Raises $1.65M in Pre-Seed Funding",
       "sources": [
         {
@@ -1628,7 +1666,7 @@
       "stage": "Series C",
       "published_at": "2026-11-12T14:07:03Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Q-CTRL Raises $290M Series C to Scale AI-Driven Quantum Software",
       "sources": [
         {
@@ -1662,7 +1700,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T14:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Duet Raises $15M to Scale Nurse Practitioner-Owned Clinics, Filling Critical Primary Care Gap",
       "sources": [
         {
@@ -1708,7 +1746,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T14:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Athlete To Athlete Raises $8 Million Series A Led by Rally Ventures to Expand Youth Sports Mentorship",
       "sources": [
         {
@@ -1754,7 +1792,7 @@
       "stage": "Series C",
       "published_at": "2026-11-12T13:57:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Databento Raises $100 Million Series C at $1.1 Billion Valuation",
       "sources": [
         {
@@ -1788,7 +1826,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T13:18:03Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Hatz AI Secures $24M Series A to Grow Its Engineering Teams",
       "sources": [
         {
@@ -1826,7 +1864,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-12T13:10:00Z",
       "first_seen_at": "2026-11-12T23:39:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Anorak raises $5m in pre-seed funding from Backed VC, Play Ventures, Supercell and MTG",
       "sources": [
         {
@@ -1902,7 +1940,7 @@
       "stage": "Series B",
       "published_at": "2026-11-12T13:05:40Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Coreshell Raises $30M Series B for Graphite-Free Silicon Anode Cells",
       "sources": [
         {
@@ -1936,7 +1974,7 @@
       "stage": "Series F",
       "published_at": "2026-11-12T13:05:16Z",
       "first_seen_at": "2026-11-12T20:49:02Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "SoftBank-Led Agile Robots Raises $500M Series F at $8.5B Valuation",
       "sources": [
         {
@@ -1970,7 +2008,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T13:04:03Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Ukrainian Defence Tech UFORCE Raises \u20ac630M Series A at \u20ac5.4B Valuation",
       "sources": [
         {
@@ -2004,7 +2042,7 @@
       "stage": "Series C",
       "published_at": "2026-11-12T13:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Q-CTRL Secures US$290 Million Series C Funding Led by Salesforce Ventures to Accelerate the Convergence of Quantum & AI",
       "sources": [
         {
@@ -2046,7 +2084,7 @@
       "stage": "Series C",
       "published_at": "2026-11-12T13:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Q-CTRL raises $415m in Series C raise led by Salesforce Ventures",
       "sources": [
         {
@@ -2080,7 +2118,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T13:00:00Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "VulcanForms Secures $500 Million to Scale the Next Generation of American Manufacturing",
       "sources": [
         {
@@ -2152,7 +2190,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T12:04:03Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Biomatter Raises \u20ac16.2M to Design AI-Made Enzymes",
       "sources": [
         {
@@ -2402,7 +2440,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T10:44:21Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Ukraine-founded drone startup UForce secures $700 million funding round at $6 billion valuation",
       "sources": [
         {
@@ -2442,9 +2480,43 @@
       "announcement": {
         "date": "2026-11-12",
         "status": "first_reported",
-        "checked_at": "2026-11-13T21:57:49Z",
+        "checked_at": "2026-11-14T02:24:21Z",
         "check_status": "ok",
         "source_url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNeDdWaUd4OW5tSFJPN0tHdE1HYTJtN0pFYmNCdWl5LU9xSkxrdWNDOWlyTUtJTzZ4a3BnYVhjZGJXTk45SU1IM3BBUm9IcnRlZnRaM040dXhURkNTRXVLbGJzQl83RDdja25aTUl0cGRzWTdMMHFZYll4NE1SbnF1NTROZkNaVjBubnRBR3RFVmZmWFJRc21wbHd3X1VUZkk?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": null,
+        "note": ""
+      }
+    },
+    {
+      "id": "7933721c28f37f5d41de",
+      "company": "UK bank Griffin",
+      "amount": 20000000,
+      "currency": "$",
+      "stage": "Series B",
+      "published_at": "2026-11-12T10:37:32Z",
+      "first_seen_at": "2026-11-14T02:24:21Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "UK bank Griffin raises $20M Series B for cards and stablecoins",
+      "sources": [
+        {
+          "name": "Dealroom via Google News",
+          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxORUpRM2tmRFBOVk9hMVFfbHNUWmhndkhxVzc3UHdWQ2wybVFqU1JwME50TEN3clhhSE9EZHcxN0JCa0poS0pvaEdsM1V1ajc5bHg3OFNVOFlhWDRBNnRGbnZ0YWNITU50bE0wdXVaN09FcE5CajdNemZSaVhCT0JqR1gxQi02MXNmRW5va2JzS2JVZV9pOHlqNmUtSQ?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": "2026-11-12",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxORUpRM2tmRFBOVk9hMVFfbHNUWmhndkhxVzc3UHdWQ2wybVFqU1JwME50TEN3clhhSE9EZHcxN0JCa0poS0pvaEdsM1V1ajc5bHg3OFNVOFlhWDRBNnRGbnZ0YWNITU50bE0wdXVaN09FcE5CajdNemZSaVhCT0JqR1gxQi02MXNmRW5va2JzS2JVZV9pOHlqNmUtSQ?oc=5",
         "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
@@ -2532,7 +2604,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T09:40:07Z",
       "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Eli Radiopharma Raises Approx. $60M in Series A Funding",
       "sources": [
         {
@@ -2570,7 +2642,7 @@
       "stage": "Series A",
       "published_at": "2026-11-12T09:21:48Z",
       "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "German startup SE3 raises $30 million for AI for military drones \u2014 Fortune",
       "sources": [
         {
@@ -2618,10 +2690,10 @@
       "amount": 720000000,
       "currency": "$",
       "stage": "Series C",
-      "published_at": "2026-11-12T09:12:38Z",
+      "published_at": "2026-11-12T09:21:27Z",
       "first_seen_at": "2026-11-12T01:30:06Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
-      "headline": "UK AI chip start-up Fractile raises $720m at $7bn valuation",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "UK AI chips start-up Fractile raises $720m at $7bn valuation",
       "sources": [
         {
           "name": "Wowtale via Google News",
@@ -2674,7 +2746,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-12T08:39:54Z",
       "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "ViBiomatter raises $18 million in investment",
       "sources": [
         {
@@ -2712,7 +2784,7 @@
       "stage": "Series C",
       "published_at": "2026-11-12T08:13:21Z",
       "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Olyv raises $6.15M in Series C extension, led by Nippon India Digital",
       "sources": [
         {
@@ -2778,9 +2850,9 @@
       "amount": 60000000,
       "currency": "$",
       "stage": "Series C",
-      "published_at": "2026-11-12T07:00:08Z",
+      "published_at": "2026-11-12T07:15:08Z",
       "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Fortsense raises $60M Series C for lidar SPAD chips",
       "sources": [
         {
@@ -2814,7 +2886,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-12T06:00:22Z",
       "first_seen_at": "2026-11-11T10:50:44Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "SA fintech startup Lumepay raises $6m pre-seed round",
       "sources": [
         {
@@ -2861,76 +2933,14 @@
       }
     },
     {
-      "id": "fc7c488c68fc7516cabe",
-      "company": "Biomatter",
-      "amount": 18000000,
-      "currency": "$",
-      "stage": "Series A",
-      "published_at": "2026-11-12T05:00:00Z",
-      "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
-      "headline": "Biomatter Raises $18M Series A to Scale Its AI-Powered Enzyme Design for Global Industry Leaders",
-      "sources": [
-        {
-          "name": "TradingView via Google News",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQeVN5bVN3U2s2eWlNSl9mYlp4X2RjYzhTRFpZS0ZjUDB1TDlJQzV2WlNiSXViZy1EZ1RKb1hnTEY2ZldBQmN1UmxOeGdkS3ByOU9UVnlUTGNWelh6MTlYT2laNUFab3prZUh3NUtiYWNoY0FmelNRa18zcGJERVRsdmRxbXl2LUpGY0VzeENKSUNVNE1xWGRyOFBCLXRyMjl0blZkNmFZZDBtM2FSUGc?oc=5"
-        },
-        {
-          "name": "Business Wire via Google News",
-          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQNmJ0OVZBUkFJY3NwWEt0TlNsRFdJMExGdkppbEplLXU1Y0x2aEIxQk9JWTQxd1lLU3VmbmVaRGRjbWVMbzA0RUlmcFYzT2NvSWZLS0F2M3FxY2J0QUN3d2RyOTFuTHBocVEyX2hFdG5wNy1Xc3J2V1M2RFpEWHk2ZWV4bXBkOGgtclA4YWNLNTlHbEZSb0FxcEE2MnlXSmcxWHdMZkVFdUV5R3VwN0IyeTRlTXJZQ0RyS0FZNExLRG9xRDgzZDd1NFB2bUFlMmlKMlVYdnFqcS02X0VMVktDV3dkelpFY01VdmZj?oc=5"
-        },
-        {
-          "name": "Tech Funding News",
-          "url": "https://techfundingnews.com/biomatter-lands-18m-from-astanor-and-uvc-partners-to-build-a-vilnius-enzyme-lab/"
-        },
-        {
-          "name": "Unite.AI via Google News",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOVGlCUVZhalpHbW1Cc0JLdi16QnFsMTB1ZkhhcnpSa3ZpdjR5d0dZcWFGX0R6R0RxMnhzUkNLcGxMLTNGZnVkaWt1RU5ENGRrS3NVbTM5d3FpT1VJQ0ZxWXlrRGN4Q1A5V2hqRURONjE4TWNCS1g5S2ZuOHFnSXNvQXBDdWNMSXA4ek03TXFwSFozdnpj?oc=5"
-        },
-        {
-          "name": "citybiz via Google News",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQYUZxbG1JVXNScXZiMTNBRzlWbDZweElvTkw0WGU5OVgyYUZYQnlmSW55UXI3U0ZKaExtdFBBdTVkUl9ZUDd5SnlYb1JqUzA5aEF0VUtSTUJ3UWVmN0Fkc2VKYUlITXBJU3h1cnBYRTB6enl6d0NvUEVzRXp1cXpLY1lxLXROZkYwMGFlY2lJYXZTbW1ZMC1PT1lRa0JSVjE3di1kVGo4MkNSOF9FRi1rLUhlS1JtM3RMZ2o3QWs5b0ZNLTg?oc=5"
-        },
-        {
-          "name": "Tech.eu",
-          "url": "https://tech.eu/2026/11/12/biomatter-lands-18m-to-speed-up-enzyme-development-with-ai/"
-        },
-        {
-          "name": "TradingView via Google News",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNOXY3UGZUcmpBNHpGRVYyUmUyTmljbWtKWHRucl84ZFJuTWtPc0hOTEdQTGEweFkzbkJyZUkzc0MtcDgweHpWM1VHLW9kUDU0cEpvbDZhd2NFVng3VGdZY1hMTndYNGJTdkxHZm5KMGg5akJMdXZPaWEzamVaZ2xibTVBOE5TOGtoeGhUZzI5dV93aE9GTWI3LWZJRnAxZVcwcjhIMDlxZGMxZW1yLVh3VXRB?oc=5"
-        },
-        {
-          "name": "GenomeWeb via Google News",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOX0lZSTJIX2k4cDdwQzljZDg0aEo0Zk1zdncyTERKczJCOTdLZjNiMnRGNXhpTlk1dnYzakN6RmNISER4cXZjaHpqNTNGZWU1aHZ6SHIzNjZmSHFzODJ4NTlPemJwSVFBZExaMmFYNU9mVTNKN1Q4bmxhYUZSVlpjc1RSTlBiYnlrZXc2WXR5aFN5aEhNUHc5YXM1QmxOWFI4VDBQQ0pSak4yTVdEbktfQg?oc=5"
-        }
-      ],
-      "quality": "Headline-extracted; verify source",
-      "announcement": {
-        "date": "2026-11-12",
-        "status": "first_reported",
-        "checked_at": "2026-11-12T09:46:27Z",
-        "check_status": "ok",
-        "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQeVN5bVN3U2s2eWlNSl9mYlp4X2RjYzhTRFpZS0ZjUDB1TDlJQzV2WlNiSXViZy1EZ1RKb1hnTEY2ZldBQmN1UmxOeGdkS3ByOU9UVnlUTGNWelh6MTlYT2laNUFab3prZUh3NUtiYWNoY0FmelNRa18zcGJERVRsdmRxbXl2LUpGY0VzeENKSUNVNE1xWGRyOFBCLXRyMjl0blZkNmFZZDBtM2FSUGc?oc=5",
-        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
-      },
-      "location": {
-        "country": null,
-        "country_code": null,
-        "region": null,
-        "status": "unknown",
-        "source_url": null,
-        "note": ""
-      }
-    },
-    {
       "id": "d9f0242d0291c0115997",
       "company": "Nebuly",
       "amount": 21000000,
       "currency": "$",
       "stage": "Series A",
-      "published_at": "2026-11-12T04:59:15Z",
+      "published_at": "2026-11-12T05:23:25Z",
       "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Nebuly secures a $21 million Series A funding round",
       "sources": [
         {
@@ -2965,6 +2975,72 @@
         "checked_at": "2026-11-12T09:46:27Z",
         "check_status": "ok",
         "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOamFuVzlRVUdHNHh5OXphMGlYUUpnTUxZOXYtMjJzS1FoekJiMmVTMVp1cncxaVRYZ1BXRElJUGN6bE1IdjZkaXBmUHlMeFNJLTlTNU5uZDRXaWNtc1BKRkZSR2FEb3ItNGZGUXBXUzI0WTAxd3ZCZ0o1aGgzcndiOWpFeHZOTlFmdm1NWFBxaTQ1ZDBrZHhV?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
+      },
+      "location": {
+        "country": null,
+        "country_code": null,
+        "region": null,
+        "status": "unknown",
+        "source_url": null,
+        "note": ""
+      }
+    },
+    {
+      "id": "fc7c488c68fc7516cabe",
+      "company": "Biomatter",
+      "amount": 18000000,
+      "currency": "$",
+      "stage": "Series A",
+      "published_at": "2026-11-12T05:00:00Z",
+      "first_seen_at": "2026-11-12T09:46:27Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "Biomatter Raises $18M Series A to Scale Its AI-Powered Enzyme Design for Global Industry Leaders",
+      "sources": [
+        {
+          "name": "TradingView via Google News",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQeVN5bVN3U2s2eWlNSl9mYlp4X2RjYzhTRFpZS0ZjUDB1TDlJQzV2WlNiSXViZy1EZ1RKb1hnTEY2ZldBQmN1UmxOeGdkS3ByOU9UVnlUTGNWelh6MTlYT2laNUFab3prZUh3NUtiYWNoY0FmelNRa18zcGJERVRsdmRxbXl2LUpGY0VzeENKSUNVNE1xWGRyOFBCLXRyMjl0blZkNmFZZDBtM2FSUGc?oc=5"
+        },
+        {
+          "name": "Business Wire via Google News",
+          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQNmJ0OVZBUkFJY3NwWEt0TlNsRFdJMExGdkppbEplLXU1Y0x2aEIxQk9JWTQxd1lLU3VmbmVaRGRjbWVMbzA0RUlmcFYzT2NvSWZLS0F2M3FxY2J0QUN3d2RyOTFuTHBocVEyX2hFdG5wNy1Xc3J2V1M2RFpEWHk2ZWV4bXBkOGgtclA4YWNLNTlHbEZSb0FxcEE2MnlXSmcxWHdMZkVFdUV5R3VwN0IyeTRlTXJZQ0RyS0FZNExLRG9xRDgzZDd1NFB2bUFlMmlKMlVYdnFqcS02X0VMVktDV3dkelpFY01VdmZj?oc=5"
+        },
+        {
+          "name": "Tech Funding News",
+          "url": "https://techfundingnews.com/biomatter-lands-18m-from-astanor-and-uvc-partners-to-build-a-vilnius-enzyme-lab/"
+        },
+        {
+          "name": "Unite.AI via Google News",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOVGlCUVZhalpHbW1Cc0JLdi16QnFsMTB1ZkhhcnpSa3ZpdjR5d0dZcWFGX0R6R0RxMnhzUkNLcGxMLTNGZnVkaWt1RU5ENGRrS3NVbTM5d3FpT1VJQ0ZxWXlrRGN4Q1A5V2hqRURONjE4TWNCS1g5S2ZuOHFnSXNvQXBDdWNMSXA4ek03TXFwSFozdnpj?oc=5"
+        },
+        {
+          "name": "citybiz via Google News",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQYUZxbG1JVXNScXZiMTNBRzlWbDZweElvTkw0WGU5OVgyYUZYQnlmSW55UXI3U0ZKaExtdFBBdTVkUl9ZUDd5SnlYb1JqUzA5aEF0VUtSTUJ3UWVmN0Fkc2VKYUlITXBJU3h1cnBYRTB6enl6d0NvUEVzRXp1cXpLY1lxLXROZkYwMGFlY2lJYXZTbW1ZMC1PT1lRa0JSVjE3di1kVGo4MkNSOF9FRi1rLUhlS1JtM3RMZ2o3QWs5b0ZNLTg?oc=5"
+        },
+        {
+          "name": "Tech.eu",
+          "url": "https://tech.eu/2026/11/12/biomatter-lands-18m-to-speed-up-enzyme-development-with-ai/"
+        },
+        {
+          "name": "TradingView via Google News",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNOXY3UGZUcmpBNHpGRVYyUmUyTmljbWtKWHRucl84ZFJuTWtPc0hOTEdQTGEweFkzbkJyZUkzc0MtcDgweHpWM1VHLW9kUDU0cEpvbDZhd2NFVng3VGdZY1hMTndYNGJTdkxHZm5KMGg5akJMdXZPaWEzamVaZ2xibTVBOE5TOGtoeGhUZzI5dV93aE9GTWI3LWZJRnAxZVcwcjhIMDlxZGMxZW1yLVh3VXRB?oc=5"
+        },
+        {
+          "name": "GenomeWeb via Google News",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOX0lZSTJIX2k4cDdwQzljZDg0aEo0Zk1zdncyTERKczJCOTdLZjNiMnRGNXhpTlk1dnYzakN6RmNISER4cXZjaHpqNTNGZWU1aHZ6SHIzNjZmSHFzODJ4NTlPemJwSVFBZExaMmFYNU9mVTNKN1Q4bmxhYUZSVlpjc1RSTlBiYnlrZXc2WXR5aFN5aEhNUHc5YXM1QmxOWFI4VDBQQ0pSak4yTVdEbktfQg?oc=5"
+        },
+        {
+          "name": "Yahoo Finance via Google News",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPZkZEQkg5b0hIaFRLdFBmT1J3MkpyLURvdVdkT2pXdTB4SDRqNzdxV29TMTk3VHRBRWdHNjh4UDVja25zQmVFc2NqQy1sQnR1c3JxdmVHT2pud2hSamh5a0hOcTItVXlObmNndkY3VXhyZkZKeFlfWmZYZnlRYWctWlBmMXJhSmR6SDR1M0ZZa01wM1MyVkVfek13RUdIZw?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": "2026-11-12",
+        "status": "first_reported",
+        "checked_at": "2026-11-12T09:46:27Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQeVN5bVN3U2s2eWlNSl9mYlp4X2RjYzhTRFpZS0ZjUDB1TDlJQzV2WlNiSXViZy1EZ1RKb1hnTEY2ZldBQmN1UmxOeGdkS3ByOU9UVnlUTGNWelh6MTlYT2laNUFab3prZUh3NUtiYWNoY0FmelNRa18zcGJERVRsdmRxbXl2LUpGY0VzeENKSUNVNE1xWGRyOFBCLXRyMjl0blZkNmFZZDBtM2FSUGc?oc=5",
         "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
@@ -3018,7 +3094,7 @@
       "stage": "Seed",
       "published_at": "2026-11-11T23:39:50Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Cloud recovery startup Dreeze secures $33 million in seed funding",
       "sources": [
         {
@@ -3060,7 +3136,7 @@
       "stage": "Series C",
       "published_at": "2026-11-11T22:17:58Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Delix Raises $100m Series C for Non-Hallucinatory Depression Pill",
       "sources": [
         {
@@ -3100,7 +3176,7 @@
       "stage": "Series B",
       "published_at": "2026-11-11T21:32:53Z",
       "first_seen_at": "2026-11-12T01:30:06Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Addex Spin-out Neurosterix Closes $105 Million Series B Financing",
       "sources": [
         {
@@ -3188,7 +3264,7 @@
       "stage": "Series A",
       "published_at": "2026-11-11T20:43:59Z",
       "first_seen_at": "2026-11-12T01:30:06Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Revolv Space Secures \u20ac5M Series A to Expand SmallSat Mechanism Production",
       "sources": [
         {
@@ -3222,7 +3298,7 @@
       "stage": "Seed",
       "published_at": "2026-11-11T20:22:30Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Index Industries Raises $50 Million in Seed Round Financing",
       "sources": [
         {
@@ -3272,7 +3348,7 @@
       "stage": "Series A",
       "published_at": "2026-11-11T19:00:00Z",
       "first_seen_at": "2026-11-11T20:12:42Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Revolv Space closes $5.6 million Series A",
       "sources": [
         {
@@ -3340,7 +3416,7 @@
       "stage": "Seed",
       "published_at": "2026-11-11T16:47:31Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Guava secures $12.5 million seed funding to scale its AI voice agent platform",
       "sources": [
         {
@@ -3378,7 +3454,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-11T16:43:00Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Helix Secures $6.2 Million in Pre-Seed Capital and Launches Voice-Based Human Verification for the AI Era",
       "sources": [
         {
@@ -3416,7 +3492,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-11T16:15:00Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Imprint Raises $130 Million to Help Brands Build Customer Loyalty as AI Reshapes Commerce",
       "sources": [
         {
@@ -3454,7 +3530,7 @@
       "stage": "Series B",
       "published_at": "2026-11-11T16:00:00Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Coreshell Technologies Raises $30M Series B to Scale China-Free Batteries for U.S. Industries",
       "sources": [
         {
@@ -3530,7 +3606,7 @@
       "stage": "Series C",
       "published_at": "2026-11-11T15:29:58Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "London\u2019s Fractile secures massive \u20ac649 million Series C to challenge Nvidia",
       "sources": [
         {
@@ -3564,7 +3640,7 @@
       "stage": "Seed",
       "published_at": "2026-11-11T15:23:00Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "US-Canadian AI-powered law firm start-up Blackletter raises $6m in seed funding round",
       "sources": [
         {
@@ -3608,7 +3684,7 @@
       "stage": "Series B",
       "published_at": "2026-11-11T14:50:07Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "AI sales startup Rox raises $100 million at a $1.3 billion valuation to take on Salesforce",
       "sources": [
         {
@@ -3662,7 +3738,7 @@
       "stage": "Seed",
       "published_at": "2026-11-11T14:46:52Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Tendrils Raises $30M in Seed Funding",
       "sources": [
         {
@@ -3696,7 +3772,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-11T14:07:00Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Akara Raises $5.5M to Bring Privacy-Preserving AI to Hospitals",
       "sources": [
         {
@@ -3730,7 +3806,7 @@
       "stage": "Seed",
       "published_at": "2026-11-11T14:00:00Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Plurai raises $13M to build the simulation infrastructure for trustworthy, self-improving AI agents",
       "sources": [
         {
@@ -3878,7 +3954,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-11T13:00:04Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Nubank Alum Raises $14M For Colombia\u2019s Palomma To Tackle Rent Payments, Landlord Financing",
       "sources": [
         {
@@ -3912,7 +3988,7 @@
       "stage": "Seed",
       "published_at": "2026-11-11T12:50:07Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Singapore fan app Huddle raises $1.3M seed round",
       "sources": [
         {
@@ -3950,7 +4026,7 @@
       "stage": "Series A",
       "published_at": "2026-11-11T12:49:55Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Czech Kardi AI Raises \u20ac5.3M Series A Led by Callisto Health",
       "sources": [
         {
@@ -4018,7 +4094,7 @@
       "stage": "Series A",
       "published_at": "2026-11-11T11:00:00Z",
       "first_seen_at": "2026-11-11T02:49:24Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Cyber startup Bay raises $37m., with backing from Assaf Rappaport",
       "sources": [
         {
@@ -4162,7 +4238,7 @@
       "stage": "Series A",
       "published_at": "2026-11-11T10:00:00Z",
       "first_seen_at": "2026-11-11T10:50:44Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "XpertDox Raises $20M Series A led by Savant Growth to Scale AI Medical Coding for Healthcare Providers",
       "sources": [
         {
@@ -4246,7 +4322,7 @@
       "stage": "Series B",
       "published_at": "2026-11-11T08:49:24Z",
       "first_seen_at": "2026-11-11T10:50:44Z",
-      "last_seen_at": "2026-11-13T06:37:22Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "India's Greenjoules raises $16M Series B to turn crop waste into fuel",
       "sources": [
         {
@@ -4280,7 +4356,7 @@
       "stage": "Series C",
       "published_at": "2026-11-11T08:21:50Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Ocient Raises $100M in Series C Funding to Advance Trusted AI Solutions for Petabyte-Scale Environments",
       "sources": [
         {
@@ -4346,7 +4422,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-11T08:15:20Z",
       "first_seen_at": "2026-11-12T09:46:27Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Maasi raises $640K pre-seed to formalise India's home childcare",
       "sources": [
         {
@@ -4380,7 +4456,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-11T08:00:00Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "AI-for-science startup ChemLex raises USD 45M, launching self-driving lab for drug discovery in Singapore",
       "sources": [
         {
@@ -4414,7 +4490,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-11T07:55:16Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Athena Secures $2.5M Pre-Seed From a16z Speedrun to Scale AI Agents for Commercial Real Estate Law",
       "sources": [
         {
@@ -4551,6 +4627,60 @@
       }
     },
     {
+      "id": "94994da73ed0a62fe9c7",
+      "company": "Bay",
+      "amount": 50000000,
+      "currency": "$",
+      "stage": "Undisclosed",
+      "published_at": "2026-11-11T04:18:52Z",
+      "first_seen_at": "2026-11-10T17:46:18Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "Female-led Israeli cyber startup Bay raises $50 million in just nine months",
+      "sources": [
+        {
+          "name": "Reuters via Google News",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQR1FUM21STWZfakdFdy1yUEE3dHhGTUtoazJLcHAtZ3hlVXRvbEV5LVA0YXAwRlVGQ05qQ0Z1azV5Wk5wTWFVVXdKZ0FjSy04bkxlcDc5N2xsMFp2eUs5RzF6endfbXA0Ymt3WGo2UllEYzB1aWZmT0I2Smd1MVFBaHBtZzFWZC1pci1icms2cFJFZWxOTVg0aWpyaDU?oc=5"
+        },
+        {
+          "name": "CNA via Google News",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOX3pQYUR3UjBudk1vLWxtT1ozVGlma0I2UC1BZjJpcFp4cnNvbU42cnhnMjl3WTFzQU56bWxjRUZRd2l1aWlHcHNIR3BHdG5BRjBVQ3o0d05VOUZtdXNfcDJwWi1IT1BiTUIwek9hekt0ZXlYdE1ZZzkwTnl3YnpIWVhFQ2RQd3FPa3pLRkx5MmQwSzZGOUpwbDlLSUk1M00?oc=5"
+        },
+        {
+          "name": "Ynetnews via Google News",
+          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1na0c1ODBGSllKMXgxWW1LdF81YmJxYzN1ZFgyUXhvWVJYTmR0LWgzVF9EUnVIVmxQQzBlT3MwVXhRNGFQYzZuelc5bDFmSFA5aHgwRy1CTmY2M1ByWmVVVGh1NA?oc=5"
+        },
+        {
+          "name": "MLQ.ai via Google News",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWVFzZ0oyZFhOSGdhLWgybTBaX2lOdEQzRDRZdllVbHp4ajdwWHZSTmRrQzR4aTRqa3pyQjBMdXRxSmtnRndLMzM4WVNFNFh6a21zeU80eDctWXotNzJsemtkaWhNbUc3TlB0aU43UzJLV3hQcHlMYVZNV01PNU9lMjBkWGphbFQteFN6TVNqT2w2Z2hiUGhlR0J3UmRsRG9wV2c?oc=5"
+        },
+        {
+          "name": "https://ascendants.in/ via Google News",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPbjRsck1yc3V0WGVwbHRwUS14dlh6dGJPakN0bkstM2dOdjNkQVUxMzRLaFlFOGNld1V0RXhibjQ0RHFkUVl3MGZ1Q2FQZUEyaXltQVBmN3BzZjBUOUdhcS05OGx1QVhvajdUNjFWT01JeHhuVkJ4b0tOVU53STNpUG5MQkl5T2ZURUM5bGF2NEM?oc=5"
+        },
+        {
+          "name": "The Economic Times via Google News",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNM0hrQmZ2TWhBSEVweHFZQVpEX3V4R1dWUlVmd3RTbkxwcWQwbF8wSlNpX1ZjelVRYUVZWHY5anlITkZ4Z0QxakVYYXNCRVA5X0NnZnJpLW5KWWJTQ3g1aVFDYk93X2Z3UUFpRUNaUlF2SWptN01sQlRzRE44Y1lpSVZHeURPcXROQ3Y4M3hOUEpOVndGME9SYW53dC1qckZ0czQ5SkhBRThjbWRLTmtTdElHR2RpZmvSAbwBQVVfeXFMTm44QWZiTXk4WkJPYWsxMUdLTzFXSjFDX0JUY2pIY202UTJ3aXo4aXZIOTVTNUliMUV3Q2NJMnJvbzByUnE0X29aa2dIZWlVOEVnRUNFV3NHS0JqNGNZbXU5czVMaGNrVEJwS25wRlFjU1Eza1k3RXpkdHVvLUNLQ0F2NllVUld4SnFISEpCTW4zbERNaHRXeXhaTVFjMjJVNEZUZFFQMEIwU3dJLS1iZDZUV1ItTHFudGNHMWo?oc=5"
+        }
+      ],
+      "quality": "Headline-extracted; verify source",
+      "announcement": {
+        "date": "2026-11-10",
+        "status": "first_reported",
+        "checked_at": "2026-11-11T02:49:24Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNRXNRNG13WkM1OUlTUWxBZFNDeUc4aG1YaFJoWkdnS1AxOVBLQTBxaFFDT09uQ0VVOGJURU9HdkE3bDAzWEFzZlQ0OVlZVnlMSlVZblZUUXFON2dsQ0VkRnJBUzJseTQtU2VHVmRJQm81YlFMZFFKX1owMUFDWkgxd0JtaVlvajRyUmNvTkhsS0NQX0R5MFE?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
+      },
+      "location": {
+        "country": "Israel",
+        "country_code": "IL",
+        "region": "Middle East & Africa",
+        "status": "reported",
+        "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQR1FUM21STWZfakdFdy1yUEE3dHhGTUtoazJLcHAtZ3hlVXRvbEV5LVA0YXAwRlVGQ05qQ0Z1azV5Wk5wTWFVVXdKZ0FjSy04bkxlcDc5N2xsMFp2eUs5RzF6endfbXA0Ymt3WGo2UllEYzB1aWZmT0I2Smd1MVFBaHBtZzFWZC1pci1icms2cFJFZWxOTVg0aWpyaDU?oc=5",
+        "note": "Company location stated in headline; not verified headquarters."
+      }
+    },
+    {
       "id": "0668263c06b0c1720bbe",
       "company": "Akari Hosho",
       "amount": 1710000,
@@ -4592,7 +4722,7 @@
       "stage": "Series E",
       "published_at": "2026-11-11T01:51:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Industrial automation startup Path Robotics raises $300M in funding",
       "sources": [
         {
@@ -4726,7 +4856,7 @@
       "stage": "Series C",
       "published_at": "2026-11-10T21:14:08Z",
       "first_seen_at": "2026-11-11T18:40:17Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Clara raises $105M Series C round",
       "sources": [
         {
@@ -4794,7 +4924,7 @@
       "stage": "Series E",
       "published_at": "2026-11-10T18:03:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Blue J announces $176M in Series E round",
       "sources": [
         {
@@ -4836,7 +4966,7 @@
       "stage": "Series C",
       "published_at": "2026-11-10T18:02:31Z",
       "first_seen_at": "2026-11-10T20:27:49Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Raise3D raises $15M Series C to push 3D printing from prototypes to production",
       "sources": [
         {
@@ -4870,7 +5000,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T17:37:37Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Nuclear Startup Project Omega Raises $80M in Series A Round to Advance \u2018Closed\u2019 Fuel Cycle, Repurposing Used Fuel",
       "sources": [
         {
@@ -4924,7 +5054,7 @@
       "stage": "Debt",
       "published_at": "2026-11-10T17:05:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Arena Energy Closes $480 Million Department of Energy Loan for Energy Infrastructure Improvements in the Gulf of America",
       "sources": [
         {
@@ -4958,7 +5088,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T17:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Graphon Labs Raises $35M Series A to Accelerate AGI with Persistent Intelligence",
       "sources": [
         {
@@ -5000,7 +5130,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T16:54:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "AI 'amnesia' startup Graphon raises $35M Series A",
       "sources": [
         {
@@ -5034,7 +5164,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-10T16:20:36Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "South African cross-border fintech Lumepay raises $6m pre-seed",
       "sources": [
         {
@@ -5068,7 +5198,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T16:19:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Alta raises $47.5 million Series A to build a blockchain for financial institutions",
       "sources": [
         {
@@ -5122,7 +5252,7 @@
       "stage": "Series C",
       "published_at": "2026-11-10T16:05:42Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Clara raises $65M Series C to push AI into corporate payments",
       "sources": [
         {
@@ -5188,7 +5318,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-10T15:54:34Z",
       "first_seen_at": "2026-11-12T18:15:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "SA Fintech Lumepay Raises USD 6 M Pre-Seed To Expand African Cross-Border Payments",
       "sources": [
         {
@@ -5222,7 +5352,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T15:49:47Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T06:37:22Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Oyster Therapeutics Raises $60M in Series A Financing",
       "sources": [
         {
@@ -5256,7 +5386,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-10T15:35:42Z",
       "first_seen_at": "2026-11-13T15:21:03Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Dallas\u2019 Triplemoon Raises $4M to Bring Mental Healthcare to More Pediatric Practices",
       "sources": [
         {
@@ -5352,7 +5482,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T15:07:18Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Sparxity raises $90m following Series A funding round",
       "sources": [
         {
@@ -5452,7 +5582,7 @@
       "stage": "Series B",
       "published_at": "2026-11-10T14:37:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Zus Health Raises $33 Million in Series B Funding to Accelerate the Next Generation of Connected Healthcare",
       "sources": [
         {
@@ -5526,7 +5656,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-10T14:02:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Calibrant Energy Secures $145 Million in Project Financing, Including Battery Storage for Hyperscale Data Center Customer in PJM",
       "sources": [
         {
@@ -5560,7 +5690,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-10T14:00:03Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Staera Semiconductor Raises $4.6 Million in Pre-Seed Funding for AI Chip Interconnect Technology",
       "sources": [
         {
@@ -5632,7 +5762,7 @@
       "stage": "Series B",
       "published_at": "2026-11-10T14:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Charta Health Raises $55 Million Series B to Establish a Shared Standard of Accuracy in Healthcare Billing",
       "sources": [
         {
@@ -5682,7 +5812,7 @@
       "stage": "Series B",
       "published_at": "2026-11-10T14:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Nanopath Announces $25 Million Series B Financing to Advance Molecular Testing for Women's Health",
       "sources": [
         {
@@ -5732,7 +5862,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T14:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "PuppyGraph Raises $10M Series A to Help Enterprises Build AI Agents That Query 3,000 Tables in Subseconds",
       "sources": [
         {
@@ -5794,7 +5924,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T14:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Alta raises $48 million for its compliance-focused blockchain in Series A round led by Index Ventures",
       "sources": [
         {
@@ -5828,7 +5958,7 @@
       "stage": "Series E",
       "published_at": "2026-11-10T14:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Blue J Announces US$176 Million Series E to Put AI Agents to Work for Tax Professionals",
       "sources": [
         {
@@ -5868,7 +5998,7 @@
       "stage": "Seed",
       "published_at": "2026-11-10T13:53:00Z",
       "first_seen_at": "2026-11-10T09:43:53Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "AI accounting startup Sumary raises $25m seed",
       "sources": [
         {
@@ -5948,7 +6078,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T13:22:04Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Agentic AI Startup Lumbra Raises $25M Series A",
       "sources": [
         {
@@ -6002,7 +6132,7 @@
       "stage": "Series D",
       "published_at": "2026-11-10T13:15:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Mercor Raises $750 Million Series D at $20 Billion Valuation to Help Enterprises Own Their Intelligence",
       "sources": [
         {
@@ -6065,60 +6195,6 @@
       }
     },
     {
-      "id": "94994da73ed0a62fe9c7",
-      "company": "Bay",
-      "amount": 50000000,
-      "currency": "$",
-      "stage": "Undisclosed",
-      "published_at": "2026-11-10T13:10:13Z",
-      "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
-      "headline": "Israeli AI security startup Bay raises $50 million",
-      "sources": [
-        {
-          "name": "Reuters via Google News",
-          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQR1FUM21STWZfakdFdy1yUEE3dHhGTUtoazJLcHAtZ3hlVXRvbEV5LVA0YXAwRlVGQ05qQ0Z1azV5Wk5wTWFVVXdKZ0FjSy04bkxlcDc5N2xsMFp2eUs5RzF6endfbXA0Ymt3WGo2UllEYzB1aWZmT0I2Smd1MVFBaHBtZzFWZC1pci1icms2cFJFZWxOTVg0aWpyaDU?oc=5"
-        },
-        {
-          "name": "CNA via Google News",
-          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOX3pQYUR3UjBudk1vLWxtT1ozVGlma0I2UC1BZjJpcFp4cnNvbU42cnhnMjl3WTFzQU56bWxjRUZRd2l1aWlHcHNIR3BHdG5BRjBVQ3o0d05VOUZtdXNfcDJwWi1IT1BiTUIwek9hekt0ZXlYdE1ZZzkwTnl3YnpIWVhFQ2RQd3FPa3pLRkx5MmQwSzZGOUpwbDlLSUk1M00?oc=5"
-        },
-        {
-          "name": "Ynetnews via Google News",
-          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1na0c1ODBGSllKMXgxWW1LdF81YmJxYzN1ZFgyUXhvWVJYTmR0LWgzVF9EUnVIVmxQQzBlT3MwVXhRNGFQYzZuelc5bDFmSFA5aHgwRy1CTmY2M1ByWmVVVGh1NA?oc=5"
-        },
-        {
-          "name": "MLQ.ai via Google News",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWVFzZ0oyZFhOSGdhLWgybTBaX2lOdEQzRDRZdllVbHp4ajdwWHZSTmRrQzR4aTRqa3pyQjBMdXRxSmtnRndLMzM4WVNFNFh6a21zeU80eDctWXotNzJsemtkaWhNbUc3TlB0aU43UzJLV3hQcHlMYVZNV01PNU9lMjBkWGphbFQteFN6TVNqT2w2Z2hiUGhlR0J3UmRsRG9wV2c?oc=5"
-        },
-        {
-          "name": "https://ascendants.in/ via Google News",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPbjRsck1yc3V0WGVwbHRwUS14dlh6dGJPakN0bkstM2dOdjNkQVUxMzRLaFlFOGNld1V0RXhibjQ0RHFkUVl3MGZ1Q2FQZUEyaXltQVBmN3BzZjBUOUdhcS05OGx1QVhvajdUNjFWT01JeHhuVkJ4b0tOVU53STNpUG5MQkl5T2ZURUM5bGF2NEM?oc=5"
-        },
-        {
-          "name": "The Economic Times via Google News",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNM0hrQmZ2TWhBSEVweHFZQVpEX3V4R1dWUlVmd3RTbkxwcWQwbF8wSlNpX1ZjelVRYUVZWHY5anlITkZ4Z0QxakVYYXNCRVA5X0NnZnJpLW5KWWJTQ3g1aVFDYk93X2Z3UUFpRUNaUlF2SWptN01sQlRzRE44Y1lpSVZHeURPcXROQ3Y4M3hOUEpOVndGME9SYW53dC1qckZ0czQ5SkhBRThjbWRLTmtTdElHR2RpZmvSAbwBQVVfeXFMTm44QWZiTXk4WkJPYWsxMUdLTzFXSjFDX0JUY2pIY202UTJ3aXo4aXZIOTVTNUliMUV3Q2NJMnJvbzByUnE0X29aa2dIZWlVOEVnRUNFV3NHS0JqNGNZbXU5czVMaGNrVEJwS25wRlFjU1Eza1k3RXpkdHVvLUNLQ0F2NllVUld4SnFISEpCTW4zbERNaHRXeXhaTVFjMjJVNEZUZFFQMEIwU3dJLS1iZDZUV1ItTHFudGNHMWo?oc=5"
-        }
-      ],
-      "quality": "Headline-extracted; verify source",
-      "announcement": {
-        "date": "2026-11-10",
-        "status": "first_reported",
-        "checked_at": "2026-11-11T02:49:24Z",
-        "check_status": "ok",
-        "source_url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNRXNRNG13WkM1OUlTUWxBZFNDeUc4aG1YaFJoWkdnS1AxOVBLQTBxaFFDT09uQ0VVOGJURU9HdkE3bDAzWEFzZlQ0OVlZVnlMSlVZblZUUXFON2dsQ0VkRnJBUzJseTQtU2VHVmRJQm81YlFMZFFKX1owMUFDWkgxd0JtaVlvajRyUmNvTkhsS0NQX0R5MFE?oc=5",
-        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
-      },
-      "location": {
-        "country": "Israel",
-        "country_code": "IL",
-        "region": "Middle East & Africa",
-        "status": "reported",
-        "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQR1FUM21STWZfakdFdy1yUEE3dHhGTUtoazJLcHAtZ3hlVXRvbEV5LVA0YXAwRlVGQ05qQ0Z1azV5Wk5wTWFVVXdKZ0FjSy04bkxlcDc5N2xsMFp2eUs5RzF6endfbXA0Ymt3WGo2UllEYzB1aWZmT0I2Smd1MVFBaHBtZzFWZC1pci1icms2cFJFZWxOTVg0aWpyaDU?oc=5",
-        "note": "Company location stated in headline; not verified headquarters."
-      }
-    },
-    {
       "id": "d7835e8156f18c844439",
       "company": "Alterra Labs",
       "amount": 12500000,
@@ -6126,7 +6202,7 @@
       "stage": "Seed",
       "published_at": "2026-11-10T13:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Alterra Labs announces $12.5 million seed round to build training environments for medical AI",
       "sources": [
         {
@@ -6164,7 +6240,7 @@
       "stage": "Series B",
       "published_at": "2026-11-10T12:39:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Israeli cyber startup Daylight raises $80 million Series B at estimated $400 million valuation",
       "sources": [
         {
@@ -6210,7 +6286,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-10T12:12:44Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "South African fintech Lumepay raises US$6m pre-seed to build Africa\u2019s institutional cross-border payment solutions",
       "sources": [
         {
@@ -6244,7 +6320,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-10T12:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "PsiThera Closes $25 Million Financing to Advance Oral Therapeutics in Immunology",
       "sources": [
         {
@@ -6282,7 +6358,7 @@
       "stage": "Seed",
       "published_at": "2026-11-10T11:30:22Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Efferon raises \u20ac4.3M seed round to expand sepsis device sales",
       "sources": [
         {
@@ -6316,7 +6392,7 @@
       "stage": "Series B",
       "published_at": "2026-11-10T11:30:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Luminoah Raises $25 Million Series B to Expand Access to Its FDA-Cleared Enteral Feeding System",
       "sources": [
         {
@@ -6408,7 +6484,7 @@
       "stage": "Series C",
       "published_at": "2026-11-10T11:00:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Finite State Raises $27 Million to Help Device Makers Fight the \u2018Vulnpocalypse\u2019 with AI-Powered Product Security",
       "sources": [
         {
@@ -6454,7 +6530,7 @@
       "stage": "Series C",
       "published_at": "2026-11-10T10:55:06Z",
       "first_seen_at": "2026-11-09T22:59:00Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Nominal Raises $240M Series C to Expand AI-Powered Hardware Engineering Platform",
       "sources": [
         {
@@ -6512,7 +6588,7 @@
       "stage": "Series A-1",
       "published_at": "2026-11-10T10:55:00Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "AI startup Spines raises $64m., challenging traditional publishing industry",
       "sources": [
         {
@@ -6690,7 +6766,7 @@
       "stage": "Seed",
       "published_at": "2026-11-10T08:00:00Z",
       "first_seen_at": "2026-11-12T23:39:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Ancep raises \u00a36.43 million Seed funding from Creandum, Kleiner Perkins and Vicus Ventures",
       "sources": [
         {
@@ -6790,7 +6866,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T07:00:00Z",
       "first_seen_at": "2026-11-10T09:43:53Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Kesmalea Therapeutics Announces $60 Million Series A Financing to Advance Next-Generation Targeted Protein Degraders for Alzheimer\u2019s and Other Neurodegenerative Diseases and Rebrands as Oyster Therapeutics",
       "sources": [
         {
@@ -6870,7 +6946,7 @@
       "stage": "Seed",
       "published_at": "2026-11-10T06:00:35Z",
       "first_seen_at": "2026-11-10T09:43:53Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Light Frame Raises $5.1 Million to Modernise Private Banking Technology",
       "sources": [
         {
@@ -6920,7 +6996,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-10T05:29:00Z",
       "first_seen_at": "2026-11-10T17:46:18Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "South African Fintech Lumepay Raises $6M Pre-Seed to Build Africa\u2019s Institutional Cross-Border Payments Rails",
       "sources": [
         {
@@ -6954,7 +7030,7 @@
       "stage": "Series A",
       "published_at": "2026-11-10T03:14:30Z",
       "first_seen_at": "2026-11-09T22:59:00Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Coframe raises $25M Series A to build a self-improving \"living internet",
       "sources": [
         {
@@ -6988,7 +7064,7 @@
       "stage": "Series C",
       "published_at": "2026-11-10T00:57:45Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Delix Therapeutics Closes Oversubscribed $100 Million Series C Financing to Advance Zalsupindole Into Phase II Development and Finance Broader Pipeline Advancement/Expansion",
       "sources": [
         {
@@ -7026,7 +7102,7 @@
       "stage": "Seed",
       "published_at": "2026-11-10T00:00:35Z",
       "first_seen_at": "2026-11-10T01:29:21Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Startup Supporting Caregivers Raises $3.5M in Seed Funding",
       "sources": [
         {
@@ -7098,7 +7174,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-09T21:55:38Z",
       "first_seen_at": "2026-11-09T22:59:00Z",
-      "last_seen_at": "2026-11-13T06:37:22Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Axo Metals Corp. Announces $50M Bought Deal Financing of Common Shares",
       "sources": [
         {
@@ -7132,7 +7208,7 @@
       "stage": "Seed",
       "published_at": "2026-11-09T21:44:03Z",
       "first_seen_at": "2026-11-09T22:59:00Z",
-      "last_seen_at": "2026-11-12T23:39:59Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Tencent veteran's AI motion console raises $8.99M seed round",
       "sources": [
         {
@@ -7166,7 +7242,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-09T21:17:45Z",
       "first_seen_at": "2026-11-09T22:59:00Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Crombie REIT Announces $200 Million Equity Financing",
       "sources": [
         {
@@ -7200,7 +7276,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-09T19:25:00Z",
       "first_seen_at": "2026-11-09T22:59:00Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Ridero Raises $2.7 Million to Tackle Vehicle Affordability Through AI-Powered Financial Infrastructure",
       "sources": [
         {
@@ -7378,7 +7454,7 @@
       "stage": "Seed",
       "published_at": "2026-11-09T15:32:13Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Egyptian Payments Startup enza Raises USD 6 M Additional Seed Funding",
       "sources": [
         {
@@ -7412,7 +7488,7 @@
       "stage": "Series C",
       "published_at": "2026-11-09T15:18:46Z",
       "first_seen_at": "2026-11-10T23:16:39Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Sanyou Biopharmaceuticals Raises Approx. $15M in Series C Funding",
       "sources": [
         {
@@ -7480,7 +7556,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-09T14:40:00Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Coframe Raises $35 Million to Build the \"Living Internet\"",
       "sources": [
         {
@@ -7548,7 +7624,7 @@
       "stage": "Seed",
       "published_at": "2026-11-09T14:28:52Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Cosmoserve Space Raises $6M in Seed Funding",
       "sources": [
         {
@@ -7594,7 +7670,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-09T14:07:29Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Women\u2019s Athletic Footwear Startup Ida Sports Secures $4M in Funding",
       "sources": [
         {
@@ -7628,7 +7704,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-09T14:00:00Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "NewcelX Announces Pricing of $1.55 Million Equity Financing at 20% Premium Pricing to Market",
       "sources": [
         {
@@ -7662,7 +7738,7 @@
       "stage": "Undisclosed",
       "published_at": "2026-11-09T13:00:00Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Owlting Group (NASDAQ: OWLS) Secures Additional US$5 Million Financing from The Lind Partners",
       "sources": [
         {
@@ -7844,7 +7920,7 @@
       "stage": "Seed",
       "published_at": "2026-11-09T11:13:55Z",
       "first_seen_at": "2026-11-09T17:26:59Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Dulo Raises $130M Seed Round to Develop AI Models for Engineering, Hardware Design",
       "sources": [
         {
@@ -8056,7 +8132,7 @@
       "stage": "Seed",
       "published_at": "2026-11-09T08:00:46Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Physicl Raises $10M in Seed Funding",
       "sources": [
         {
@@ -8152,7 +8228,7 @@
       "stage": "Series B",
       "published_at": "2026-11-09T06:32:24Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Kalepa secures $75m in Series B funding at $470m valuation to expand AI insurance platform",
       "sources": [
         {
@@ -8346,7 +8422,7 @@
       "stage": "Series C",
       "published_at": "2026-11-09T02:12:55Z",
       "first_seen_at": "2026-11-09T06:18:07Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Antibody platform Sanyou raises ~$15M Series C led by Zero2IPO",
       "sources": [
         {
@@ -8414,7 +8490,7 @@
       "stage": "Series B",
       "published_at": "2026-11-09T00:28:30Z",
       "first_seen_at": "2026-11-09T06:18:07Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Melbourne adtech Vudoo raises $22 million Series B as in-ad checkout takes on the US",
       "sources": [
         {
@@ -8448,7 +8524,7 @@
       "stage": "Pre-seed",
       "published_at": "2026-11-08T17:14:17Z",
       "first_seen_at": "2026-11-11T02:49:24Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Darwin raises $3.6M pre-seed to put robots inside AI data centers",
       "sources": [
         {
@@ -8482,7 +8558,7 @@
       "stage": "Seed",
       "published_at": "2026-11-08T15:10:07Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "ShareWillow Raises $8.5 Million In Seed Funding To Expand AI-Powered Performance Pay For Home Service Technicians",
       "sources": [
         {
@@ -8670,7 +8746,7 @@
       "stage": "Seed",
       "published_at": "2026-11-08T14:48:20Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Shackleton AI Raises $5 Million In Seed Funding Led By Battery Ventures To Launch AI-Powered Construction Management Platform",
       "sources": [
         {
@@ -8852,7 +8928,7 @@
       "stage": "Seed",
       "published_at": "2026-11-08T06:17:37Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "BCC Media Network raises $213,000 seed round to build owned media IPs",
       "sources": [
         {
@@ -8886,7 +8962,7 @@
       "stage": "Series A",
       "published_at": "2026-11-07T15:50:48Z",
       "first_seen_at": "2026-11-08T15:13:51Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "MediaCore secures $4.5 mln in Series A funding led by Vanedge Capital",
       "sources": [
         {
@@ -10026,7 +10102,7 @@
       "stage": "Series D",
       "published_at": "2026-11-05T17:52:44Z",
       "first_seen_at": "2026-11-08T14:47:48Z",
-      "last_seen_at": "2026-11-13T21:57:49Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
       "headline": "Harbinger raises $240M after expanding into defense",
       "sources": [
         {
@@ -11744,8 +11820,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-04",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPUldfa0ZtVDVKVWdid1owOERRWE93VGZjbHl0M0R3YV9iMWNlSWpodXkzMjliUXhTS3F0QzlOdXpNbzNnWlZZclBWVTlYeEtMWFlHYjBsT1JURDM4VlZURHQzcUtYejNqU2k1amNGOWJSd3BxR1U5RTBjZE9VYWJKdDJkVlpweXlGd19JWW1oLXRBaHl0NnFycg?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -11774,8 +11854,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-08",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPaldZbWsyYXhIaVJrM1NvMllRNmt4RXZmbmhyVFcweTV4Nk5RbU1PYXo1amdxcEFjaG9tU1FPUlYzam9md0VNblRBMzBMcW1hbTZKSjg3bzdEZzdFY2FwNGhPOGZqaEhtS2ljUTlia3owTUpONnFiYTE1eTFOSjlqWjloTUpaTFNQbmtkNm5sV2pLLWI3SktVb3U0UVFSWm1aQ0Vfa1FqX29fYy1TNkRrb3dXQjdFZGhBbFE?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -11804,8 +11888,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-04",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5KVkhpZ0JfQjFWTVBheERmUU9XYk1IaFZ5dU1tdlFRb3MtMFN2NTFPZGp1WlVmdHZjeGwxZkhUeHUtcUQ2dXB1OG1TLTRfdklCSjJr?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -11834,8 +11922,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-04",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPbUFrcURJQzk0bVZOYWJxcC16Ylp1VHhEVmU3YWRYYmx4ck02a0E3alhpQUJpZFFwY1RVRDZVdWVTZmdSM1haSVNqcjl4ZTdYWkxZQnJhNi1fS0hRWUZWdUl1S19ObHVIaGdDcF9WaWpvQm05NVJ2bk1aWGpTZmNiTkxLQWNIeGlYLTFxNU5sRU1OWnJqbHEyeVJRMHBuaDJPNTF2WEgwYTlzUjR2VWJzZjVWZ2o4Nl84Sld1ejJrNDA4N1Y1RWNfLXRiU0UtZENOX1dYN01BdDdGN1c3?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -11868,8 +11960,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-04",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOVGVSRXlYdlhHYVU5dWhXc0RWaWJhVUdFS29lVDhKYk1UMW5PQVNLMTg5NThfdDYzU2ZubE9fYXRxTG5uSVBHV0k4eXlxWlhfaXIycFQwS1lORUlKN1Z1MTZJbEtWcmZsXzdXalB0STA3YUdLU2ZWM1ZwM1hkY0dsVmc0cE41S2plNWtJRkN1Wi11LXRBUHUzNjdXRFkyYmxQWU5wdFpITHc3d29PWmMweXJrb2FSd0lFcmFGVm0zNW5zOWZoa3lDNWx5Z0NBeS1EZGtPQ3pjZkpuMWRXaHpkadIB7gFBVV95cUxQUEZ1Y0FIdDM1b3RibE9ndGV6TWF2S19SR0dPeFU3a2J2SHFRMEczcloxZ2ZhS2RUUTd2cGhycHkyYzFtX3EteUljT0RZLXRvY3Z2d0syZkM1dVBfNjlYZENVOVluclJ1YndMZGx1azZYXy1GUVRIcUtwc3VnV2gzb0x5ZlRZS3lIZUdyQ0puYTkyZ3hfSUNxdmp1YlBjMjF5Q0NacnAtUkZ1SFNmOF9sREZzNlBkQldReGphQmNGZE1TUEtKaGVEbkVPdVB3Q1I3ZTVXUERDQ3FFbDVTVC11SVhkRGZySmJMMWdyZFdR?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -11898,8 +11994,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-10-07",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPdmlHZXA3TVJZODlZNnNRdF9DbGZfcWdKREJ3TlF0dDQtYWEwUjh5SktfeDh4RUZmMFh0cThaWmd6VkE1YjJ0bnNmOWJFbDl0S1pmTUFPdE9jc01hTUZTZnh2b0JZZ3BPVnd1VjZ3WGdpOVBZM0JhbnpzRmRsYm9XakdzQjNDZUxLRndPUVQ4SGY0TGFtT29uUUtLV2E5Y3VxLWRPSC0xZU9Ya0Z2eTQ5VTFVc05mTjA?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -11932,8 +12032,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-03",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcW5obFp5WnlBVEw5RGx0OUdBOFNkSkRPQUFsRE5EeE5rLUZMMFR0d3ZDa1hnN0Q1RG1TSUNyWUhkTUpMU29Hd2hlclBmWXYweXhJWGFBcXl6X3V5WWpCOXUtanF0Q1hxN1N0ak1uX21BQnBZUElTb2pmdTAwb0k2Ylo1YzJUQUYxUHIzeXZxb1NuWi1rTnlZUFBBbjU?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -11962,8 +12066,12 @@
       ],
       "quality": "Headline-extracted; verify source",
       "announcement": {
-        "date": null,
-        "status": "unverified"
+        "date": "2026-11-04",
+        "status": "first_reported",
+        "checked_at": "2026-11-14T02:24:21Z",
+        "check_status": "ok",
+        "source_url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMU56ekRxQlBmZTRnMUJhZlVGUnpYUVloSl9WVG9zUFp6MHhHaVVSbzhFdzNwQ0E4UXU1Q0JkZUdLV1dncjhMVXFWVUhjMTNwTGJ1V055TGdyRkpKUmdHU2hST1l6RnNhOVozMm5jYkt6dGdvQlBvaUNrcklpSEtXb2xBVFJFVDY3R2ZFWXJfaHJuVkRGRjFuaw?oc=5",
+        "note": "Earliest matching indexed report found; not a verified announcement or closing date."
       },
       "location": {
         "country": null,
@@ -24532,6 +24640,147 @@
         "amount_basis": "cumulative_amount_sold",
         "provider": "FormDs"
       }
+    },
+    {
+      "id": "sec-0001104659-26-127191",
+      "kind": "sec_form_d",
+      "company": "Neuvivo, Inc.",
+      "amount": 1384615,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-13T00:00:00Z",
+      "first_seen_at": "2026-11-14T02:24:21Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "Neuvivo, Inc.: Form D reports $1,384,615 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/neuvivo-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2154992/000110465926127191/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-30",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/neuvivo-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/neuvivo-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001104659-26-127191",
+        "cik": "2154992",
+        "form": "D",
+        "filed_on": "2026-11-13",
+        "first_sale_on": "2026-10-30",
+        "industry": "Pharmaceuticals",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0001927878-26-000006",
+      "kind": "sec_form_d",
+      "company": "Ora Biomedical, Inc.",
+      "amount": 205000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-13T00:00:00Z",
+      "first_seen_at": "2026-11-14T02:24:21Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "Ora Biomedical, Inc.: Form D reports $205,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/ora-biomedical-inc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1927878/000192787826000006/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-01-19",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/ora-biomedical-inc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/ora-biomedical-inc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0001927878-26-000006",
+        "cik": "1927878",
+        "form": "D",
+        "filed_on": "2026-11-13",
+        "first_sale_on": "2026-01-19",
+        "industry": "Biotechnology",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
+    },
+    {
+      "id": "sec-0002165240-26-000001",
+      "kind": "sec_form_d",
+      "company": "Philo Film LLC",
+      "amount": 100000,
+      "currency": "USD",
+      "stage": "Private offering",
+      "published_at": "2026-11-13T00:00:00Z",
+      "first_seen_at": "2026-11-14T02:24:21Z",
+      "last_seen_at": "2026-11-14T02:24:21Z",
+      "headline": "Philo Film LLC: Form D reports $100,000 cumulatively sold in a private offering",
+      "quality": "FormDs SEC-derived disclosure; not independently fetched from SEC or proof of a completed VC round",
+      "sources": [
+        {
+          "name": "FormDs - SEC-derived filings",
+          "url": "https://www.formds.com/issuers/philo-film-llc"
+        },
+        {
+          "name": "Linked SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/2165240/000216524026000001/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "announcement": {
+        "date": "2026-10-29",
+        "status": "reported_first_sale",
+        "source_url": "https://www.formds.com/issuers/philo-film-llc",
+        "note": "Issuer-reported first sale as published by FormDs; amount sold is cumulative, not necessarily new money this week."
+      },
+      "location": {
+        "country": "United States",
+        "country_code": "US",
+        "region": "North America",
+        "status": "reported",
+        "source_url": "https://www.formds.com/issuers/philo-film-llc",
+        "note": "US state in the tracker's issuer-location header; foreign or unrecognized locations remain unknown."
+      },
+      "filing": {
+        "accession": "0002165240-26-000001",
+        "cik": "2165240",
+        "form": "D",
+        "filed_on": "2026-11-13",
+        "first_sale_on": "2026-10-29",
+        "industry": "Other",
+        "amount_basis": "cumulative_amount_sold",
+        "provider": "FormDs"
+      }
     }
   ],
   "sec_state": {
@@ -24871,7 +25120,11 @@
       "https://www.formds.com/issuers/inharmony-legacy-holdings-inc|2026-11-13|300000": "2026-11-13",
       "https://www.formds.com/issuers/kunin-technologies-inc|2026-11-13|15185542": "2026-11-13",
       "https://www.formds.com/issuers/nanopath-inc|2026-11-13|29891706": "2026-11-13",
-      "https://www.formds.com/issuers/overmatch-nominal-c-lp|2026-11-13|3000000": "2026-11-13"
+      "https://www.formds.com/issuers/overmatch-nominal-c-lp|2026-11-13|3000000": "2026-11-13",
+      "https://www.formds.com/issuers/neuvivo-inc|2026-11-13|1384615": "2026-11-13",
+      "https://www.formds.com/issuers/ora-biomedical-inc|2026-11-13|205000": "2026-11-13",
+      "https://www.formds.com/issuers/philo-film-llc|2026-11-13|100000": "2026-11-13",
+      "https://www.formds.com/issuers/public-policy-holding-company-inc|2026-11-13|1400000": "2026-11-13"
     },
     "pending": {
       "https://www.formds.com/issuers/command-leaders-inc|2026-11-06|13500": {
